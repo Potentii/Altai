@@ -1,0 +1,87 @@
+VBox{
+    -fx-focus-color: transparent;
+}
+
+ScrollPane{
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+Button{
+    -fx-focus-color: transparent;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+}
+
+
+#navigationDrawer{
+
+    -fx-background: #f7f7f7;
+    -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.8), 16, 0, 0, 0);
+}
+
+
+.navigationDrawerItemBtn{
+    -fx-max-height: 68;
+    -fx-min-height: 68;
+    -fx-padding: 16;
+    -fx-text-fill: #555;
+    -fx-background-color: transparent;
+    -fx-graphic-text-gap: 16;
+    -fx-ellipsis-string: "";
+    -fx-alignment: CENTER_LEFT;
+    -fx-font: 16 "System";
+}
+
+.navigationDrawerItemBtn:hover{
+    -fx-background-color: #ddd;
+}
+
+.navigationDrawerItemImg{
+
+}
+
+#navigationDrawerItemImg_menu{
+    -fx-image: url("/res/image/ic_menu_36.png");
+}
+#navigationDrawerItemImg_links{
+    -fx-image: url("/res/image/ic_link_36.png");
+}
+#navigationDrawerItemImg_stars{
+    -fx-image: url("/res/image/ic_star_36.png");
+}
+#navigationDrawerItemImg_pictures{
+    -fx-image: url("/res/image/ic_picture_36.png");
+}
+#navigationDrawerItemImg_movies{
+    -fx-image: url("/res/image/ic_movie_36.png");
+}
+#navigationDrawerItemImg_settings{
+    -fx-image: url("/res/image/ic_settings_36.png");
+}
+
+
+#contentContainer{
+    -fx-background: #ddd;
+}
+
+
+
+.FAB{
+    -fx-padding: 0;
+    -fx-pref-width: 48;
+    -fx-pref-height: 48;
+    -fx-background-color: transparent;
+    -fx-background-size: 48 48;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-image: url("/res/image/ic_fab_main_48.png");
+    -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.8), 8, 0, 0, 1);
+}
+
+.FAB_img{
+    -fx-image: url("/res/image/ic_add_24.png");
+}
+

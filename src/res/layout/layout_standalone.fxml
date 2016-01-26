@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<StackPane id="standaloneRoot" fx:id="standaloneRoot" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.StandaloneController">
+    <children>
+      <BorderPane fx:id="contentContainer" />
+        <ScrollPane id="navigationDrawer" fx:id="navigationDrawer" fitToWidth="true" focusTraversable="false" hbarPolicy="NEVER" maxWidth="192.0" minWidth="0.0" prefWidth="68.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER" StackPane.alignment="TOP_LEFT">
+         <content>
+            <VBox spacing="16.0">
+               <children>
+                  <Button ellipsisString="" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menuOpenedBtn_onClick" styleClass="navigationDrawerItemBtn" text="Menu">
+                     <graphic>
+                        <ImageView id="navigationDrawerItemImg_menu" cache="true" fitHeight="36.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="navigationDrawerItemImg">
+                           <effect>
+                              <ColorAdjust brightness="-0.56" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </Button>
+                  <Button ellipsisString="" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#linksBtn_onClick" styleClass="navigationDrawerItemBtn" text="Links">
+                     <graphic>
+                        <ImageView id="navigationDrawerItemImg_links" cache="true" fitHeight="36.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="navigationDrawerItemImg">
+                           <effect>
+                              <ColorAdjust brightness="-0.56" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </Button>
+                  <Button ellipsisString="" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#starsBtn_onClick" styleClass="navigationDrawerItemBtn" text="Stars">
+                     <graphic>
+                        <ImageView id="navigationDrawerItemImg_stars" cache="true" fitHeight="36.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="navigationDrawerItemImg">
+                           <effect>
+                              <ColorAdjust brightness="-0.56" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </Button>
+                  <Button ellipsisString="" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#picturesBtn_onClick" styleClass="navigationDrawerItemBtn" text="Pictures">
+                     <graphic>
+                        <ImageView id="navigationDrawerItemImg_pictures" cache="true" fitHeight="36.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="navigationDrawerItemImg">
+                           <effect>
+                              <ColorAdjust brightness="-0.56" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </Button>
+                  <Button ellipsisString="" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#moviesBtn_onClick" styleClass="navigationDrawerItemBtn" text="Movies">
+                     <graphic>
+                        <ImageView id="navigationDrawerItemImg_movies" cache="true" fitHeight="36.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="navigationDrawerItemImg">
+                           <effect>
+                              <ColorAdjust brightness="-0.56" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </Button>
+                  <Button ellipsisString="" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#settingsBtn_onClick" styleClass="navigationDrawerItemBtn" text="Settings">
+                     <graphic>
+                        <ImageView id="navigationDrawerItemImg_settings" cache="true" fitHeight="36.0" fitWidth="36.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="navigationDrawerItemImg">
+                           <effect>
+                              <ColorAdjust brightness="-0.56" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+         </content></ScrollPane>
+
+    </children>
+    <stylesheets>
+        <URL value="@../style/style_standalone.css" />
+    </stylesheets>
+
+</StackPane>
