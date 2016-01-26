@@ -14,5 +14,5 @@ public interface DAO<T> {
     public void retrieveMultiple(Predicate<T> condition, Comparator<T> sorting, RetrieveMultipleDAOCallback<T> retrieveMultipleDAOCallback);
     public void retrieve(long id, RetrieveDAOCallback<T> retrieveDAOCallback);
     public void update(T newEntity, UpdateDAOCallback updateDAOCallback);
-    public void delete(T entity, DeleteDAOCallback deleteDAOCallback);
+    public void delete(long id, DeleteDAOCallback deleteDAOCallback);
 }

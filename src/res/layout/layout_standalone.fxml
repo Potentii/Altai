@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<StackPane id="standaloneRoot" fx:id="standaloneRoot" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.StandaloneController">
+<StackPane id="standaloneRoot" fx:id="standaloneRoot" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.scene.StandaloneSceneController">
     <children>
       <BorderPane fx:id="contentContainer" />
         <ScrollPane id="navigationDrawer" fx:id="navigationDrawer" fitToWidth="true" focusTraversable="false" hbarPolicy="NEVER" maxWidth="192.0" minWidth="0.0" prefWidth="68.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER" StackPane.alignment="TOP_LEFT">

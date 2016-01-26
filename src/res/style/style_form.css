@@ -1,0 +1,15 @@
+.row{
+    -fx-pref-height: 56;
+    -fx-padding: 16;
+    -fx-spacing: 16;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.row_img{
+
+}
+
+.row_output, .row_input{
+    -fx-text-fill: #444;
+    -fx-font: 18 "System";
+}

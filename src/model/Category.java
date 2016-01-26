@@ -6,7 +6,7 @@ import controller.persistence.annotation.Entity;
  * @author Guilherme Reginaldo
  * @since 23/01/2016
  */
-@Entity(sourceName = "Category")
+@Entity(sourceName = "CategorySource")
 public class Category {
     private long id;
     private String title;

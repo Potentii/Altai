@@ -5,7 +5,7 @@ package model;
  * @author Guilherme Reginaldo
  * @since 23/01/2016
  */
-public abstract class AssociativeEntity {
+public class AssociativeEntity {
     private long id;
     private long primaryId;
     private long secondaryId;
