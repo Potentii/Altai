@@ -1,50 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0d2f263-2d69-4f9f-b02f-47d63db8ba01" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/LinkCategoryAssociation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/dao/AssociativeEntityDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/dao/CategoryDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/dao/GenericDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/dao/LinkDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/layout/layout_detail_link.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/layout/layout_detail_scene.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/style/style_form.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/controller/DetailContextController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/controller/LinkDetailContextController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/controller/scene/DetailSceneController.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/model/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/model/dao/UserDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/view/controller/StandaloneController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/model/User.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/model/dao/UserDAO.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/controller/StandaloneController.java" afterPath="$PROJECT_DIR$/src/view/controller/scene/StandaloneSceneController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager$1.class" afterPath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager.class" afterPath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/model/AssociativeEntity.class" afterPath="$PROJECT_DIR$/out/production/Altai/model/AssociativeEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/model/Category.class" afterPath="$PROJECT_DIR$/out/production/Altai/model/Category.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/model/Link.class" afterPath="$PROJECT_DIR$/out/production/Altai/model/Link.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/model/dao/DAO.class" afterPath="$PROJECT_DIR$/out/production/Altai/model/dao/DAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/view/LinkLVAdapter.class" afterPath="$PROJECT_DIR$/out/production/Altai/view/LinkLVAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/view/Standalone.class" afterPath="$PROJECT_DIR$/out/production/Altai/view/Standalone.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/view/controller/ContextController.class" afterPath="$PROJECT_DIR$/out/production/Altai/view/controller/ContextController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/view/controller/LinkContextController.class" afterPath="$PROJECT_DIR$/out/production/Altai/view/controller/LinkContextController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/layout/layout_standalone.fxml" afterPath="$PROJECT_DIR$/out/production/Altai/layout/layout_standalone.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/res/layout/layout_standalone.fxml" afterPath="$PROJECT_DIR$/out/production/Altai/res/layout/layout_standalone.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/persistence/PersistenceManager.java" afterPath="$PROJECT_DIR$/src/controller/persistence/PersistenceManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/AssociativeEntity.java" afterPath="$PROJECT_DIR$/src/model/AssociativeEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Category.java" afterPath="$PROJECT_DIR$/src/model/Category.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Link.java" afterPath="$PROJECT_DIR$/src/model/Link.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/dao/DAO.java" afterPath="$PROJECT_DIR$/src/model/dao/DAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/layout/layout_standalone.fxml" afterPath="$PROJECT_DIR$/src/res/layout/layout_standalone.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/Standalone.java" afterPath="$PROJECT_DIR$/src/view/Standalone.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/controller/ContextController.java" afterPath="$PROJECT_DIR$/src/view/controller/ContextController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/controller/LinkContextController.java" afterPath="$PROJECT_DIR$/src/view/controller/LinkContextController.java" />
-    </list>
+    <list default="true" id="b0d2f263-2d69-4f9f-b02f-47d63db8ba01" name="Default" comment="" />
     <ignored path="Altai.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
