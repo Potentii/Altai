@@ -23,40 +23,9 @@ public class Standalone extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/res/layout/layout_standalone.fxml"));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("URLS");
+        primaryStage.setTitle("Altai");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
-
-
-
-
-        /*
-        List<Class<?>> entityList = new ArrayList<>();
-        entityList.add(User.class); //TODO remove
-        entityList.add(Category.class);
-        entityList.add(Host.class);
-        entityList.add(Link.class);
-
-        PersistenceManager persistenceManager = new PersistenceManager(entityList){
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-
-            }
-        };
-        */
-
-
-        //persistenceManager.verify();
-
-        // TODO
-
     }
 
 

@@ -1,4 +1,4 @@
-package view.controller;
+package view.controller.scene;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import view.controller.ContextController;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
  * @author Guilherme Reginaldo
  * @since 23/01/2016
  */
-public class StandaloneController implements Initializable{
+public class StandaloneSceneController implements Initializable{
     private Timeline timeline;
 
     @FXML
@@ -28,6 +29,8 @@ public class StandaloneController implements Initializable{
     private StackPane standaloneRoot;
     @FXML
     private BorderPane contentContainer;
+
+    private ContextController contextController;
 
 
 
@@ -118,37 +121,25 @@ public class StandaloneController implements Initializable{
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     /**
-     *
+     * Change the content's controller.
      * @param fxml The fmxl file's path
-     * @param <T> {@link ContextController} subtype of the new content
-     * @return  The controller
      * @throws ContextLoadException If content couldn't be loaded
      */
-    private <T extends ContextController> T changeContent(String fxml) throws ContextLoadException{
+    private void changeContent(String fxml) throws ContextLoadException{
         closeNav();
         try {
             // *Loading the FXML:
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
             Pane newNode = loader.load();
 
-            // *Removing all the current children:
-            /*
-            ObservableList<Node> children = contentContainer.getChildren();
-            for (int i = 0; i < children.size(); i++) {
-                children.remove(i);
-            }*/
-
-            // *Adding the new content:
-            //contentContainer.getChildren().add(newNode);
+            // *Setting the new content:
             contentContainer.setCenter(newNode);
 
             // *Getting the controller:
-            T controller = loader.getController();
+            contextController = loader.getController();
 
             // *Setting the "menuBtn" listener:
-            controller.setMenuBtnClickListener(event -> menuClosedBtn_onClick());
-
-            return controller;
+            contextController.setMenuBtnClickListener(event -> menuClosedBtn_onClick());
         } catch (NullPointerException | IOException e) {
             e.printStackTrace();
             throw new ContextLoadException(e.getMessage());
@@ -158,35 +149,35 @@ public class StandaloneController implements Initializable{
 
     public void loadLinkContext(){
         try {
-            changeContent("/layout/layout_link_context.fxml");
+            changeContent("/res/layout/layout_link_context.fxml");
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadStarsContext(){
         try {
-            changeContent("/layout/layout_link_context.fxml"); // TODO
+            changeContent("/res/layout/layout_link_context.fxml"); // TODO
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadPicturesContext(){
         try {
-            changeContent("/layout/layout_link_context.fxml"); // TODO
+            changeContent("/res/layout/layout_link_context.fxml"); // TODO
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadMoviesContext(){
         try {
-            changeContent("/layout/layout_link_context.fxml"); // TODO
+            changeContent("/res/layout/layout_link_context.fxml"); // TODO
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadSettingsContext(){
         try {
-            changeContent("/layout/layout_link_context.fxml"); // TODO
+            changeContent("/res/layout/layout_link_context.fxml"); // TODO
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

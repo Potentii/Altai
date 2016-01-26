@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LinkDetailContextController">
+    <stylesheets>
+        <URL value="@../style/style_form.css" />
+    </stylesheets>
+
+    <children>
+      <HBox styleClass="row">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="-0.56" />
+               </effect>
+            </ImageView>
+            <Label styleClass="row_output" />
+         </children></HBox>
+      <HBox styleClass="row">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="-0.56" />
+               </effect>
+            </ImageView>
+            <Label styleClass="row_output" />
+         </children>
+      </HBox>
+      <HBox styleClass="row">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="-0.56" />
+               </effect>
+            </ImageView>
+            <Label styleClass="row_output" />
+         </children>
+      </HBox>
+      <HBox styleClass="row">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="-0.56" />
+               </effect>
+            </ImageView>
+            <Label styleClass="row_output" />
+         </children>
+      </HBox>
+      <HBox styleClass="row">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="-0.56" />
+               </effect>
+            </ImageView>
+            <Label styleClass="row_output" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

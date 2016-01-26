@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../style/style_standalone.css" />
+        <URL value="@../style/style_context.css" />
+    </stylesheets>
+
+    <children>
+      <ToolBar id="appBar">
+         <items>
+            <Label fx:id="titleOut" focusTraversable="false" styleClass="appBarText" text="Label" />
+            <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#editBtn_onClick" styleClass="FAB">
+
+            </Button>
+         </items></ToolBar>
+      <BorderPane fx:id="contentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+
+      </BorderPane>
+   </children>
+</VBox>

@@ -13,7 +13,7 @@ public class Link {
     private long id;
     private String title;
     private String url;
-    private float rating;
+    private double rating;
     private long date;
 
     private long hostId_FK;
@@ -25,7 +25,7 @@ public class Link {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Link(long id, String title, String url, float rating, long date, long hostId_FK) {
+    public Link(long id, String title, String url, double rating, long date, long hostId_FK) {
         this.id = id;
         this.title = title;
         this.url = url;
@@ -62,10 +62,10 @@ public class Link {
         this.url = url;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

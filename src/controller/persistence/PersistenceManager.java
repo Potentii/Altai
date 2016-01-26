@@ -11,6 +11,7 @@ import org.json.JSONArray;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,34 +20,43 @@ import java.util.Map;
  * @author Guilherme Reginaldo
  * @since 21/01/2016
  */
-public abstract class PersistenceManager {
+public class PersistenceManager {
+    private static PersistenceManager instance;
     private static final String ENTITIES_PATH = getLocalPath() + File.separator + "Entity" + File.separator;
     private static final String ENTITIES_EXTENSION = ".json";
-    private List<Class<?>> classList;
     private Map<Class<?>, String> classAndSourceNameMap;
 
 
-    public PersistenceManager(List<Class<?>> classList) {
-        this.classList = classList;
+    private PersistenceManager() {
         classAndSourceNameMap = new HashMap<>();
+    }
+    public static PersistenceManager getInstance(){
+        if(instance == null){
+            instance = new PersistenceManager();
+        }
+
+        return instance;
     }
 
 
 
-    public void verify(){
+    public void initialize(List<Class<?>> classList){
+        classAndSourceNameMap = new HashMap<>();
 
         // TODO implementar um StepByStepEvent
         classAndSourceNameMap.clear();
         classList.forEach(clazz -> {
 
             // *Getting the Entity's file sourceName:
-            String sourceName;
+            String sourceName = getSourceName(clazz);
+            /*
             if(clazz.isAnnotationPresent(Entity.class)){
                 Entity entity = clazz.getAnnotation(Entity.class);
                 sourceName = entity.sourceName();
             } else{
                 sourceName = clazz.getName();
             }
+            */
 
             // *Checks if the file doesn't exists:
             FileIOHandler fileIOHandler = new FileIOHandler(ENTITIES_PATH, sourceName + ENTITIES_EXTENSION);
@@ -59,7 +69,7 @@ public abstract class PersistenceManager {
 
                     @Override
                     public void onFailure(Exception e) {
-
+                        // ERROR
                     }
                 });
             }
@@ -67,8 +77,10 @@ public abstract class PersistenceManager {
     }
 
 
+    /*
     public abstract void onSuccess();
     public abstract void onFailure(Exception e);
+    */
 
 
     @Nullable
@@ -83,6 +95,14 @@ public abstract class PersistenceManager {
     }
 
 
+    public String getSourceName(Class<?> clazz){
+        if(clazz.isAnnotationPresent(Entity.class)){
+            Entity entity = clazz.getAnnotation(Entity.class);
+            return entity.sourceName();
+        } else{
+            return clazz.getName();
+        }
+    }
 
 
 
@@ -96,4 +116,13 @@ public abstract class PersistenceManager {
         }
     }
 
+
+
+    public String getEntitiesPath() {
+        return ENTITIES_PATH;
+    }
+
+    public String getEntitiesExtension() {
+        return ENTITIES_EXTENSION;
+    }
 }
