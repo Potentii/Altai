@@ -1,4 +1,4 @@
-package view;
+package view.listview;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,7 +25,7 @@ public class LinkLVAdapter extends ListViewAdapter<Link> {
 
     @Override
     protected String getFXMLPath() {
-        return "/layout/row_link_lv.fxml";
+        return "/layout/row_lv_link.fxml";
     }
 
 

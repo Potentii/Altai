@@ -11,7 +11,21 @@
 
 <StackPane id="standaloneRoot" fx:id="standaloneRoot" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.scene.StandaloneSceneController">
     <children>
-      <BorderPane fx:id="contentContainer" />
+
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+
+         <center>
+            <BorderPane fx:id="contentContainer" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <ToolBar id="appBar" BorderPane.alignment="CENTER">
+               <items>
+                  <Button id="menuBtn" fx:id="menuBtn" cache="true" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="appBarBtn" />
+                  <Label id="appBarTitle" fx:id="appBarTitle" focusTraversable="false" graphicTextGap="0.0" styleClass="appBarText" text="Links" />
+               </items>
+            </ToolBar>
+         </top>
+      </BorderPane>
         <ScrollPane id="navigationDrawer" fx:id="navigationDrawer" fitToWidth="true" focusTraversable="false" hbarPolicy="NEVER" maxWidth="192.0" minWidth="0.0" prefWidth="68.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER" StackPane.alignment="TOP_LEFT">
          <content>
             <VBox spacing="16.0">

@@ -9,7 +9,12 @@
 
 }
 
-.row_output, .row_input{
+.row_output, .row_input, .row_btn{
     -fx-text-fill: #444;
     -fx-font: 18 "System";
+}
+
+.row_btn{
+    -fx-background-color: #999;
+
 }
