@@ -2,49 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0d2f263-2d69-4f9f-b02f-47d63db8ba01" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/layout/layout_context_category.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/layout/layout_context_link.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/layout/layout_context_settings.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/res/layout/row_lv_category.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/Callback.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/controller/context/CategoryContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/controller/context/ListedContentContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/controller/context/SettingsContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/listview/CategoryLVAdapter.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/layout/layout_link_context.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/layout/row_link_lv.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/res/layout/layout_link_context.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/res/layout/row_link_lv.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/res/style/style_link_context.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/style/style_link_context.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/view/LinkLVAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/view/ListViewAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/view/controller/ContextController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Altai/view/controller/LinkContextController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/res/layout/layout_link_context.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/res/style/style_link_context.css" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/layout/layout_detail_scene.fxml" afterPath="$PROJECT_DIR$/src/res/layout/layout_detail.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/res/layout/row_link_lv.fxml" afterPath="$PROJECT_DIR$/src/res/layout/row_lv_link.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/LinkLVAdapter.java" afterPath="$PROJECT_DIR$/src/view/listview/LinkLVAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/ListViewAdapter.java" afterPath="$PROJECT_DIR$/src/view/listview/ListViewAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/controller/context/LinkContextController.java" afterPath="$PROJECT_DIR$/src/view/controller/context/LinkContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager$1.class" afterPath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager.class" afterPath="$PROJECT_DIR$/out/production/Altai/controller/persistence/PersistenceManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/model/Host.class" afterPath="$PROJECT_DIR$/out/production/Altai/model/Host.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/model/Link.class" afterPath="$PROJECT_DIR$/out/production/Altai/model/Link.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/layout/layout_standalone.fxml" afterPath="$PROJECT_DIR$/out/production/Altai/layout/layout_standalone.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/res/layout/layout_standalone.fxml" afterPath="$PROJECT_DIR$/out/production/Altai/res/layout/layout_standalone.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/res/style/style_context.css" afterPath="$PROJECT_DIR$/out/production/Altai/res/style/style_context.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/res/style/style_standalone.css" afterPath="$PROJECT_DIR$/out/production/Altai/res/style/style_standalone.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/style/style_context.css" afterPath="$PROJECT_DIR$/out/production/Altai/style/style_context.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Altai/style/style_standalone.css" afterPath="$PROJECT_DIR$/out/production/Altai/style/style_standalone.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/layout/layout_standalone.fxml" afterPath="$PROJECT_DIR$/src/res/layout/layout_standalone.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/style/style_context.css" afterPath="$PROJECT_DIR$/src/res/style/style_context.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/style/style_form.css" afterPath="$PROJECT_DIR$/src/res/style/style_form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/res/style/style_standalone.css" afterPath="$PROJECT_DIR$/src/res/style/style_standalone.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/controller/context/ContextController.java" afterPath="$PROJECT_DIR$/src/view/controller/context/ContextController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/controller/scene/StandaloneSceneController.java" afterPath="$PROJECT_DIR$/src/view/controller/scene/StandaloneSceneController.java" />
     </list>
     <ignored path="Altai.iws" />
     <ignored path=".idea/workspace.xml" />
