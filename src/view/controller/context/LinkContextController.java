@@ -1,4 +1,4 @@
-package view.controller;
+package view.controller.context;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import model.Link;
 import view.LinkLVAdapter;
-import view.controller.scene.DetailSceneController;
+import view.controller.modal.window.DetailModalWindow;
 import view.exception.ContextLoadException;
 
 import java.net.URL;
@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  * @author Guilherme Reginaldo
  * @since 24/01/2016
  */
-public class LinkContextController extends ContextController<Link>  {
+public class LinkContextController extends ContextController<Link> {
     @FXML
     private ListView<Link> listView;
 
@@ -49,7 +49,7 @@ public class LinkContextController extends ContextController<Link>  {
     protected void onItemSelected(){
         Link selectedData = listView.getSelectionModel().getSelectedItem();
         try {
-            new DetailSceneController<>("/res/layout/layout_detail_link.fxml", selectedData);
+            new DetailModalWindow<>("/res/layout/layout_detail_link.fxml", selectedData);
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

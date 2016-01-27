@@ -1,41 +1,37 @@
-package view.controller.scene;
+package view.controller.modal.window;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import view.controller.DetailContextController;
+import view.controller.modal.content.ModalContent;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 
 /**
+ * @param <T> The entity's data type.
  * @author Guilherme Reginaldo
- * @since 26/01/2016
+ * @since 27/01/2016
  */
-public class DetailSceneController<T>{
-    @FXML
-    private Label titleOut;
+public abstract class ModalWindow<T> {
     @FXML
     private BorderPane contentContainer;
 
-    private DetailContextController<T> controller;
+    protected ModalContent<T> controller;
 
 
-
-    public DetailSceneController(String fxml, T data) throws ContextLoadException{
+    public ModalWindow(String sceneFXML, String contentFXML, String title) throws ContextLoadException {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("");
+        window.setTitle(title);
         window.setMinWidth(300);
-        window.setMinHeight(450);
+        window.setMinHeight(400);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/layout/layout_detail_scene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFXML));
             loader.setController(this);
             window.setScene(new Scene(loader.load()));
             window.show();
@@ -43,12 +39,12 @@ public class DetailSceneController<T>{
             throw new ContextLoadException(e.getMessage());
         }
 
-        loadContent(fxml, data);
+        loadContent(contentFXML);
     }
 
 
 
-    private void loadContent(String fxml, T data) throws ContextLoadException{
+    private void loadContent(String fxml) throws ContextLoadException{
         try {
             // *Loading the FXML:
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -59,34 +55,13 @@ public class DetailSceneController<T>{
 
             // *Getting the controller:
             controller = loader.getController();
-            controller.setData(data);
-            titleOut.setText(controller.getTitle());
-
+            onControllerLoaded();
         } catch (NullPointerException | IOException e) {
-            e.printStackTrace();
             throw new ContextLoadException(e.getMessage());
         }
     }
 
+    protected abstract void onControllerLoaded();
 
-    @FXML
-    private void editBtn_onClick(){
-        //TODO
-        controller.getData();
-    }
-
-
-
-    public void setOnFinishedCallback(){
-
-    }
-
-    /*
-    @Override
-    public void close() {
-        super.close();
-
-        System.out.println("Close stage requested");
-    }
-    */
+    //protected abstract void onContentLoaded();
 }

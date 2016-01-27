@@ -13,6 +13,8 @@ public class Link {
     private long id;
     private String title;
     private String url;
+    private String description;
+    private boolean flagged;
     private double rating;
     private long date;
 
@@ -25,10 +27,12 @@ public class Link {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Link(long id, String title, String url, double rating, long date, long hostId_FK) {
+    public Link(long id, String title, String url, String description, boolean flagged, double rating, long date, long hostId_FK) {
         this.id = id;
         this.title = title;
         this.url = url;
+        this.description = description;
+        this.flagged = flagged;
         this.rating = rating;
         this.date = date;
         this.hostId_FK = hostId_FK;
@@ -60,6 +64,20 @@ public class Link {
     }
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isFlagged() {
+        return flagged;
+    }
+    public void setFlagged(boolean flagged) {
+        this.flagged = flagged;
     }
 
     public double getRating() {
