@@ -3,18 +3,17 @@ package model;
 import controller.persistence.annotation.Entity;
 
 /**
+ * {@code rating} varies between 0 and 1.
  * @author Guilherme Reginaldo
- * @since 23/01/2016
+ * @since 27/01/2016
  */
-@Entity(sourceName = "HostSource")
-public class Host {
+@Entity(sourceName = "StarSource")
+public class Star {
     private long id;
     private String title;
-    private String url;
-    private String urlPattern;
+    private String description;
+    private double rating;
     private long date;
-
-    private long imgId_FK;
 
 
 
@@ -23,13 +22,12 @@ public class Host {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Host(long id, String title, String url, String urlPattern, long date, long imgId_FK) {
+    public Star(long id, String title, String description, double rating, long date) {
         this.id = id;
         this.title = title;
-        this.url = url;
-        this.urlPattern = urlPattern;
+        this.description = description;
+        this.rating = rating;
         this.date = date;
-        this.imgId_FK = imgId_FK;
     }
 
 
@@ -53,18 +51,18 @@ public class Host {
         this.title = title;
     }
 
-    public String getUrl() {
-        return url;
+    public String getDescription() {
+        return description;
     }
-    public void setUrl(String url) {
-        this.url = url;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getUrlPattern() {
-        return urlPattern;
+    public double getRating() {
+        return rating;
     }
-    public void setUrlPattern(String urlPattern) {
-        this.urlPattern = urlPattern;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public long getDate() {
@@ -72,12 +70,5 @@ public class Host {
     }
     public void setDate(long date) {
         this.date = date;
-    }
-
-    public long getImgId_FK() {
-        return imgId_FK;
-    }
-    public void setImgId_FK(long imgId_FK) {
-        this.imgId_FK = imgId_FK;
     }
 }

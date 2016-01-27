@@ -1,33 +1,25 @@
 package model.dao;
 
-import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
-import controller.persistence.entity.EntityTransaction;
-import model.Link;
-import model.dao.callback.*;
+import model.Star;
 import org.json.JSONObject;
 
-import java.util.Comparator;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * @author Guilherme Reginaldo
- * @since 26/01/2016
+ * @since 27/01/2016
  */
-public class LinkDAO extends GenericDAO<Link> {
+public class StarDAO extends GenericDAO<Star> {
     /**
      * The Entity's set of fields' names
      */
     private final String[] FIELD_SET = {
             "id",
             "ti",
-            "ur",
             "de",
-            "fl",
             "ra",
-            "da",
-            "ho"
+            "da"
     };
 
 
@@ -37,8 +29,8 @@ public class LinkDAO extends GenericDAO<Link> {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public LinkDAO() throws UndeclaredEntityException {
-        super(Link.class);
+    public StarDAO() throws UndeclaredEntityException {
+        super(Star.class);
     }
 
 
@@ -54,29 +46,23 @@ public class LinkDAO extends GenericDAO<Link> {
     }
 
     @Override
-    protected Function<Link, JSONObject> getJSONFromEntity() {
+    protected Function<Star, JSONObject> getJSONFromEntity() {
         return entity -> new JSONObject()
                 .put(FIELD_SET[0], entity.getId())
                 .put(FIELD_SET[1], entity.getTitle())
-                .put(FIELD_SET[2], entity.getUrl())
-                .put(FIELD_SET[3], entity.getDescription())
-                .put(FIELD_SET[4], entity.isFlagged())
-                .put(FIELD_SET[5], entity.getRating())
-                .put(FIELD_SET[6], entity.getDate())
-                .put(FIELD_SET[7], entity.getHostId_FK());
+                .put(FIELD_SET[2], entity.getDescription())
+                .put(FIELD_SET[3], entity.getRating())
+                .put(FIELD_SET[4], entity.getDate());
     }
 
     @Override
-    protected Function<JSONObject, Link> getEntityFromJSON() {
-        return jsonObject -> new Link(
+    protected Function<JSONObject, Star> getEntityFromJSON() {
+        return jsonObject -> new Star(
                 jsonObject.getLong(FIELD_SET[0]),
                 jsonObject.getString(FIELD_SET[1]),
                 jsonObject.getString(FIELD_SET[2]),
-                jsonObject.getString(FIELD_SET[3]),
-                jsonObject.getBoolean(FIELD_SET[4]),
-                jsonObject.getDouble(FIELD_SET[5]),
-                jsonObject.getLong(FIELD_SET[6]),
-                jsonObject.getLong(FIELD_SET[7])
+                jsonObject.getDouble(FIELD_SET[3]),
+                jsonObject.getLong(FIELD_SET[4])
         );
     }
 }

@@ -4,17 +4,13 @@ import controller.persistence.annotation.Entity;
 
 /**
  * @author Guilherme Reginaldo
- * @since 23/01/2016
+ * @since 27/01/2016
  */
-@Entity(sourceName = "HostSource")
-public class Host {
+@Entity(sourceName = "PictureSource")
+public class Picture {
     private long id;
-    private String title;
-    private String url;
-    private String urlPattern;
+    private String path;
     private long date;
-
-    private long imgId_FK;
 
 
 
@@ -23,13 +19,10 @@ public class Host {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Host(long id, String title, String url, String urlPattern, long date, long imgId_FK) {
+    public Picture(long id, String path, long date) {
         this.id = id;
-        this.title = title;
-        this.url = url;
-        this.urlPattern = urlPattern;
+        this.path = path;
         this.date = date;
-        this.imgId_FK = imgId_FK;
     }
 
 
@@ -46,25 +39,11 @@ public class Host {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPath() {
+        return path;
     }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUrlPattern() {
-        return urlPattern;
-    }
-    public void setUrlPattern(String urlPattern) {
-        this.urlPattern = urlPattern;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public long getDate() {
@@ -72,12 +51,5 @@ public class Host {
     }
     public void setDate(long date) {
         this.date = date;
-    }
-
-    public long getImgId_FK() {
-        return imgId_FK;
-    }
-    public void setImgId_FK(long imgId_FK) {
-        this.imgId_FK = imgId_FK;
     }
 }

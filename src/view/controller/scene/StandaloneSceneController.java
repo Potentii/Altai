@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import view.controller.ContextController;
+import view.controller.context.ContextController;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;

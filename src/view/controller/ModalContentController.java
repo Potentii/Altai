@@ -4,13 +4,13 @@ import controller.persistence.UndeclaredEntityException;
 
 /**
  * @author Guilherme Reginaldo
- * @since 26/01/2016
+ * @since 27/01/2016
  */
 @Deprecated
-public abstract class DetailContextController<T> {
+public abstract class ModalContentController<T> {
     protected T data;
 
-    public final void setData(T data){
+    public final void bindData(T data){
         this.data = data;
         try {
             onDataBindRequested(data);
