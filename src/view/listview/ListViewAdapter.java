@@ -1,4 +1,4 @@
-package view;
+package view.listview;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,7 @@ import javafx.scene.control.ListCell;
 import java.io.IOException;
 
 /**
+ * @param <T> The entity's data type
  * @author Guilherme Reginaldo
  * @since 24/01/2016
  */
@@ -48,6 +49,9 @@ public abstract class ListViewAdapter<T> extends ListCell<T> {
     }
 
 
-    public abstract void bindData(T data) throws NullPointerException;
+    /**
+     * @return the row's fxml path
+     */
     protected abstract String getFXMLPath();
+    public abstract void bindData(T data) throws NullPointerException;
 }

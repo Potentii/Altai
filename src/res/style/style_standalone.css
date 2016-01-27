@@ -16,6 +16,44 @@ Button{
 }
 
 
+
+
+#appBar{
+    -fx-background-color: #d38;
+    -fx-padding: 0;
+    -fx-min-height: 68;
+    -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.8), 8, 0, 0, 1);
+}
+
+.appBarText{
+    -fx-text-fill: #f5f5f5;
+    -fx-font: 22 "System";
+    -fx-padding: 16;
+}
+
+.appBarBtn{
+    -fx-padding: 16;
+    -fx-pref-width: 68;
+    -fx-pref-height: 68;
+    -fx-background-color: transparent;
+    -fx-background-size: 36 36;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#menuBtn{
+    -fx-background-image: url("/res/image/ic_menu_36.png");
+}
+
+
+
+
+
+
+
+
+
+
 #navigationDrawer{
 
     -fx-background: #f7f7f7;
@@ -84,4 +122,8 @@ Button{
 .FAB_img{
     -fx-image: url("/res/image/ic_add_24.png");
 }
+
+
+
+
 
