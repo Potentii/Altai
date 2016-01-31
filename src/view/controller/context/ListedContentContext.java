@@ -1,5 +1,7 @@
 package view.controller.context;
 
+import javafx.fxml.FXML;
+
 import java.util.List;
 
 /**
@@ -11,4 +13,7 @@ public abstract class ListedContentContext<T> extends ContextController{
 
     public abstract void onPrepareForDelete();
     public abstract void onDeleteRequested(List<T> deleteList);
+
+    @FXML
+    protected abstract void confirmBtn_onClick();
 }

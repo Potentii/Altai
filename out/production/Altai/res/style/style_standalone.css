@@ -15,7 +15,25 @@ Button{
     -fx-cursor: hand;
 }
 
+TextField{
+    -fx-shape: "M0 100 h100 V0 V100 v-5 h-100 Z";
+    -fx-focus-color: transparent;
+    -fx-background: transparent;
+    -fx-background-color: rgba(30, 30, 30, 0.5);
+    -fx-border-width: 0;
+}
 
+TextField:focused{
+    -fx-shape: "M0 100 h100 V0 V100 v-9 h-100 Z";
+    -fx-background-color: rgba(230, 230, 230, 0.9);
+}
+
+.appBarInput{
+    -fx-background-color: rgba(230, 230, 230, 0.5);
+}
+.appBarInput:focused{
+    -fx-background-color: rgba(230, 230, 230, 0.9);
+}
 
 
 #appBar{

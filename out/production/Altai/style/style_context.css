@@ -33,9 +33,20 @@ ListView{
 
 
 
-.listViewItem_primaryText{
+.listViewItem_primaryText, .listViewItem_primaryText_hyperlink{
     -fx-text-fill: #555;
     -fx-font: 16 "System";
+}
+
+.listViewItem_primaryText_hyperlink{
+    -fx-underline: false;
+    -fx-padding: 0;
+}
+.listViewItem_primaryText_hyperlink:visited{
+    -fx-underline: false;
+}
+.listViewItem_primaryText_hyperlink:hover{
+    -fx-underline: true;
 }
 
 .listViewItem_secondaryText{

@@ -11,14 +11,14 @@ import view.exception.ContextLoadException;
  * @author Guilherme Reginaldo
  * @since 26/01/2016
  */
-public class DetailModalWindow<T> extends ModalWindow<T>{
+public class DetailModalWindow<T>/* extends ModalWindow<T>*/{
     @FXML
     private Label titleOut;
 
     private T data;
 
 
-
+/*
     public DetailModalWindow(String contentFXML, @Nullable T data) throws ContextLoadException{
         super("/res/layout/layout_edit_scene.fxml", contentFXML, "Show");
         this.data = data;
@@ -36,4 +36,5 @@ public class DetailModalWindow<T> extends ModalWindow<T>{
     @FXML
     private void editBtn_onClick(){
     }
+    */
 }

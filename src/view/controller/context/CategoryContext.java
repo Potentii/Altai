@@ -4,6 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import model.Category;
+import view.controller.modal.content.CategoryCreateContent;
+import view.controller.modal.window.EditModalWindow;
+import view.exception.ContextLoadException;
 import view.listview.CategoryLVAdapter;
 import view.listview.LinkLVAdapter;
 
@@ -44,5 +47,14 @@ public class CategoryContext extends ListedContentContext<Category> {
     @Override
     public void onDeleteRequested(List<Category> deleteList) {
 
+    }
+
+    @Override
+    protected void confirmBtn_onClick() {
+        try {
+            EditModalWindow<Category> editWindow = new EditModalWindow<>(new CategoryCreateContent(), null, "Create category");
+        } catch (ContextLoadException e) {
+            e.printStackTrace();
+        }
     }
 }

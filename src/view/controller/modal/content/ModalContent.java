@@ -1,10 +1,13 @@
 package view.controller.modal.content;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
-import controller.persistence.UndeclaredEntityException;
+import org.jetbrains.annotations.NotNull;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import org.jetbrains.annotations.Nullable;
+import view.Callback;
+import view.exception.ContextLoadException;
 
-import java.util.function.Consumer;
+import java.io.IOException;
 import java.util.function.Supplier;
 
 /**
@@ -14,52 +17,68 @@ import java.util.function.Supplier;
  * @since 27/01/2016
  */
 public abstract class ModalContent<T> {
+    protected Node root;
     protected T data;
     private Supplier<String> titleSupplier;
+    private Callback onActionFinishedCallback;
 
-    public final void setData(@Nullable T data){
-        this.data = data;
+
+
+    protected ModalContent(String FXML) throws ContextLoadException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML));
         try {
-            onDataBindRequested(data);
-        } catch (UndeclaredEntityException | NullPointerException e) {
-            e.printStackTrace();
+            loader.setController(this);
+            root = loader.load();
+        } catch (IOException e) {
+            throw new ContextLoadException(e.getMessage());
         }
     }
+
+
+
+    public abstract void setData(@Nullable T data);
 
     public final T getData(){
         return data;
     }
 
-    protected abstract void onDataBindRequested(@Nullable T data) throws UndeclaredEntityException, NullPointerException;
+
 
     @NotNull
     public abstract String getTitle();
+
+    /**
+     * Called wheter the main action is triggered.
+     * <p>
+     * Obs: {@link #onActionFinished} should be called when the window has to be closed.
+     */
     public abstract void onAction();
 
 
 
-
-    public void setTitleSupplier(Supplier<String> supplier){
+    public final void setTitleSupplier(Supplier<String> supplier){
         titleSupplier = supplier;
     }
 
     @Nullable
-    protected String consumeTitle(){
+    protected final String consumeTitle(){
         if(titleSupplier != null){
             return titleSupplier.get();
         }
         return null;
     }
 
-
-
-
-    public void setFinishedCallback(){
-
-    }
-    protected void finish(){
-        // TODO call the callback
+    public final Node getNode(){
+        return root;
     }
 
 
+
+    public final void setOnActionFinishedCallback(@NotNull Callback callback){
+        onActionFinishedCallback = callback;
+    }
+
+    protected void onActionFinished(){
+        onActionFinishedCallback.call();
+    }
 }
