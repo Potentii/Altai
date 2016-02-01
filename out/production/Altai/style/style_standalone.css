@@ -1,12 +1,20 @@
+/*
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ *  * Elements:
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ */
 VBox{
     -fx-focus-color: transparent;
 }
 
 ScrollPane{
+    -fx-background: transparent;
     -fx-background-color: transparent;
     -fx-focus-color: transparent;
     -fx-border-width: 0;
     -fx-padding: 0;
+    -fx-fit-to-height: TRUE;
+    -fx-fit-to-width: TRUE;
 }
 
 Button{
@@ -16,26 +24,34 @@ Button{
 }
 
 TextField{
-    -fx-shape: "M0 100 h100 V0 V100 v-5 h-100 Z";
+    -fx-shape: "M0 100 h100 V0 V100 v-2.43 h-100 Z";
     -fx-focus-color: transparent;
     -fx-background: transparent;
-    -fx-background-color: rgba(30, 30, 30, 0.5);
+    -fx-background-color: rgba(150, 150, 150, 0.5);
     -fx-border-width: 0;
+    -fx-text-fill: #444;
+    -fx-font: 18 "System";
+    -fx-padding: 8;
 }
 
 TextField:focused{
-    -fx-shape: "M0 100 h100 V0 V100 v-9 h-100 Z";
-    -fx-background-color: rgba(230, 230, 230, 0.9);
+    -fx-shape: "M0 100 h100 V0 V100 v-5.57 h-100 Z";
+    -fx-background-color: rgba(221, 51, 136, 0.9);
+}
+FormRow{
+
+}
+FormRow ImageView{
+    -fx-image: url("/res/image/ic_link_36.png");
 }
 
-.appBarInput{
-    -fx-background-color: rgba(230, 230, 230, 0.5);
-}
-.appBarInput:focused{
-    -fx-background-color: rgba(230, 230, 230, 0.9);
-}
 
 
+/*
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ *  * App bar:
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ */
 #appBar{
     -fx-background-color: #d38;
     -fx-padding: 0;
@@ -43,13 +59,23 @@ TextField:focused{
     -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.8), 8, 0, 0, 1);
 }
 
-.appBarText{
+#appBar TextField{
+    -fx-text-fill: rgba(230, 230, 230, 0.7);
+    -fx-background-color: rgba(230, 230, 230, 0.5);
+}
+
+#appBar TextField:focused{
+    -fx-text-fill: rgba(230, 230, 230, 0.9);
+    -fx-background-color: rgba(230, 230, 230, 0.9);
+}
+
+#appBar Label{
     -fx-text-fill: #f5f5f5;
     -fx-font: 22 "System";
     -fx-padding: 16;
 }
 
-.appBarBtn{
+#appBar Button{
     -fx-padding: 16;
     -fx-pref-width: 68;
     -fx-pref-height: 68;
@@ -59,25 +85,22 @@ TextField:focused{
     -fx-background-position: center;
 }
 
+
 #menuBtn{
     -fx-background-image: url("/res/image/ic_menu_36.png");
 }
 
 
 
-
-
-
-
-
-
-
+/*
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ *  * Navigation drawer:
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ */
 #navigationDrawer{
-
     -fx-background: #f7f7f7;
     -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.8), 16, 0, 0, 0);
 }
-
 
 .navigationDrawerItemBtn{
     -fx-max-height: 68;
@@ -95,9 +118,7 @@ TextField:focused{
     -fx-background-color: #ddd;
 }
 
-.navigationDrawerItemImg{
-
-}
+.navigationDrawerItemImg{ }
 
 #navigationDrawerItemImg_menu{
     -fx-image: url("/res/image/ic_menu_36.png");
@@ -119,12 +140,23 @@ TextField:focused{
 }
 
 
+
+/*
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ *  * Content:
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ */
 #contentContainer{
     -fx-background: #ddd;
 }
 
 
 
+/*
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ *  * Floating action button:
+ *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+ */
 .FAB{
     -fx-padding: 0;
     -fx-pref-width: 48;
@@ -137,11 +169,7 @@ TextField:focused{
     -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.8), 8, 0, 0, 1);
 }
 
+/*TODO rename it*/
 .FAB_img{
     -fx-image: url("/res/image/ic_add_24.png");
 }
-
-
-
-
-

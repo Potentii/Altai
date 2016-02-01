@@ -2,11 +2,13 @@ package view.controller.modal.content;
 
 import controller.persistence.UndeclaredEntityException;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import model.Category;
 import model.dao.CategoryDAO;
 import model.dao.DAO;
 import model.dao.callback.CreateDAOCallback;
+import view.FormRow;
 import view.exception.ContextLoadException;
 
 import java.util.Calendar;
@@ -25,7 +27,9 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
 
     @Override
     protected void onInitializationRequested() throws UndeclaredEntityException, NullPointerException {
-
+        /*for (Node node : formRow.getChildren()) {
+            System.out.println(node.toString());
+        }*/
     }
 
 

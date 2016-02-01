@@ -51,8 +51,8 @@ public abstract class ModalWindow<T> {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinWidth(300);
-        window.setMinHeight(400);
+        window.setWidth(300);
+        window.setHeight(400);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFXML));
             loader.setController(this);

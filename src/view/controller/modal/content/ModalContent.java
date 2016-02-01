@@ -30,7 +30,7 @@ public abstract class ModalContent<T> {
             loader.setController(this);
             root = loader.load();
         } catch (IOException e) {
-            throw new ContextLoadException(e.getMessage());
+            throw new ContextLoadException(e.getCause().getMessage());
         }
     }
 
