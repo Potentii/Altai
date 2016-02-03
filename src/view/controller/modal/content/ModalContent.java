@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import org.jetbrains.annotations.Nullable;
-import view.Callback;
+import util.callback.Callback;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;

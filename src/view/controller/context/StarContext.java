@@ -35,7 +35,7 @@ public class StarContext extends ListedContentContext<Star> {
     }
 
     @Override
-    protected void confirmBtn_onClick() {
+    protected void addBtn_onClick() {
 
     }
 

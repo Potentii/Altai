@@ -19,8 +19,8 @@ public class HostDAO extends GenericDAO<Host> {
             "ti",
             "ur",
             "up",
-            "da",
-            "im"
+            "im",
+            "da"
     };
 
 
@@ -53,8 +53,8 @@ public class HostDAO extends GenericDAO<Host> {
                 .put(FIELD_SET[1], entity.getTitle())
                 .put(FIELD_SET[2], entity.getUrl())
                 .put(FIELD_SET[3], entity.getUrlPattern())
-                .put(FIELD_SET[4], entity.getDate())
-                .put(FIELD_SET[5], entity.getImgId_FK());
+                .put(FIELD_SET[4], entity.getImgPath())
+                .put(FIELD_SET[5], entity.getDate());
     }
 
     @Override
@@ -64,7 +64,7 @@ public class HostDAO extends GenericDAO<Host> {
                 jsonObject.getString(FIELD_SET[1]),
                 jsonObject.getString(FIELD_SET[2]),
                 jsonObject.getString(FIELD_SET[3]),
-                jsonObject.getLong(FIELD_SET[4]),
+                jsonObject.getString(FIELD_SET[4]),
                 jsonObject.getLong(FIELD_SET[5])
         );
     }

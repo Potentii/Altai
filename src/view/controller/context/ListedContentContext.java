@@ -15,5 +15,5 @@ public abstract class ListedContentContext<T> extends ContextController{
     public abstract void onDeleteRequested(List<T> deleteList);
 
     @FXML
-    protected abstract void confirmBtn_onClick();
+    protected abstract void addBtn_onClick();
 }

@@ -1,8 +1,8 @@
 package controller.persistence.entity;
 
-import controller.io.FileIOHandler;
-import controller.io.ReadFileCallback;
-import controller.io.WriteFileCallback;
+import controller.io.TextIOHandler;
+import controller.io.callback.ReadFileCallback;
+import controller.io.callback.WriteFileCallback;
 import model.dao.callback.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,15 +18,15 @@ import java.util.function.Predicate;
  * @since 22/01/2016
  */
 public final class EntityTransaction<T> {
-    private FileIOHandler fileIOHandler;
+    private TextIOHandler textIOHandler;
 
-    public EntityTransaction(String entityFolderPath, String sourceName){
-        this.fileIOHandler = new FileIOHandler(entityFolderPath, sourceName);
+    public EntityTransaction(String fullPath){
+        this.textIOHandler = new TextIOHandler(fullPath);
     }
 
 
     public void create(final JSONObject jsonObject, final String idKey, final CreateDAOCallback createDAOCallback){
-        fileIOHandler.read(new ReadFileCallback<String>() {
+        textIOHandler.read(new ReadFileCallback<String>() {
             @Override
             public void onSuccess(String response) {
                 EntityFile entityFile = new EntityFile(response);
@@ -35,7 +35,7 @@ public final class EntityTransaction<T> {
                 jsonObject.put(idKey, newId);
                 entityFile.appendContent(jsonObject);
 
-                fileIOHandler.write(entityFile.toString(), new WriteFileCallback() {
+                textIOHandler.write(entityFile.toString(), new WriteFileCallback() {
                     @Override
                     public void onSuccess() {
                         createDAOCallback.onSuccess(newId);
@@ -57,7 +57,7 @@ public final class EntityTransaction<T> {
 
 
     public void retrieveMultiple(final Predicate<T> condition, final Comparator<T> sorting, final Function<JSONObject, T> getEntityFromJSON, final RetrieveMultipleDAOCallback<T> retrieveMultipleDAOCallback){
-        fileIOHandler.read(new ReadFileCallback<String>() {
+        textIOHandler.read(new ReadFileCallback<String>() {
             @Override
             public void onSuccess(String response) {
                 EntityFile entityFile = new EntityFile(response);
@@ -87,7 +87,7 @@ public final class EntityTransaction<T> {
 
 
     public void retrieve(final long id, final String idKey, final Function<JSONObject, T> getEntityFromJSON, final RetrieveDAOCallback<T> retrieveDAOCallback){
-        fileIOHandler.read(new ReadFileCallback<String>() {
+        textIOHandler.read(new ReadFileCallback<String>() {
             @Override
             public void onSuccess(String response) {
                 EntityFile entityFile = new EntityFile(response);
@@ -119,7 +119,7 @@ public final class EntityTransaction<T> {
 
 
     public void update(final JSONObject jsonObject, final String idKey, final UpdateDAOCallback updateDAOCallback){
-        fileIOHandler.read(new ReadFileCallback<String>() {
+        textIOHandler.read(new ReadFileCallback<String>() {
             @Override
             public void onSuccess(String response) {
                 EntityFile entityFile = new EntityFile(response);
@@ -137,7 +137,7 @@ public final class EntityTransaction<T> {
                 if(index >= 0){
                     entityFile.updateContent(index, jsonObject);
 
-                    fileIOHandler.write(entityFile.toString(), new WriteFileCallback() {
+                    textIOHandler.write(entityFile.toString(), new WriteFileCallback() {
                         @Override
                         public void onSuccess() {
                             updateDAOCallback.onSuccess();
@@ -163,7 +163,7 @@ public final class EntityTransaction<T> {
 
 
     public void delete(final long id, final String idKey, final DeleteDAOCallback deleteDAOCallback){
-        fileIOHandler.read(new ReadFileCallback<String>() {
+        textIOHandler.read(new ReadFileCallback<String>() {
             @Override
             public void onSuccess(String response) {
                 EntityFile entityFile = new EntityFile(response);
@@ -180,7 +180,7 @@ public final class EntityTransaction<T> {
                 if(index >= 0){
                     entityFile.deleteContent(index);
 
-                    fileIOHandler.write(entityFile.toString(), new WriteFileCallback() {
+                    textIOHandler.write(entityFile.toString(), new WriteFileCallback() {
                         @Override
                         public void onSuccess() {
                             deleteDAOCallback.onSuccess();

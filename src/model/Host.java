@@ -12,9 +12,8 @@ public class Host {
     private String title;
     private String url;
     private String urlPattern;
+    private String imgPath;
     private long date;
-
-    private long imgId_FK;
 
 
 
@@ -23,13 +22,13 @@ public class Host {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Host(long id, String title, String url, String urlPattern, long date, long imgId_FK) {
+    public Host(long id, String title, String url, String urlPattern, String imgPath, long date) {
         this.id = id;
         this.title = title;
         this.url = url;
         this.urlPattern = urlPattern;
+        this.imgPath = imgPath;
         this.date = date;
-        this.imgId_FK = imgId_FK;
     }
 
 
@@ -67,17 +66,17 @@ public class Host {
         this.urlPattern = urlPattern;
     }
 
+    public String getImgPath() {
+        return imgPath;
+    }
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
     public long getDate() {
         return date;
     }
     public void setDate(long date) {
         this.date = date;
-    }
-
-    public long getImgId_FK() {
-        return imgId_FK;
-    }
-    public void setImgId_FK(long imgId_FK) {
-        this.imgId_FK = imgId_FK;
     }
 }

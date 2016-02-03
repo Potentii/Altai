@@ -50,7 +50,7 @@ public class CategoryContext extends ListedContentContext<Category> {
     }
 
     @Override
-    protected void confirmBtn_onClick() {
+    protected void addBtn_onClick() {
         try {
             EditModalWindow<Category> editWindow = new EditModalWindow<>(new CategoryCreateContent(), null, "Create category");
         } catch (ContextLoadException e) {

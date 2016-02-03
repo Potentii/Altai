@@ -70,7 +70,7 @@ public class LinkContext extends ListedContentContext<Link> {
     }
 
     @Override
-    protected void confirmBtn_onClick() {
+    protected void addBtn_onClick() {
 
     }
 }

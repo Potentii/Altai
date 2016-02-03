@@ -1,14 +1,10 @@
 package view.controller.modal.content;
 
 import controller.persistence.UndeclaredEntityException;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.TextField;
 import model.Category;
 import model.dao.CategoryDAO;
 import model.dao.DAO;
 import model.dao.callback.CreateDAOCallback;
-import view.FormRow;
 import view.exception.ContextLoadException;
 
 import java.util.Calendar;
@@ -20,34 +16,46 @@ import java.util.Calendar;
 public class CategoryCreateContent extends CreateModalContent<Category> {
 
 
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     public CategoryCreateContent() throws ContextLoadException {
         super("/res/layout/layout_edit_category.fxml");
     }
 
 
-    @Override
-    protected void onInitializationRequested() throws UndeclaredEntityException, NullPointerException {
-        /*for (Node node : formRow.getChildren()) {
-            System.out.println(node.toString());
-        }*/
-    }
 
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * CreateModalContent methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    @Override
+    protected void onInitializationRequested(){
+    }
 
     @Override
     public void onAction() {
-        if(consumeTitle() == null){
-           return;
-        }
+        // TODO validate this
 
 
-        Category entity = new Category(0L, consumeTitle(), Calendar.getInstance().getTimeInMillis());
+        // *Creating new entity instance:
+        Category entity = new Category(
+                0L,
+                consumeTitle(),
+                Calendar.getInstance().getTimeInMillis());
 
+
+        // *Creating the entity on the persistence layer:
         try {
             DAO<Category> dao = new CategoryDAO();
             dao.create(entity, new CreateDAOCallback() {
                 @Override
                 public void onSuccess(Long id) {
-                    onActionFinished();
+                    //TODO
                 }
 
                 @Override
@@ -56,7 +64,6 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
                     // TODO
                 }
             });
-
         } catch (UndeclaredEntityException e) {
             e.printStackTrace();
         }

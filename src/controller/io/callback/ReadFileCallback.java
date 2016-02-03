@@ -1,4 +1,4 @@
-package controller.io;
+package controller.io.callback;
 
 /**
  * Callback for asynchronous reading operations.

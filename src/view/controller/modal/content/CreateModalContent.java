@@ -20,12 +20,12 @@ public abstract class CreateModalContent<T> extends ModalContent<T> {
         this.data = data;
         try {
             onInitializationRequested();
-        } catch (UndeclaredEntityException | NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    protected abstract void onInitializationRequested() throws UndeclaredEntityException, NullPointerException;
+    protected abstract void onInitializationRequested();
 
     @Override
     public final String getTitle() {

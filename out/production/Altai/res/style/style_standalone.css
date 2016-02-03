@@ -30,7 +30,7 @@ TextField{
     -fx-background-color: rgba(150, 150, 150, 0.5);
     -fx-border-width: 0;
     -fx-text-fill: #444;
-    -fx-font: 18 "System";
+    -fx-font: 16 "System";
     -fx-padding: 8;
 }
 
@@ -41,6 +41,7 @@ TextField:focused{
 FormRow{
 
 }
+/* TODO remove it */
 FormRow ImageView{
     -fx-image: url("/res/image/ic_link_36.png");
 }
