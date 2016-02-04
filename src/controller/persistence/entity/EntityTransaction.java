@@ -30,10 +30,13 @@ public final class EntityTransaction<T> {
             @Override
             public void onSuccess(String response) {
                 EntityFile entityFile = new EntityFile(response);
-                final long newId = entityFile.getMetadata().getNewId();
+                Metadata metadata = entityFile.getMetadata();
+                final long newId = metadata.getNewId();
 
                 jsonObject.put(idKey, newId);
                 entityFile.appendContent(jsonObject);
+                metadata.setLastId(newId);
+                entityFile.setMetadata(metadata);
 
                 textIOHandler.write(entityFile.toString(), new WriteFileCallback() {
                     @Override

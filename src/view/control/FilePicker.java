@@ -8,15 +8,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Guilherme Reginaldo
  * @since 02/02/2016
  */
 public class FilePicker extends VBox{
+    public static final short FILE_FILTER_IMAGE = 1;
+    public static final short FILE_FILTER_TEXT = 2;
+    public static final short FILE_FILTER_JSON = 3;
+    public static final short FILE_FILTER_VIDEO = 4;
+
     @FXML
     private Button selectFileBtn;
     @FXML
@@ -25,6 +33,7 @@ public class FilePicker extends VBox{
     private StringProperty buttonText = new SimpleStringProperty(this, "buttonText");
 
     private File file;
+    private List<ExtensionFilter> fileFilterList;
 
 
 
@@ -54,6 +63,7 @@ public class FilePicker extends VBox{
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     private void initialize(){
+        fileFilterList = new ArrayList<>();
     }
 
 
@@ -80,6 +90,9 @@ public class FilePicker extends VBox{
     @FXML
     private void selectFileBtn_onClick(){
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("");
+
+        fileChooser.getExtensionFilters().addAll(fileFilterList);
         File selectedFile = fileChooser.showOpenDialog(null);
         if(selectedFile != null){
             fileOut.setText(selectedFile.getName());
@@ -99,5 +112,29 @@ public class FilePicker extends VBox{
     }
     public void setFile(File file) {
         this.file = file;
+    }
+
+    public void setFileFilters(short... fileFilters) {
+        fileFilterList.clear();
+        for (short fileFilter : fileFilters) {
+            ExtensionFilter filter = null;
+            switch (fileFilter){
+                case FILE_FILTER_IMAGE:
+                    filter = new ExtensionFilter("Image", "*.jpg", "*.png", "*.bmp", "*.gif");
+                    break;
+                case FILE_FILTER_JSON:
+                    filter = new ExtensionFilter("Json", "*.json");
+                    break;
+                case FILE_FILTER_TEXT:
+                    filter = new ExtensionFilter("Text", "*.txt");
+                    break;
+                case FILE_FILTER_VIDEO:
+                    filter = new ExtensionFilter("Video", "*.mp4", "*.flv");
+                    break;
+            }
+            if(filter != null){
+                fileFilterList.add(filter);
+            }
+        }
     }
 }

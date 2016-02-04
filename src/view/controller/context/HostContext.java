@@ -25,7 +25,7 @@ public class HostContext extends ListedContentContext<Host> {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    protected void onUpdateRequested() {
         dataList = new ArrayList<>();
         dataList.add(new Host(0L, "Google", "http://google.com", "", "", new Date().getTime()));
         dataList.add(new Host(1L, "Google", "http://google.com", "", "", new Date().getTime()));
@@ -38,6 +38,7 @@ public class HostContext extends ListedContentContext<Host> {
         listView.setItems(FXCollections.observableArrayList(dataList));
         listView.setCellFactory(param -> new HostLVAdapter());
     }
+
 
     @Override
     public void onPrepareForDelete() {
@@ -53,6 +54,7 @@ public class HostContext extends ListedContentContext<Host> {
     protected void addBtn_onClick() {
         try {
             EditModalWindow<Host> editWindow = new EditModalWindow<>(new HostCreateContent(), null, "Create host");
+            editWindow.setOnActionFinishedCallback(this::onUpdateRequested);
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

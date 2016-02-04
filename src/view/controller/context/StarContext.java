@@ -23,6 +23,21 @@ public class StarContext extends ListedContentContext<Star> {
     @FXML
     private GridView<Star> gridView;
 
+    @Override
+    protected void onUpdateRequested() {
+        List<Star> starList = new ArrayList<>();
+        starList.add(new Star(0L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
+        starList.add(new Star(1L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
+        starList.add(new Star(2L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
+        starList.add(new Star(3L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
+        starList.add(new Star(4L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
+        starList.add(new Star(5L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
+
+        gridView.setMaxColumns(3);
+        gridView.setCellFactory(StarGVAdapter::new);
+        gridView.setOnClickListener(event -> System.out.println("clicked"));
+        gridView.setItems(starList);
+    }
 
     @Override
     public void onPrepareForDelete() {
@@ -37,39 +52,5 @@ public class StarContext extends ListedContentContext<Star> {
     @Override
     protected void addBtn_onClick() {
 
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        List<Star> starList = new ArrayList<>();
-        starList.add(new Star(0L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(1L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(2L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(3L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(4L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(5L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-
-        gridView.setMaxColumns(3);
-        gridView.setCellFactory(StarGVAdapter::new);
-        gridView.setOnClickListener(event -> System.out.println("clicked"));
-        gridView.setItems(starList);
-
-
-        /*
-        for(int i=0; i<4; i++) {
-            Node[] rowArray = new Node[4];
-            for (int j = 0; j < rowArray.length; j++) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/res/layout/cell_gv_star.fxml"));
-                try {
-                    Node node = fxmlLoader.load();
-                    rowArray[j] = node;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            gridPane.addRow(i, rowArray);
-        }
-        */
     }
 }

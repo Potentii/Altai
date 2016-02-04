@@ -103,6 +103,7 @@ public class PersistenceManager {
                     }
                 });
             } else{
+                classAndSourceNameMap.put(clazz, sourceName);
                 taggedEvent.registerStep(index + "", true);
             }
         }

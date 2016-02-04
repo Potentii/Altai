@@ -25,7 +25,7 @@ public class LinkContext extends ListedContentContext<Link> {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    protected void onUpdateRequested() {
         dataList = new ArrayList<>();
         dataList.add(new Link(0L, "title placeholder 2", "http://google.com/", "", true, 0.0f, new Date().getTime(), 0L));
         dataList.add(new Link(1L, "title placeholder 1", "http://google.com/", "", true, 0.1f, new Date().getTime(), 0L));

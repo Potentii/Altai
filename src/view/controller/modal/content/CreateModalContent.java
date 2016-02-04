@@ -28,7 +28,7 @@ public abstract class CreateModalContent<T> extends ModalContent<T> {
     protected abstract void onInitializationRequested();
 
     @Override
-    public final String getTitle() {
+    public final String getHeaderTitle() {
         return "";
     }
 }

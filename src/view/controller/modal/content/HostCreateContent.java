@@ -2,6 +2,7 @@ package view.controller.modal.content;
 
 import controller.io.FileBridge;
 import controller.persistence.EAltaiPersistence;
+import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -9,12 +10,13 @@ import model.Host;
 import model.dao.DAO;
 import model.dao.HostDAO;
 import model.dao.callback.CreateDAOCallback;
+import org.jetbrains.annotations.NotNull;
 import util.callback.SimpleResponseCallback;
 import view.control.FilePicker;
 import view.exception.ContextLoadException;
 import java.io.File;
-import java.rmi.server.UID;
 import java.util.Calendar;
+import java.util.UUID;
 
 /**
  * @author Guilherme Reginaldo
@@ -48,6 +50,13 @@ public class HostCreateContent extends CreateModalContent<Host> {
      */
     @Override
     protected void onInitializationRequested(){
+        filePicker.setFileFilters(FilePicker.FILE_FILTER_IMAGE);
+    }
+
+    @NotNull
+    @Override
+    public String getHeaderHint() {
+        return "Host name";
     }
 
     @Override
@@ -57,8 +66,8 @@ public class HostCreateContent extends CreateModalContent<Host> {
 
         // *Generating the selected icon's new name:
         FileBridge selectedIcon_fileBridge = new FileBridge(filePicker.getFile());
-        String newIconFileName = new UID().toString() + "." + selectedIcon_fileBridge.getExtension();
-        File copiedIconFile = new File(EAltaiPersistence.HOST_ICON_RELATIVE_PATH.getValue() + newIconFileName);
+        String newIconFileName = UUID.randomUUID().toString() + "." + selectedIcon_fileBridge.getExtension();
+        File copiedIconFile = new File(PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.HOST_ICON_RELATIVE_PATH.getValue() + newIconFileName);
 
 
         // *Copying selected icon to its appropriate folder:
@@ -83,13 +92,14 @@ public class HostCreateContent extends CreateModalContent<Host> {
                     dao.create(host, new CreateDAOCallback() {
                         @Override
                         public void onSuccess(Long id) {
-                            //TODO
+                            onActionFinished();
                         }
 
                         @Override
                         public void onFailure(Exception e) {
                             //TODO
                             //ERROR
+                            System.out.println("FAILURE");
                         }
                     });
                 } catch (UndeclaredEntityException e) {

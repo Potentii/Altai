@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import model.Category;
 import model.Link;
 import model.dao.DAO;
+import org.jetbrains.annotations.NotNull;
 import view.exception.ContextLoadException;
 
 /**
@@ -39,9 +40,16 @@ public class LinkEditModalContent extends EditModalContent<Link>{
 
     }
 
+    @NotNull
     @Override
-    public String getTitle() {
+    public String getHeaderTitle() {
         return data==null?"":data.getTitle();
+    }
+
+    @NotNull
+    @Override
+    public String getHeaderHint() {
+        return "Link title";
     }
 
     @Override

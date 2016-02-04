@@ -5,10 +5,7 @@ import controller.io.callback.ReadFileCallback;
 import controller.io.callback.WriteFileCallback;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 
 /**
@@ -46,7 +43,35 @@ public final class TextIOHandler extends FileBridge implements IOHandler<String>
      */
     @Override
     public void read(@NotNull ReadFileCallback<String> readFileCallback) {
-        // TODO não criar arquivo se ele nao existir, se isso acontecer, lance um erro apenas
+        new Thread(() -> {
+            BufferedReader bufferRead = null;
+            try{
+                StringBuilder content = new StringBuilder();
+                String line = null;
+                bufferRead = new BufferedReader(new FileReader(file.getAbsoluteFile()));
+
+                while((line = bufferRead.readLine()) != null){
+                    content.append(line);
+                }
+
+                readFileCallback.onSuccess(content.toString());
+            } catch(IOException e) {
+                e.printStackTrace();
+                readFileCallback.onFailure(e);
+            } catch (SecurityException e){
+                System.err.println("SECURITY EXCEPTION");
+                e.printStackTrace();
+                readFileCallback.onFailure(e);
+            } finally{
+                if (bufferRead != null) {
+                    try {
+                        bufferRead.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
 
@@ -61,8 +86,8 @@ public final class TextIOHandler extends FileBridge implements IOHandler<String>
                 }
                 bufferWrite = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
                 bufferWrite.write(content);
-                writeFileCallback.onSuccess();
 
+                writeFileCallback.onSuccess();
             } catch(IOException e) {
                 e.printStackTrace();
                 writeFileCallback.onFailure(e);

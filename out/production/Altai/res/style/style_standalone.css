@@ -174,3 +174,7 @@ FormRow ImageView{
 .FAB_img{
     -fx-image: url("/res/image/ic_add_24.png");
 }
+
+.FAB_edit ImageView{
+    -fx-image: url("/res/image/ic_add_24.png");
+}

@@ -18,14 +18,25 @@ public class EditModalWindow<T> extends ModalWindow<T> {
 
 
 
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     public EditModalWindow(ModalContent<T> controller, @Nullable T data, String title) throws ContextLoadException{
         super("/res/layout/layout_edit.fxml", controller, data, title);
-        titleIn.setText(controller.getTitle());
+        titleIn.setText(controller.getHeaderTitle());
+        titleIn.setPromptText(controller.getHeaderHint());
         controller.setTitleSupplier(titleIn::getText);
     }
 
 
 
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Listener methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     @FXML
     private void confirmBtn_onClick(){
         if(controller != null){

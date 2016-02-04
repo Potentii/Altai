@@ -35,17 +35,23 @@ public abstract class ModalContent<T> {
     }
 
 
-
-    public abstract void setData(@Nullable T data);
-
     public final T getData(){
         return data;
     }
 
+    /**
+     * This is called whenever the data is set, by the modal window.
+     * @param data The updated entity data
+     */
+    public abstract void setData(@Nullable T data);
+
 
 
     @NotNull
-    public abstract String getTitle();
+    public abstract String getHeaderTitle();
+    @NotNull
+    public abstract String getHeaderHint();
+
 
     /**
      * Called wheter the main action is triggered.
@@ -67,6 +73,7 @@ public abstract class ModalContent<T> {
         }
         return null;
     }
+
 
     public final Node getNode(){
         return root;

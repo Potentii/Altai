@@ -5,6 +5,7 @@ import model.Category;
 import model.dao.CategoryDAO;
 import model.dao.DAO;
 import model.dao.callback.CreateDAOCallback;
+import org.jetbrains.annotations.NotNull;
 import view.exception.ContextLoadException;
 
 import java.util.Calendar;
@@ -37,6 +38,12 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
     protected void onInitializationRequested(){
     }
 
+    @NotNull
+    @Override
+    public String getHeaderHint() {
+        return "Category name";
+    }
+
     @Override
     public void onAction() {
         // TODO validate this
@@ -55,13 +62,14 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
             dao.create(entity, new CreateDAOCallback() {
                 @Override
                 public void onSuccess(Long id) {
-                    //TODO
+                    onActionFinished();
                 }
 
                 @Override
                 public void onFailure(Exception e) {
                     // ERROR
                     // TODO
+                    System.out.println("FAILURE");
                 }
             });
         } catch (UndeclaredEntityException e) {
