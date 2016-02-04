@@ -1,4 +1,4 @@
-package view.controller.modal.content;
+package view.controller.modal.content.form.edit;
 
 import controller.persistence.UndeclaredEntityException;
 import javafx.fxml.FXML;
@@ -6,7 +6,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.Category;
 import model.Link;
-import model.dao.DAO;
 import org.jetbrains.annotations.NotNull;
 import view.exception.ContextLoadException;
 

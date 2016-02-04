@@ -1,19 +1,22 @@
 package view.controller.context;
 
+import controller.persistence.UndeclaredEntityException;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import model.Host;
-import view.controller.modal.content.HostCreateContent;
+import model.dao.DAO;
+import model.dao.HostDAO;
+import model.dao.callback.RetrieveMultipleDAOCallback;
+import view.controller.modal.content.form.create.HostCreateContent;
+import view.controller.modal.content.detail.HostDetailContent;
+import view.controller.modal.window.DetailModalWindow;
 import view.controller.modal.window.EditModalWindow;
 import view.exception.ContextLoadException;
 import view.listview.HostLVAdapter;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * @author Guilherme Reginaldo
@@ -26,19 +29,45 @@ public class HostContext extends ListedContentContext<Host> {
 
     @Override
     protected void onUpdateRequested() {
-        dataList = new ArrayList<>();
-        dataList.add(new Host(0L, "Google", "http://google.com", "", "", new Date().getTime()));
-        dataList.add(new Host(1L, "Google", "http://google.com", "", "", new Date().getTime()));
-        dataList.add(new Host(2L, "Google", "http://google.com", "", "", new Date().getTime()));
-        dataList.add(new Host(3L, "Google", "http://google.com", "", "", new Date().getTime()));
-        dataList.add(new Host(4L, "Google", "http://google.com", "", "", new Date().getTime()));
-        dataList.add(new Host(5L, "Google", "http://google.com", "", "", new Date().getTime()));
+        try {
+            DAO<Host> dao = new HostDAO();
 
+            dao.retrieveMultiple(host -> true, Comparator.comparing(Host::getId), new RetrieveMultipleDAOCallback<Host>() {
+                @Override
+                public void onSuccess(List<Host> responseList) {
+                    dataList = responseList;
 
-        listView.setItems(FXCollections.observableArrayList(dataList));
-        listView.setCellFactory(param -> new HostLVAdapter());
+                    Platform.runLater(() -> {
+                        listView.setItems(FXCollections.observableArrayList(dataList));
+                        listView.setCellFactory(param -> new HostLVAdapter());
+                        listView.setOnMouseClicked(event -> onItemSelected());
+                    });
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    // ERROR
+                    // TODO
+                }
+            });
+        } catch (UndeclaredEntityException e) {
+            e.printStackTrace();
+        }
     }
 
+    @Override
+    protected void onItemSelected() {
+        Host selectedItem = listView.getSelectionModel().getSelectedItem();
+        if(selectedItem == null){
+            return;
+        }
+        try {
+            DetailModalWindow<Host> detailWindow = new DetailModalWindow<>(new HostDetailContent(), selectedItem, "Host");
+            detailWindow.setOnActionFinishedCallback(host -> onUpdateRequested());
+        } catch (ContextLoadException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onPrepareForDelete() {
@@ -53,8 +82,8 @@ public class HostContext extends ListedContentContext<Host> {
     @Override
     protected void addBtn_onClick() {
         try {
-            EditModalWindow<Host> editWindow = new EditModalWindow<>(new HostCreateContent(), null, "Create host");
-            editWindow.setOnActionFinishedCallback(this::onUpdateRequested);
+            EditModalWindow<Host> createWindow = new EditModalWindow<>(new HostCreateContent(), null, "Create host");
+            createWindow.setOnActionFinishedCallback(host -> onUpdateRequested());
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

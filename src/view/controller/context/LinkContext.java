@@ -46,7 +46,7 @@ public class LinkContext extends ListedContentContext<Link> {
         listView.setOnMouseClicked(event -> onItemSelected());
     }
 
-
+    @Override
     protected void onItemSelected(){
         Link selectedData = listView.getSelectionModel().getSelectedItem();
         /*

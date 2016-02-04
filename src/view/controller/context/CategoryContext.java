@@ -9,13 +9,11 @@ import model.Category;
 import model.dao.CategoryDAO;
 import model.dao.DAO;
 import model.dao.callback.RetrieveMultipleDAOCallback;
-import view.controller.modal.content.CategoryCreateContent;
+import view.controller.modal.content.form.create.CategoryCreateContent;
 import view.controller.modal.window.EditModalWindow;
 import view.exception.ContextLoadException;
 import view.listview.CategoryLVAdapter;
-import view.listview.LinkLVAdapter;
 
-import java.net.URL;
 import java.util.*;
 
 /**
@@ -57,6 +55,10 @@ public class CategoryContext extends ListedContentContext<Category> {
         }
     }
 
+    @Override
+    protected void onItemSelected() {
+
+    }
 
     @Override
     public void onPrepareForDelete() {
@@ -72,7 +74,7 @@ public class CategoryContext extends ListedContentContext<Category> {
     protected void addBtn_onClick() {
         try {
             EditModalWindow<Category> editWindow = new EditModalWindow<>(new CategoryCreateContent(), null, "Create category");
-            editWindow.setOnActionFinishedCallback(this::onUpdateRequested);
+            editWindow.setOnActionFinishedCallback(category -> onUpdateRequested());
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

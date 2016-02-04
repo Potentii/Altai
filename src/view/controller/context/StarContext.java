@@ -40,6 +40,11 @@ public class StarContext extends ListedContentContext<Star> {
     }
 
     @Override
+    protected void onItemSelected() {
+
+    }
+
+    @Override
     public void onPrepareForDelete() {
 
     }

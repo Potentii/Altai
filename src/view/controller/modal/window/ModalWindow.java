@@ -14,6 +14,8 @@ import view.controller.modal.content.ModalContent;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * @param <T> The entity's data type.
@@ -24,8 +26,8 @@ public abstract class ModalWindow<T> {
     @FXML
     private BorderPane contentContainer;
 
+    private Consumer<T> onActionFinishedCallback;
     private Stage window;
-    private Callback onActionFinishedCallback;
     protected ModalContent<T> controller;
 
 
@@ -48,7 +50,7 @@ public abstract class ModalWindow<T> {
             window.show();
             contentContainer.setCenter(controller.getNode());
 
-            controller.setOnActionFinishedCallback(this::onActionFinished);
+
             controller.setData(data);
             this.controller = controller;
         } catch (NullPointerException | IOException e) {
@@ -63,13 +65,14 @@ public abstract class ModalWindow<T> {
      *  * Class methods:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public void setOnActionFinishedCallback(Callback callback){
+
+    public void setOnActionFinishedCallback(Consumer<T> callback){
         onActionFinishedCallback = callback;
     }
-    private void onActionFinished(){
+    protected void onActionFinished(){
         Platform.runLater(() -> {
             if(onActionFinishedCallback != null) {
-                onActionFinishedCallback.call();
+                onActionFinishedCallback.accept(controller.getData());
             }
 
             window.close();
@@ -77,12 +80,14 @@ public abstract class ModalWindow<T> {
     }
 
 
+    /*
     @FXML
     private void onAction(){
         if(controller != null) {
             controller.onAction();
         }
     }
+    */
 
 
     /*

@@ -1,4 +1,4 @@
-package view.controller.modal.content;
+package view.controller.modal.content.form.create;
 
 import controller.persistence.UndeclaredEntityException;
 import model.Category;
@@ -50,7 +50,7 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
 
 
         // *Creating new entity instance:
-        Category entity = new Category(
+        Category category = new Category(
                 0L,
                 consumeTitle(),
                 Calendar.getInstance().getTimeInMillis());
@@ -59,9 +59,11 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
         // *Creating the entity on the persistence layer:
         try {
             DAO<Category> dao = new CategoryDAO();
-            dao.create(entity, new CreateDAOCallback() {
+            dao.create(category, new CreateDAOCallback() {
                 @Override
                 public void onSuccess(Long id) {
+                    category.setId(id);
+                    data = category;
                     onActionFinished();
                 }
 

@@ -3,7 +3,7 @@ package view.controller.modal.window;
 import com.sun.istack.internal.Nullable;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import view.controller.modal.content.ModalContent;
+import view.controller.modal.content.form.FormModalContent;
 import view.exception.ContextLoadException;
 
 /**
@@ -23,11 +23,12 @@ public class EditModalWindow<T> extends ModalWindow<T> {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public EditModalWindow(ModalContent<T> controller, @Nullable T data, String title) throws ContextLoadException{
+    public EditModalWindow(FormModalContent<T> controller, @Nullable T data, String title) throws ContextLoadException{
         super("/res/layout/layout_edit.fxml", controller, data, title);
         titleIn.setText(controller.getHeaderTitle());
         titleIn.setPromptText(controller.getHeaderHint());
         controller.setTitleSupplier(titleIn::getText);
+        controller.setOnActionFinishedCallback(super::onActionFinished);
     }
 
 

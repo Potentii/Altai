@@ -1,7 +1,10 @@
 package view.listview;
 
+import controller.persistence.EAltaiPersistence;
+import controller.persistence.PersistenceManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Host;
 import view.Standalone;
@@ -24,27 +27,10 @@ public class HostLVAdapter extends ListViewAdapter<Host> {
 
     @Override
     public void bindData(Host data) throws NullPointerException {
+
+        hostImg.setImage(new Image("file:" + PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.HOST_ICON_RELATIVE_PATH.getValue() + data.getImgPath()));
+
         titleOut.setText(data.getTitle());
-
         titleOut.setOnAction(event -> Standalone.requestHostServices().showDocument(data.getUrl()));
-
-        /* TODO
-        try {
-            DAO<Picture> pictureDAO = new PictureDAO();
-            pictureDAO.retrieve(data.getImgId_FK(), new RetrieveDAOCallback<Picture>() {
-                @Override
-                public void onSuccess(Picture response) {
-                    hostImg.setImage(new Image(response.getPath()));
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-                    // ERROR
-                }
-            });
-        } catch (UndeclaredEntityException e) {
-            e.printStackTrace();
-        }
-        */
     }
 }

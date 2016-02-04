@@ -1,4 +1,4 @@
-package view.controller.modal.content;
+package view.controller.modal.content.form.create;
 
 import controller.io.FileBridge;
 import controller.persistence.EAltaiPersistence;
@@ -38,7 +38,7 @@ public class HostCreateContent extends CreateModalContent<Host> {
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     public HostCreateContent() throws ContextLoadException {
-        super("/res/layout/layout_edit_host.fxml");
+        super("/layout/layout_edit_host.fxml");
     }
 
 
@@ -92,6 +92,8 @@ public class HostCreateContent extends CreateModalContent<Host> {
                     dao.create(host, new CreateDAOCallback() {
                         @Override
                         public void onSuccess(Long id) {
+                            host.setId(id);
+                            data = host;
                             onActionFinished();
                         }
 

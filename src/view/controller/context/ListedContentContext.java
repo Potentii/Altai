@@ -23,6 +23,8 @@ public abstract class ListedContentContext<T> extends ContextController{
 
     protected abstract void onUpdateRequested();
 
+    protected abstract void onItemSelected();
+
     @FXML
     protected abstract void addBtn_onClick();
 }

@@ -18,12 +18,18 @@ import java.util.function.Supplier;
  */
 public abstract class ModalContent<T> {
     protected Node root;
+    @Nullable
     protected T data;
-    private Supplier<String> titleSupplier;
+    @Nullable
     private Callback onActionFinishedCallback;
 
 
 
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     protected ModalContent(String FXML) throws ContextLoadException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML));
         try {
@@ -35,6 +41,13 @@ public abstract class ModalContent<T> {
     }
 
 
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Getters and setters:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    @Nullable
     public final T getData(){
         return data;
     }
@@ -45,47 +58,33 @@ public abstract class ModalContent<T> {
      */
     public abstract void setData(@Nullable T data);
 
-
-
     @NotNull
     public abstract String getHeaderTitle();
-    @NotNull
-    public abstract String getHeaderHint();
-
-
-    /**
-     * Called wheter the main action is triggered.
-     * <p>
-     * Obs: {@link #onActionFinished} should be called when the window has to be closed.
-     */
-    public abstract void onAction();
-
-
-
-    public final void setTitleSupplier(Supplier<String> supplier){
-        titleSupplier = supplier;
-    }
-
-    @Nullable
-    protected final String consumeTitle(){
-        if(titleSupplier != null){
-            return titleSupplier.get();
-        }
-        return null;
-    }
-
 
     public final Node getNode(){
         return root;
     }
 
-
-
-    public final void setOnActionFinishedCallback(@NotNull Callback callback){
+    public final void setOnActionFinishedCallback(@Nullable Callback callback){
         onActionFinishedCallback = callback;
     }
 
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Listener methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    /**
+     * Called whether the main action is triggered.
+     * <p>
+     * Obs: {@link #onActionFinished} should be called when the window has to be closed.
+     */
+    public abstract void onAction();
+
     protected void onActionFinished(){
-        onActionFinishedCallback.call();
+        if(onActionFinishedCallback != null) {
+            onActionFinishedCallback.call();
+        }
     }
 }
