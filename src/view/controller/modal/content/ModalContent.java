@@ -1,10 +1,13 @@
 package view.controller.modal.content;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
-import controller.persistence.UndeclaredEntityException;
+import org.jetbrains.annotations.NotNull;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import org.jetbrains.annotations.Nullable;
+import util.callback.Callback;
+import view.exception.ContextLoadException;
 
-import java.util.function.Consumer;
+import java.io.IOException;
 import java.util.function.Supplier;
 
 /**
@@ -14,52 +17,74 @@ import java.util.function.Supplier;
  * @since 27/01/2016
  */
 public abstract class ModalContent<T> {
+    protected Node root;
+    @Nullable
     protected T data;
-    private Supplier<String> titleSupplier;
+    @Nullable
+    private Callback onActionFinishedCallback;
 
-    public final void setData(@Nullable T data){
-        this.data = data;
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    protected ModalContent(String FXML) throws ContextLoadException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML));
         try {
-            onDataBindRequested(data);
-        } catch (UndeclaredEntityException | NullPointerException e) {
-            e.printStackTrace();
+            loader.setController(this);
+            root = loader.load();
+        } catch (IOException e) {
+            throw new ContextLoadException(e.getCause().getMessage());
         }
     }
 
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Getters and setters:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    @Nullable
     public final T getData(){
         return data;
     }
 
-    protected abstract void onDataBindRequested(@Nullable T data) throws UndeclaredEntityException, NullPointerException;
+    /**
+     * This is called whenever the data is set, by the modal window.
+     * @param data The updated entity data
+     */
+    public abstract void setData(@Nullable T data);
 
     @NotNull
-    public abstract String getTitle();
+    public abstract String getHeaderTitle();
+
+    public final Node getNode(){
+        return root;
+    }
+
+    public final void setOnActionFinishedCallback(@Nullable Callback callback){
+        onActionFinishedCallback = callback;
+    }
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Listener methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    /**
+     * Called whether the main action is triggered.
+     * <p>
+     * Obs: {@link #onActionFinished} should be called when the window has to be closed.
+     */
     public abstract void onAction();
 
-
-
-
-    public void setTitleSupplier(Supplier<String> supplier){
-        titleSupplier = supplier;
-    }
-
-    @Nullable
-    protected String consumeTitle(){
-        if(titleSupplier != null){
-            return titleSupplier.get();
+    protected void onActionFinished(){
+        if(onActionFinishedCallback != null) {
+            onActionFinishedCallback.call();
         }
-        return null;
     }
-
-
-
-
-    public void setFinishedCallback(){
-
-    }
-    protected void finish(){
-        // TODO call the callback
-    }
-
-
 }

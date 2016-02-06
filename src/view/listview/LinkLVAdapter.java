@@ -1,10 +1,12 @@
 package view.listview;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import model.Link;
+import view.Standalone;
 
 import java.text.DecimalFormat;
 
@@ -18,14 +20,14 @@ public class LinkLVAdapter extends ListViewAdapter<Link> {
     @FXML
     private Label ratingOut;
     @FXML
-    private Label titleOut;
+    private Hyperlink titleOut;
     @FXML
     private Label descOut;
 
 
     @Override
     protected String getFXMLPath() {
-        return "/layout/row_lv_link.fxml";
+        return "/res/layout/row_lv_link.fxml";
     }
 
 
@@ -36,7 +38,8 @@ public class LinkLVAdapter extends ListViewAdapter<Link> {
         ratingImg.effectProperty().setValue(new ColorAdjust(hue, 0.5d, -0.1d, 0.0d));
         ratingOut.setText(new DecimalFormat("##").format(data.getRating() * 10));
         titleOut.setText(data.getTitle());
-        descOut.setText("dfds f d fdsfdref dsf ewfwe fdf ergrhgdf gf gtghef wef ");
+        titleOut.setOnAction(event -> Standalone.requestHostServices().showDocument(data.getUrl()));
+        descOut.setText(data.getDescription());
     }
 
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="listViewItem" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane>
+         <children>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="listViewItem_circle" />
+            <ImageView fx:id="hostImg" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </StackPane>
+      <Hyperlink fx:id="titleOut" focusTraversable="false" styleClass="listViewItem_primaryText_hyperlink" />
+   </children>
+</HBox>

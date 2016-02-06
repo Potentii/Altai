@@ -1,5 +1,6 @@
 package model.dao;
 
+import controller.persistence.EAltaiPersistence;
 import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import controller.persistence.entity.EntityTransaction;
@@ -58,7 +59,7 @@ public class AssociativeEntityDAO<T extends AssociativeEntity> implements DAO<As
      */
     public AssociativeEntityDAO(Class<T> clazz) throws UndeclaredEntityException {
         PersistenceManager persistenceManager = PersistenceManager.getInstance();
-        this.entityTransaction = new EntityTransaction<>(persistenceManager.getEntitiesPath(), persistenceManager.getSourceName(clazz) + persistenceManager.getEntitiesExtension());
+        this.entityTransaction = new EntityTransaction<>(persistenceManager.getRootPath() + EAltaiPersistence.ENTITIES_RELATIVE_PATH.getValue() + persistenceManager.getSourceName(clazz) + EAltaiPersistence.ENTITY_DEFAULT_EXTENSION.getValue());
     }
 
 

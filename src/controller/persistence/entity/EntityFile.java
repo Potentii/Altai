@@ -23,7 +23,7 @@ public final class EntityFile extends JSONObject {
 
     public void registerLastID(long id){
         // TODO try if it works:
-        getMetadata().setLastId(id);
+        setMetadata(getMetadata().setLastId(id));
     }
 
     public void appendContent(JSONObject jsonObject){
@@ -44,7 +44,7 @@ public final class EntityFile extends JSONObject {
 
 
     public Metadata getMetadata() {
-        return (Metadata) getJSONObject("metadata");
+        return new Metadata(getJSONObject("metadata").toString());
     }
     public void setMetadata(Metadata metadata) {
         put("metadata", metadata);

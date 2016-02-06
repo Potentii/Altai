@@ -1,6 +1,10 @@
 package view.controller.context;
 
+import javafx.fxml.FXML;
+
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * @author Guilherme Reginaldo
@@ -11,4 +15,16 @@ public abstract class ListedContentContext<T> extends ContextController{
 
     public abstract void onPrepareForDelete();
     public abstract void onDeleteRequested(List<T> deleteList);
+
+    @Override
+    public final void initialize(URL location, ResourceBundle resources) {
+        onUpdateRequested();
+    }
+
+    protected abstract void onUpdateRequested();
+
+    protected abstract void onItemSelected();
+
+    @FXML
+    protected abstract void addBtn_onClick();
 }

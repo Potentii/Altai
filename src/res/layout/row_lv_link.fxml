@@ -19,13 +19,13 @@
                   <Insets />
                </StackPane.margin>
             </ImageView>
-            <Label fx:id="ratingOut" styleClass="listViewItem_circle_text" />
+            <Label fx:id="ratingOut" focusTraversable="false" styleClass="listViewItem_circle_text" />
          </children>
       </StackPane>
       <VBox>
          <children>
-            <Label fx:id="titleOut" styleClass="listViewItem_primaryText" />
-            <Label fx:id="descOut" styleClass="listViewItem_secondaryText" />
+            <Hyperlink fx:id="titleOut" focusTraversable="false" graphicTextGap="0.0" styleClass="listViewItem_primaryText_hyperlink" />
+            <Label fx:id="descOut" focusTraversable="false" graphicTextGap="0.0" styleClass="listViewItem_secondaryText" />
          </children>
          <HBox.margin>
             <Insets />

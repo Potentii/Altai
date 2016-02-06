@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../style/style_standalone.css" />
+    </stylesheets>
+
+   <center>
+      <AnchorPane>
+         <children>
+            <BorderPane fx:id="contentContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="TOP_LEFT" />
+             <Button contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#confirmBtn_onClick" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="32.0">
+                 <graphic>
+                     <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                 </graphic>
+               <styleClass>
+                  <String fx:value="FAB" />
+                  <String fx:value="FAB_confirm" />
+               </styleClass>
+             </Button>
+         </children>
+      </AnchorPane>
+   </center>
+
+    <top>
+        <ToolBar id="appBar" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" BorderPane.alignment="CENTER">
+         <items>
+            <TextField fx:id="titleIn" maxWidth="1.7976931348623157E308" minWidth="0.0" styleClass="appBarInput" text="Text" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+         </items>
+        </ToolBar>
+    </top>
+</BorderPane>

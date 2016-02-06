@@ -14,6 +14,9 @@ public class Metadata extends JSONObject {
     public Metadata(long lastId){
         setLastId(lastId);
     }
+    public Metadata(String str){
+        super(str);
+    }
 
 
     public long getNewId() {
@@ -25,7 +28,8 @@ public class Metadata extends JSONObject {
     public long getLastId() {
         return getLong("lastId");
     }
-    public void setLastId(long lastId) {
+    public Metadata setLastId(long lastId) {
         put("lastId", lastId);
+        return this;
     }
 }

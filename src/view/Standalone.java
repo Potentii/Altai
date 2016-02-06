@@ -1,7 +1,9 @@
 package view;
 
 
+
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,10 +16,11 @@ import javafx.stage.Stage;
  * @since 21/01/2016
  */
 public class Standalone extends Application {
+    private static HostServices hostServices;
+
     public static void main(String[] args) {
         Application.launch(args);
     }
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -26,12 +29,12 @@ public class Standalone extends Application {
         primaryStage.setTitle("Altai");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        hostServices = getHostServices();
     }
 
-
-
-    @Override
-    public void stop() throws Exception {
-        super.stop();
+    public static HostServices requestHostServices(){
+        return hostServices;
     }
+
 }

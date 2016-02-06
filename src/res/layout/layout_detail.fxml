@@ -7,22 +7,37 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../style/style_standalone.css" />
-        <URL value="@../style/style_context.css" />
     </stylesheets>
 
-    <children>
-      <ToolBar id="appBar">
-         <items>
-            <Label fx:id="titleOut" focusTraversable="false" styleClass="appBarText" text="Label" />
-            <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#editBtn_onClick" styleClass="FAB">
+    <center>
+        <AnchorPane>
+            <children>
+                <BorderPane fx:id="contentContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="TOP_LEFT" />
+            </children>
+        </AnchorPane>
+    </center>
 
-            </Button>
-         </items></ToolBar>
-      <BorderPane fx:id="contentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
-
-      </BorderPane>
-   </children>
-</VBox>
+    <top>
+      <AnchorPane>
+         <children>
+              <ToolBar id="appBar" focusTraversable="false" layoutX="3.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                  <items>
+                      <Label fx:id="titleOut" focusTraversable="false" styleClass="appBarText" text="Label" />
+                  </items>
+              </ToolBar>
+                <Button contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#editBtn_onClick" AnchorPane.bottomAnchor="-24.0" AnchorPane.rightAnchor="32.0">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="FAB" />
+                        <String fx:value="FAB_edit" />
+                    </styleClass>
+                </Button>
+         </children>
+      </AnchorPane>
+    </top>
+</BorderPane>

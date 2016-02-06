@@ -1,16 +1,21 @@
 package view.controller.modal.window;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import util.callback.Callback;
 import view.controller.modal.content.ModalContent;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * @param <T> The entity's data type.
@@ -21,47 +26,80 @@ public abstract class ModalWindow<T> {
     @FXML
     private BorderPane contentContainer;
 
+    private Consumer<T> onActionFinishedCallback;
+    private Stage window;
     protected ModalContent<T> controller;
 
 
-    public ModalWindow(String sceneFXML, String contentFXML, String title) throws ContextLoadException {
-        Stage window = new Stage();
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    public ModalWindow(@NotNull String sceneFXML, @NotNull ModalContent<T> controller, @Nullable  T data, @NotNull String title) throws ContextLoadException {
+        window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinWidth(300);
-        window.setMinHeight(400);
+        window.setWidth(350);
+        window.setHeight(450);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneFXML));
             loader.setController(this);
             window.setScene(new Scene(loader.load()));
             window.show();
-        } catch (NullPointerException | IOException e) {
-            throw new ContextLoadException(e.getMessage());
-        }
-
-        loadContent(contentFXML);
-    }
+            contentContainer.setCenter(controller.getNode());
 
 
-
-    private void loadContent(String fxml) throws ContextLoadException{
-        try {
-            // *Loading the FXML:
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-            Pane newNode = loader.load();
-
-            // *Adding the new content:
-            contentContainer.setCenter(newNode);
-
-            // *Getting the controller:
-            controller = loader.getController();
-            onControllerLoaded();
+            controller.setData(data);
+            controller.setOnActionFinishedCallback(this::onActionFinished);
+            this.controller = controller;
         } catch (NullPointerException | IOException e) {
             throw new ContextLoadException(e.getMessage());
         }
     }
 
-    protected abstract void onControllerLoaded();
 
-    //protected abstract void onContentLoaded();
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Class methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+
+    public void setOnActionFinishedCallback(Consumer<T> callback){
+        onActionFinishedCallback = callback;
+    }
+    protected void onActionFinished(){
+        Platform.runLater(() -> {
+            if(onActionFinishedCallback != null) {
+                onActionFinishedCallback.accept(controller.getData());
+            }
+
+            window.close();
+        });
+    }
+
+
+    /*
+    @FXML
+    private void onAction(){
+        if(controller != null) {
+            controller.onAction();
+        }
+    }
+    */
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Getters and setters:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    public ModalContent<T> getController() {
+        return controller;
+    }
+    public void setController(ModalContent<T> controller) {
+        this.controller = controller;
+    }
 }

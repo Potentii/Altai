@@ -1,7 +1,7 @@
 package view.controller.context;
 
 import javafx.fxml.FXML;
-import view.Callback;
+import util.callback.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;

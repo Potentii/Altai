@@ -3,6 +3,7 @@ package view.controller.modal.window;
 import com.sun.istack.internal.Nullable;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import view.controller.modal.content.form.FormModalContent;
 import view.exception.ContextLoadException;
 
 /**
@@ -15,26 +16,27 @@ public class EditModalWindow<T> extends ModalWindow<T> {
     @FXML
     private TextField titleIn;
 
-    private T data;
 
 
-
-    public EditModalWindow(String contentFXML, @Nullable T data) throws ContextLoadException{
-        super("/res/layout/layout_edit_scene.fxml", contentFXML, "Edit");
-        this.data = data;
-    }
-
-
-
-    @Override
-    protected void onControllerLoaded() {
-        titleIn.setText(controller.getTitle());
-        controller.setData(data);
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    public EditModalWindow(FormModalContent<T> controller, @Nullable T data, String title) throws ContextLoadException{
+        super("/res/layout/layout_edit.fxml", controller, data, title);
+        titleIn.setText(controller.getHeaderTitle());
+        titleIn.setPromptText(controller.getHeaderHint());
         controller.setTitleSupplier(titleIn::getText);
     }
 
 
 
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Listener methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     @FXML
     private void confirmBtn_onClick(){
         if(controller != null){

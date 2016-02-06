@@ -23,8 +23,9 @@ public class LinkContext extends ListedContentContext<Link> {
     @FXML
     private ListView<Link> listView;
 
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    protected void onUpdateRequested() {
         dataList = new ArrayList<>();
         dataList.add(new Link(0L, "title placeholder 2", "http://google.com/", "", true, 0.0f, new Date().getTime(), 0L));
         dataList.add(new Link(1L, "title placeholder 1", "http://google.com/", "", true, 0.1f, new Date().getTime(), 0L));
@@ -42,17 +43,19 @@ public class LinkContext extends ListedContentContext<Link> {
 
         listView.setItems(userList);
         listView.setCellFactory(param -> new LinkLVAdapter());
-        //listView.setOnMouseClicked(event -> onItemSelected()); TODO reativar
+        listView.setOnMouseClicked(event -> onItemSelected());
     }
 
-
+    @Override
     protected void onItemSelected(){
         Link selectedData = listView.getSelectionModel().getSelectedItem();
+        /*
         try {
             new DetailModalWindow<>("/res/layout/layout_detail_link.fxml", selectedData);
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
+        */
     }
 
 
@@ -63,6 +66,11 @@ public class LinkContext extends ListedContentContext<Link> {
 
     @Override
     public void onDeleteRequested(List<Link> deleteList) {
+
+    }
+
+    @Override
+    protected void addBtn_onClick() {
 
     }
 }

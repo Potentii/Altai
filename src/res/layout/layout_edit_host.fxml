@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import view.control.FormRow?>
+<?import view.control.FilePicker?>
+<?import java.net.URL?>
+
+<ScrollPane focusTraversable="false" hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../style/style_form.css" />
+    </stylesheets>
+
+    <content>
+        <VBox>
+            <children>
+
+                <FormRow>
+                    <TextField FormRow.hgrow="ALWAYS" fx:id="urlIn" promptText="Url"/>
+                </FormRow>
+
+                <FormRow>
+                    <TextField FormRow.hgrow="ALWAYS" fx:id="urlPatternIn" promptText="Url pattern"/>
+                </FormRow>
+
+                <FormRow>
+                    <FilePicker FormRow.hgrow="ALWAYS" fx:id="filePicker" buttonText="Select icon"/>
+                </FormRow>
+
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

@@ -1,8 +1,9 @@
 package view.controller.modal.window;
 
-import com.sun.istack.internal.Nullable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.jetbrains.annotations.NotNull;
+import view.controller.modal.content.detail.DetailModalContent;
 import view.exception.ContextLoadException;
 
 /**
@@ -15,25 +16,29 @@ public class DetailModalWindow<T> extends ModalWindow<T>{
     @FXML
     private Label titleOut;
 
-    private T data;
 
 
-
-    public DetailModalWindow(String contentFXML, @Nullable T data) throws ContextLoadException{
-        super("/res/layout/layout_edit_scene.fxml", contentFXML, "Show");
-        this.data = data;
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    public DetailModalWindow(DetailModalContent<T> controller, @NotNull T data, String title) throws ContextLoadException{
+        super("/res/layout/layout_detail.fxml", controller, data, title);
+        titleOut.setText(controller.getHeaderTitle());
     }
 
 
 
-    @Override
-    protected void onControllerLoaded() {
-        controller.setData(data);
-    }
-
-
-
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Listener methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     @FXML
     private void editBtn_onClick(){
+        if(controller != null){
+            controller.onAction();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package view.controller.scene;
 
+import controller.persistence.PersistenceManager;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +12,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import view.controller.context.ContextController;
-import view.controller.context.SettingsContext;
+import model.*;
+import util.callback.SimpleResponseCallback;
+import view.controller.context.*;
 import view.exception.ContextLoadException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -46,9 +50,37 @@ public class StandaloneSceneController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO get default screen
 
-        loadLinkContext();
+        // *Setting up the entities' class list:
+        List<Class<?>> classList = new ArrayList<>();
+        classList.add(Category.class);
+        classList.add(Host.class);
+        classList.add(Link.class);
+        classList.add(LinkCategoryAssociation.class);
+        classList.add(LinkStarAssociation.class);
+        classList.add(Movie.class);
+        classList.add(Picture.class);
+        classList.add(Star.class);
+        classList.add(StarCategoryAssociation.class);
+        classList.add(StarPictureAssociation.class);
+
+        // *Initializing the PersistenceManager:
+        PersistenceManager persistenceManager = PersistenceManager.getInstance();
+        persistenceManager.initialize(classList, new SimpleResponseCallback() {
+            @Override
+            public void onSuccess() {
+                // TODO get default screen
+                menuBtn.setOnAction(event -> menuClosedBtn_onClick());
+                loadHostsContext();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                // ERROR
+                // TODO
+                e.printStackTrace();
+            }
+        });
     }
 
 
@@ -135,23 +167,18 @@ public class StandaloneSceneController implements Initializable{
      * @param fxml The fmxl file's path
      * @throws ContextLoadException If content couldn't be loaded
      */
-    private void changeContent(String fxml) throws ContextLoadException{
+    private <T extends ContextController> T changeContent(String fxml, T controller) throws ContextLoadException{
         closeNav();
         try {
             // *Loading the FXML:
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            loader.setController(controller);
             Node newNode = loader.load();
 
             // *Setting the new content:
             contentContainer.setCenter(newNode);
-
-            // *Getting the controller:
-            contextController = loader.getController();
-
-            // *Setting the "menuBtn" listener:
-            menuBtn.setOnAction(event -> menuClosedBtn_onClick());
+            return controller;
         } catch (NullPointerException | IOException e) {
-            e.printStackTrace();
             throw new ContextLoadException(e.getMessage());
         }
     }
@@ -159,7 +186,7 @@ public class StandaloneSceneController implements Initializable{
 
     public void loadLinkContext(){
         try {
-            changeContent("/layout/layout_context_link.fxml");
+            changeContent("/layout/layout_context_list.fxml", new LinkContext());
             appBarTitle.setText("Links");
         } catch (ContextLoadException e) {
             e.printStackTrace();
@@ -167,33 +194,32 @@ public class StandaloneSceneController implements Initializable{
     }
     public void loadStarsContext(){
         try {
-            changeContent("/layout/layout_context_link.fxml"); // TODO
-            appBarTitle.setText("Links");
+            changeContent("/layout/layout_context_grid.fxml", new StarContext());
+            appBarTitle.setText("Stars");
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadPicturesContext(){
         try {
-            changeContent("/layout/layout_context_link.fxml"); // TODO
-            appBarTitle.setText("Links");
+            changeContent("/layout/layout_context_list.fxml", new LinkContext()); // TODO
+            appBarTitle.setText("Pictures");
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadMoviesContext(){
         try {
-            changeContent("/layout/layout_context_link.fxml"); // TODO
-            appBarTitle.setText("Links");
+            changeContent("/layout/layout_context_list.fxml", new LinkContext()); // TODO
+            appBarTitle.setText("Movies");
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadSettingsContext(){
         try {
-            changeContent("/layout/layout_context_settings.fxml");
+            SettingsContext controller = changeContent("/layout/layout_context_settings.fxml", new SettingsContext());
             appBarTitle.setText("Settings");
-            SettingsContext controller = (SettingsContext) contextController;
             controller.setCategoryBtnCallback(this::loadCategoriesContext);
             controller.setHostBtnCallback(this::loadHostsContext);
         } catch (ContextLoadException | ClassCastException e) {
@@ -202,15 +228,15 @@ public class StandaloneSceneController implements Initializable{
     }
     public void loadHostsContext(){
         try {
-            changeContent("/layout/layout_context_link.fxml"); // TODO
-            appBarTitle.setText("Links");
+            changeContent("/layout/layout_context_list.fxml", new HostContext());
+            appBarTitle.setText("Hosts");
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
     }
     public void loadCategoriesContext(){
         try {
-            changeContent("/layout/layout_context_category.fxml");
+            changeContent("/layout/layout_context_list.fxml", new CategoryContext());
             appBarTitle.setText("Categories");
         } catch (ContextLoadException e) {
             e.printStackTrace();
