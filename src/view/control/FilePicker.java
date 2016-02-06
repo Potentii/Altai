@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import util.Validatable;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.List;
  * @author Guilherme Reginaldo
  * @since 02/02/2016
  */
-public class FilePicker extends VBox{
+public class FilePicker extends VBox implements Validatable{
     public static final short FILE_FILTER_IMAGE = 1;
     public static final short FILE_FILTER_TEXT = 2;
     public static final short FILE_FILTER_JSON = 3;
@@ -35,6 +36,8 @@ public class FilePicker extends VBox{
     private File file;
     private List<ExtensionFilter> fileFilterList;
     private boolean fileChanged;
+
+    private String invalidText;
 
 
 
@@ -117,6 +120,27 @@ public class FilePicker extends VBox{
             file = selectedFile;
             printFileName();
         }
+    }
+
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Validatable methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    @Override
+    public boolean isValid() {
+        if(file == null){
+            invalidText = "File not selected";
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String getInvalidText() {
+        return invalidText;
     }
 
 

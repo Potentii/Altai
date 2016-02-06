@@ -30,6 +30,7 @@ TextField{
     -fx-background-color: rgba(150, 150, 150, 0.5);
     -fx-border-width: 0;
     -fx-text-fill: #444;
+    -fx-prompt-text-fill: rgba(100, 100, 100, 0.4);
     -fx-font: 16 "System";
     -fx-padding: 8;
 }
@@ -37,6 +38,7 @@ TextField{
 TextField:focused{
     -fx-shape: "M0 100 h100 V0 V100 v-5.57 h-100 Z";
     -fx-background-color: rgba(221, 51, 136, 0.9);
+    -fx-prompt-text-fill: rgba(100, 100, 100, 0.7);
 }
 
 /* TODO remove it */
@@ -60,16 +62,18 @@ TextField:focused{
 
 #appBar TextField{
     -fx-text-fill: rgba(230, 230, 230, 0.7);
+    -fx-prompt-text-fill: rgba(230, 230, 230, 0.6);
     -fx-background-color: rgba(230, 230, 230, 0.5);
 }
 
 #appBar TextField:focused{
     -fx-text-fill: rgba(230, 230, 230, 0.9);
+    -fx-prompt-text-fill: rgba(230, 230, 230, 0.8);
     -fx-background-color: rgba(230, 230, 230, 0.9);
 }
 
 #appBar Label{
-    -fx-text-fill: #f5f5f5;
+    -fx-text-fill: rgba(230, 230, 230, 1);
     -fx-font: 22 "System";
     -fx-padding: 16;
 }
@@ -83,6 +87,29 @@ TextField:focused{
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
+
+
+
+
+.errorOut{
+    -fx-text-fill: #d24;
+    -fx-min-height: 0;
+    -fx-font: 14 "System";
+}
+
+#appBar .errorOut{
+    -fx-text-fill: #d8a;
+    -fx-font: 14 "System";
+    -fx-padding: 0;
+}
+
+.errorOut:disabled{
+    -fx-pref-height: 0;
+}
+
+
+
 
 
 #menuBtn{

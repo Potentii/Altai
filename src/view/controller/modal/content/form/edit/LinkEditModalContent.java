@@ -39,18 +39,6 @@ public class LinkEditModalContent extends EditModalContent<Link>{
 
     }
 
-    @NotNull
-    @Override
-    public String getHeaderTitle() {
-        return data==null?"":data.getTitle();
-    }
-
-    @NotNull
-    @Override
-    public String getHeaderHint() {
-        return "Link title";
-    }
-
     @Override
     public void onAction() {
 

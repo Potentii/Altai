@@ -58,9 +58,6 @@ public abstract class ModalContent<T> {
      */
     public abstract void setData(@Nullable T data);
 
-    @NotNull
-    public abstract String getHeaderTitle();
-
     public final Node getNode(){
         return root;
     }
@@ -68,6 +65,7 @@ public abstract class ModalContent<T> {
     public final void setOnActionFinishedCallback(@Nullable Callback callback){
         onActionFinishedCallback = callback;
     }
+
 
 
     /*

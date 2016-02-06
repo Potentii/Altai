@@ -32,28 +32,32 @@ public class HostContext extends ListedContentContext<Host> {
         try {
             DAO<Host> dao = new HostDAO();
 
-            dao.retrieveMultiple(host -> true, Comparator.comparing(Host::getId), new RetrieveMultipleDAOCallback<Host>() {
-                @Override
-                public void onSuccess(List<Host> responseList) {
-                    dataList = responseList;
+            dao.retrieveMultiple(
+                    entity -> true,
+                    Comparator.comparing(Host::getId),
+                    new RetrieveMultipleDAOCallback<Host>() {
+                        @Override
+                        public void onSuccess(List<Host> responseList) {
+                            dataList = responseList;
 
-                    Platform.runLater(() -> {
-                        listView.setItems(FXCollections.observableArrayList(dataList));
-                        listView.setCellFactory(param -> new HostLVAdapter());
-                        listView.setOnMouseClicked(event -> {
-                            if(event.getClickCount() == 2) {
-                                onItemSelected();
-                            }
-                        });
+                            Platform.runLater(() -> {
+                                listView.setItems(FXCollections.observableArrayList(dataList));
+                                listView.setCellFactory(param -> new HostLVAdapter());
+                                listView.setOnMouseClicked(event -> {
+                                    if(event.getClickCount() == 2) {
+                                        onItemSelected();
+                                    }
+                                });
+                            });
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+                            // ERROR
+                            // TODO
+                        }
                     });
-                }
 
-                @Override
-                public void onFailure(Exception e) {
-                    // ERROR
-                    // TODO
-                }
-            });
         } catch (UndeclaredEntityException e) {
             e.printStackTrace();
         }
@@ -67,7 +71,7 @@ public class HostContext extends ListedContentContext<Host> {
         }
         try {
             DetailModalWindow<Host> detailWindow = new DetailModalWindow<>(new HostDetailContent(), selectedItem, "Host");
-            detailWindow.setOnActionFinishedCallback(host -> onUpdateRequested());
+            detailWindow.setOnActionFinishedCallback(entity -> onUpdateRequested());
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }
@@ -87,7 +91,7 @@ public class HostContext extends ListedContentContext<Host> {
     protected void addBtn_onClick() {
         try {
             EditModalWindow<Host> createWindow = new EditModalWindow<>(new HostCreateContent(), null, "Create host");
-            createWindow.setOnActionFinishedCallback(host -> onUpdateRequested());
+            createWindow.setOnActionFinishedCallback(entity -> onUpdateRequested());
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

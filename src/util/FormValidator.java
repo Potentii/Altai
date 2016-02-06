@@ -38,6 +38,9 @@ public class FormValidator {
      * @return The same {@code FormValidator} object
      */
     public FormValidator addField(@NotNull TextField field, @Nullable Label errorOut, @NotNull EnumSet<EValidation> validation){
+        if(errorOut!=null) {
+            errorOut.setDisable(true);
+        }
         fieldMap.put(new FieldInputErrorOutputPair(field, errorOut), validation);
         return this;
     }
@@ -65,6 +68,9 @@ public class FormValidator {
      * @return The same {@code FormValidator} object
      */
     public FormValidator addComplexField(@NotNull Validatable validatable, @Nullable TextField field, @Nullable Label errorOut){
+        if(errorOut!=null) {
+            errorOut.setDisable(true);
+        }
         complexFieldSet.put(validatable, new FieldInputErrorOutputPair(field, errorOut));
         return this;
     }
@@ -212,10 +218,10 @@ public class FormValidator {
 
         if(errorOut != null){
             if(valid){
-                errorOut.setVisible(false);
+                errorOut.setDisable(true);
                 errorOut.setText("");
             } else {
-                errorOut.setVisible(true);
+                errorOut.setDisable(false);
                 errorOut.setText(errorText);
             }
         }
@@ -236,16 +242,14 @@ public class FormValidator {
 
         if(errorOut != null){
             if(valid){
-                errorOut.setVisible(false);
+                errorOut.setDisable(true);
                 errorOut.setText("");
             } else {
-                errorOut.setVisible(true);
+                errorOut.setDisable(false);
                 errorOut.setText(validatable.getInvalidText());
             }
         }
     }
-
-
 
 
 

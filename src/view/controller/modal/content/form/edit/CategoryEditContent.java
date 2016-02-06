@@ -1,11 +1,11 @@
-package view.controller.modal.content.form.create;
+package view.controller.modal.content.form.edit;
 
+import com.sun.istack.internal.Nullable;
 import controller.persistence.UndeclaredEntityException;
 import model.Category;
 import model.dao.CategoryDAO;
 import model.dao.DAO;
-import model.dao.callback.CreateDAOCallback;
-import org.jetbrains.annotations.NotNull;
+import model.dao.callback.UpdateDAOCallback;
 import util.FormValidator;
 import view.exception.ContextLoadException;
 
@@ -14,10 +14,11 @@ import java.util.EnumSet;
 
 /**
  * @author Guilherme Reginaldo
- * @since 30/01/2016
+ * @since 06/02/2016
  */
-public class CategoryCreateContent extends CreateModalContent<Category> {
+public class CategoryEditContent extends EditModalContent<Category> {
     private FormValidator validator;
+
 
 
     /*
@@ -25,7 +26,7 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public CategoryCreateContent() throws ContextLoadException {
+    public CategoryEditContent() throws ContextLoadException {
         super("/layout/layout_edit_category.fxml");
     }
 
@@ -33,15 +34,17 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
 
     /*
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
-     *  * CreateModalContent methods:
+     *  * EditModalContent methods:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     @Override
-    protected void onInitializationRequested(){
+    protected void onDataBindRequested(@Nullable Category data) throws UndeclaredEntityException, NullPointerException {
+        getTitleIn().setText(data.getTitle());
         getTitleIn().setPromptText("Category name");
 
         validator = new FormValidator()
                 .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED));
+
     }
 
     @Override
@@ -54,7 +57,7 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
 
         // *Creating new entity instance:
         Category category = new Category(
-                0L,
+                data.getId(),
                 getTitleIn().getText(),
                 Calendar.getInstance().getTimeInMillis());
 
@@ -62,18 +65,17 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
         // *Creating the entity on the persistence layer:
         try {
             DAO<Category> dao = new CategoryDAO();
-            dao.create(category, new CreateDAOCallback() {
+            dao.update(category, new UpdateDAOCallback() {
                 @Override
-                public void onSuccess(Long id) {
-                    category.setId(id);
+                public void onSuccess() {
                     data = category;
                     onActionFinished();
                 }
 
                 @Override
                 public void onFailure(Exception e) {
-                    // ERROR
-                    // TODO
+                    //TODO
+                    //ERROR
                     System.out.println("FAILURE");
                 }
             });

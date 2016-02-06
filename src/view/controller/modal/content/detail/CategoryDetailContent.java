@@ -1,31 +1,19 @@
 package view.controller.modal.content.detail;
 
-import com.sun.istack.internal.Nullable;
-import controller.persistence.EAltaiPersistence;
-import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import model.Host;
-import org.jetbrains.annotations.NotNull;
-import view.controller.modal.content.form.edit.HostEditContent;
+import model.Category;
+import org.jetbrains.annotations.Nullable;
+import view.controller.modal.content.form.edit.CategoryEditContent;
 import view.controller.modal.window.EditModalWindow;
 import view.exception.ContextLoadException;
 
-
 /**
  * @author Guilherme Reginaldo
- * @since 04/02/2016
+ * @since 06/02/2016
  */
-public class HostDetailContent extends DetailModalContent<Host> {
-    @FXML
-    private ImageView iconImg;
-    @FXML
-    private Label urlOut;
-    @FXML
-    private Label urlPatternOut;
+public class CategoryDetailContent extends DetailModalContent<Category> {
     @FXML
     private Label dateOut;
 
@@ -36,8 +24,8 @@ public class HostDetailContent extends DetailModalContent<Host> {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public HostDetailContent() throws ContextLoadException {
-        super("/layout/layout_detail_host.fxml");
+    public CategoryDetailContent() throws ContextLoadException {
+        super("/layout/layout_detail_category.fxml");
     }
 
 
@@ -48,18 +36,15 @@ public class HostDetailContent extends DetailModalContent<Host> {
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     @Override
-    protected void onDataBindRequested(@Nullable Host data) throws UndeclaredEntityException, NullPointerException {
+    protected void onDataBindRequested(@Nullable Category data) throws UndeclaredEntityException, NullPointerException {
         getTitleOut().setText(data.getTitle());
-        iconImg.setImage(new Image("file:" + PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.HOST_ICON_RELATIVE_PATH.getValue() + data.getImgPath()));
-        urlOut.setText(data.getUrl());
-        urlPatternOut.setText(data.getUrlPattern());
         dateOut.setText(data.getDate() + "");
     }
 
     @Override
     public void onAction() {
         try{
-            EditModalWindow<Host> editWindow = new EditModalWindow<>(new HostEditContent(), data, "Edit host");
+            EditModalWindow<Category> editWindow = new EditModalWindow<>(new CategoryEditContent(), data, "Edit category");
             editWindow.setOnActionFinishedCallback(entity -> {
                 setData(entity);
 
@@ -69,5 +54,4 @@ public class HostDetailContent extends DetailModalContent<Host> {
             e.printStackTrace();
         }
     }
-
 }

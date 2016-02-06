@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import model.Link;
+import org.jetbrains.annotations.NotNull;
 import view.Standalone;
 
 import java.text.DecimalFormat;
@@ -14,7 +15,7 @@ import java.text.DecimalFormat;
  * @author Guilherme Reginaldo
  * @since 24/01/2016
  */
-public class LinkLVAdapter extends ListViewAdapter<Link> {
+public class LinkLVAdapter extends CellAdapter<Link> {
     @FXML
     private ImageView ratingImg;
     @FXML
@@ -25,9 +26,10 @@ public class LinkLVAdapter extends ListViewAdapter<Link> {
     private Label descOut;
 
 
+    @NotNull
     @Override
     protected String getFXMLPath() {
-        return "/res/layout/row_lv_link.fxml";
+        return "/layout/row_lv_link.fxml";
     }
 
 

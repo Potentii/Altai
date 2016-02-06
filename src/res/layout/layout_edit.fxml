@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
+<?import view.control.FormRow?>
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../style/style_standalone.css" />
@@ -32,11 +33,12 @@
     <top>
         <ToolBar id="appBar" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" BorderPane.alignment="CENTER">
          <items>
-            <TextField fx:id="titleIn" maxWidth="1.7976931348623157E308" minWidth="0.0" styleClass="appBarInput" text="Text" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextField>
+             <FormRow HBox.hgrow="ALWAYS">
+                 <VBox FormRow.hgrow="ALWAYS">
+                     <TextField fx:id="titleIn"/>
+                     <Label styleClass="errorOut" fx:id="titleErrorOut"/>
+                 </VBox>
+             </FormRow>
          </items>
         </ToolBar>
     </top>

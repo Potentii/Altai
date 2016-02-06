@@ -5,17 +5,20 @@ import controller.persistence.EAltaiPersistence;
 import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.Host;
 import model.dao.DAO;
 import model.dao.HostDAO;
 import model.dao.callback.CreateDAOCallback;
 import org.jetbrains.annotations.NotNull;
+import util.FormValidator;
 import util.callback.SimpleResponseCallback;
 import view.control.FilePicker;
 import view.exception.ContextLoadException;
 import java.io.File;
 import java.util.Calendar;
+import java.util.EnumSet;
 import java.util.UUID;
 
 /**
@@ -29,6 +32,15 @@ public class HostCreateContent extends CreateModalContent<Host> {
     private TextField urlPatternIn;
     @FXML
     private FilePicker filePicker;
+
+    @FXML
+    private Label urlErrorOut;
+    @FXML
+    private Label urlPatternErrorOut;
+    @FXML
+    private Label filePickerErrorOut;
+
+    private FormValidator validator;
 
 
 
@@ -50,18 +62,22 @@ public class HostCreateContent extends CreateModalContent<Host> {
      */
     @Override
     protected void onInitializationRequested(){
+        getTitleIn().setPromptText("Host name");
         filePicker.setFileFilters(FilePicker.FILE_FILTER_IMAGE);
-    }
 
-    @NotNull
-    @Override
-    public String getHeaderHint() {
-        return "Host name";
+        validator = new FormValidator()
+                .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED))
+                .addField(urlIn, urlErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
+                .addField(urlPatternIn, urlPatternErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
+                .addComplexField(filePicker, null, filePickerErrorOut);
     }
 
     @Override
     public void onAction(){
-        // TODO validate this
+        validator.doVisualValidation();
+        if(!validator.isValid()){
+            return;
+        }
 
 
         // *Generating the selected icon's new name:
@@ -79,7 +95,7 @@ public class HostCreateContent extends CreateModalContent<Host> {
                 // *Creating new entity instance:
                 Host host = new Host(
                         0L,
-                        consumeTitle(),
+                        getTitleIn().getText(),
                         urlIn.getText(),
                         urlPatternIn.getText(),
                         newIconFileName,

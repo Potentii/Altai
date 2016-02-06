@@ -16,15 +16,24 @@
             <children>
 
                 <FormRow>
-                    <TextField FormRow.hgrow="ALWAYS" fx:id="urlIn" promptText="Url"/>
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <TextField fx:id="urlIn" promptText="Url"/>
+                        <Label styleClass="errorOut" fx:id="urlErrorOut"/>
+                    </VBox>
                 </FormRow>
 
                 <FormRow>
-                    <TextField FormRow.hgrow="ALWAYS" fx:id="urlPatternIn" promptText="Url pattern"/>
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <TextField fx:id="urlPatternIn" promptText="Url pattern"/>
+                        <Label styleClass="errorOut" fx:id="urlPatternErrorOut"/>
+                    </VBox>
                 </FormRow>
 
                 <FormRow>
-                    <FilePicker FormRow.hgrow="ALWAYS" fx:id="filePicker" buttonText="Select icon"/>
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <FilePicker fx:id="filePicker" buttonText="Select icon"/>
+                        <Label styleClass="errorOut" fx:id="filePickerErrorOut"/>
+                    </VBox>
                 </FormRow>
 
             </children>

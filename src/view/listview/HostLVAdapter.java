@@ -13,7 +13,7 @@ import view.Standalone;
  * @author Guilherme Reginaldo
  * @since 27/01/2016
  */
-public class HostLVAdapter extends ListViewAdapter<Host> {
+public class HostLVAdapter extends CellAdapter<Host> {
     @FXML
     private Hyperlink titleOut;
     @FXML

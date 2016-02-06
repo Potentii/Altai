@@ -1,15 +1,19 @@
 package view.controller.modal.content.detail;
 
-import com.sun.istack.internal.Nullable;
 import controller.persistence.UndeclaredEntityException;
+import javafx.scene.control.Label;
+import org.jetbrains.annotations.Nullable;
 import view.controller.modal.content.ModalContent;
 import view.exception.ContextLoadException;
+
+import java.util.function.Supplier;
 
 /**
  * @author Guilherme Reginaldo
  * @since 04/02/2016
  */
 public abstract class DetailModalContent<T> extends ModalContent<T> {
+    private Supplier<Label> titleOutSupplier;
 
 
 
@@ -47,4 +51,16 @@ public abstract class DetailModalContent<T> extends ModalContent<T> {
             e.printStackTrace();
         }
     }
+
+    public final void setTitleOutSupplier(Supplier<Label> supplier){
+        titleOutSupplier = supplier;
+    }
+    @Nullable
+    protected final Label getTitleOut(){
+        if(titleOutSupplier != null){
+            return titleOutSupplier.get();
+        }
+        return null;
+    }
+
 }

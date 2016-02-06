@@ -47,10 +47,4 @@ public abstract class CreateModalContent<T> extends FormModalContent<T> {
             e.printStackTrace();
         }
     }
-
-    @NotNull
-    @Override
-    public final String getHeaderTitle() {
-        return "";
-    }
 }

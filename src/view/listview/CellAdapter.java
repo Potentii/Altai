@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -12,7 +13,7 @@ import java.io.IOException;
  * @author Guilherme Reginaldo
  * @since 24/01/2016
  */
-public abstract class ListViewAdapter<T> extends ListCell<T> {
+public abstract class CellAdapter<T> extends ListCell<T> {
     @FXML
     private Node root;
 
@@ -37,7 +38,7 @@ public abstract class ListViewAdapter<T> extends ListCell<T> {
     }
 
 
-    public ListViewAdapter(){
+    public CellAdapter(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(getFXMLPath()));
             fxmlLoader.setController(this);
@@ -49,9 +50,11 @@ public abstract class ListViewAdapter<T> extends ListCell<T> {
     }
 
 
+
     /**
      * @return the row's fxml path
      */
+    @NotNull
     protected abstract String getFXMLPath();
     public abstract void bindData(T data) throws NullPointerException;
 }

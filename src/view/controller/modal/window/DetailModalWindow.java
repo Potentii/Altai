@@ -24,8 +24,9 @@ public class DetailModalWindow<T> extends ModalWindow<T>{
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     public DetailModalWindow(DetailModalContent<T> controller, @NotNull T data, String title) throws ContextLoadException{
-        super("/res/layout/layout_detail.fxml", controller, data, title);
-        titleOut.setText(controller.getHeaderTitle());
+        super("/res/layout/layout_detail.fxml", controller, title);
+        controller.setTitleOutSupplier(() -> titleOut);
+        controller.setData(data);
     }
 
 

@@ -37,7 +37,7 @@ public abstract class ModalWindow<T> {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public ModalWindow(@NotNull String sceneFXML, @NotNull ModalContent<T> controller, @Nullable  T data, @NotNull String title) throws ContextLoadException {
+    public ModalWindow(@NotNull String sceneFXML, @NotNull ModalContent<T> controller, @NotNull String title) throws ContextLoadException {
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
@@ -50,8 +50,6 @@ public abstract class ModalWindow<T> {
             window.show();
             contentContainer.setCenter(controller.getNode());
 
-
-            controller.setData(data);
             controller.setOnActionFinishedCallback(this::onActionFinished);
             this.controller = controller;
         } catch (NullPointerException | IOException e) {
