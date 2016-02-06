@@ -28,7 +28,6 @@ public class EditModalWindow<T> extends ModalWindow<T> {
         titleIn.setText(controller.getHeaderTitle());
         titleIn.setPromptText(controller.getHeaderHint());
         controller.setTitleSupplier(titleIn::getText);
-        controller.setOnActionFinishedCallback(super::onActionFinished);
     }
 
 

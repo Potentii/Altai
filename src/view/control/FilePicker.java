@@ -34,6 +34,7 @@ public class FilePicker extends VBox{
 
     private File file;
     private List<ExtensionFilter> fileFilterList;
+    private boolean fileChanged;
 
 
 
@@ -64,6 +65,7 @@ public class FilePicker extends VBox{
      */
     private void initialize(){
         fileFilterList = new ArrayList<>();
+        fileChanged = false;
     }
 
 
@@ -84,6 +86,21 @@ public class FilePicker extends VBox{
 
     /*
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Class methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    public void printFileName(){
+        if(file != null){
+            fileOut.setText(file.getName());
+        } else{
+            fileOut.setText("");
+        }
+    }
+
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      *  * Listener methods:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
@@ -94,7 +111,12 @@ public class FilePicker extends VBox{
 
         fileChooser.getExtensionFilters().addAll(fileFilterList);
         File selectedFile = fileChooser.showOpenDialog(null);
-        setFile(selectedFile);
+
+        if(selectedFile != null){
+            fileChanged = !selectedFile.equals(file);
+            file = selectedFile;
+            printFileName();
+        }
     }
 
 
@@ -109,9 +131,6 @@ public class FilePicker extends VBox{
     }
     public void setFile(File file) {
         this.file = file;
-        if(file != null) {
-            fileOut.setText(file.getName());
-        }
     }
 
     public void setFileFilters(short... fileFilters) {
@@ -120,7 +139,7 @@ public class FilePicker extends VBox{
             ExtensionFilter filter = null;
             switch (fileFilter){
                 case FILE_FILTER_IMAGE:
-                    filter = new ExtensionFilter("Image", "*.jpg", "*.png", "*.bmp", "*.gif", "*.ico");
+                    filter = new ExtensionFilter("Image", "*.jpg", "*.png", "*.bmp", "*.gif");
                     break;
                 case FILE_FILTER_JSON:
                     filter = new ExtensionFilter("Json", "*.json");
@@ -136,5 +155,12 @@ public class FilePicker extends VBox{
                 fileFilterList.add(filter);
             }
         }
+    }
+
+    public boolean isFileChanged() {
+        return fileChanged;
+    }
+    public void setFileChanged(boolean fileChanged) {
+        this.fileChanged = fileChanged;
     }
 }

@@ -52,6 +52,7 @@ public abstract class ModalWindow<T> {
 
 
             controller.setData(data);
+            controller.setOnActionFinishedCallback(this::onActionFinished);
             this.controller = controller;
         } catch (NullPointerException | IOException e) {
             throw new ContextLoadException(e.getMessage());

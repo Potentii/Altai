@@ -31,12 +31,21 @@ public class HostDetailContent extends DetailModalContent<Host> {
 
 
 
-
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     public HostDetailContent() throws ContextLoadException {
         super("/layout/layout_detail_host.fxml");
     }
 
 
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * DetailModalContent methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     @Override
     protected void onDataBindRequested(@Nullable Host data) throws UndeclaredEntityException, NullPointerException {
         iconImg.setImage(new Image("file:" + PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.HOST_ICON_RELATIVE_PATH.getValue() + data.getImgPath()));
@@ -49,7 +58,11 @@ public class HostDetailContent extends DetailModalContent<Host> {
     public void onAction() {
         try{
             EditModalWindow<Host> editWindow = new EditModalWindow<>(new HostEditContent(), data, "Edit host");
-            editWindow.setOnActionFinishedCallback(this::setData);
+            editWindow.setOnActionFinishedCallback(entity -> {
+                setData(entity);
+
+                onActionFinished();
+            });
         } catch (ContextLoadException e) {
             e.printStackTrace();
         }

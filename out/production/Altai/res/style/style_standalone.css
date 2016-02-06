@@ -38,11 +38,9 @@ TextField:focused{
     -fx-shape: "M0 100 h100 V0 V100 v-5.57 h-100 Z";
     -fx-background-color: rgba(221, 51, 136, 0.9);
 }
-FormRow{
 
-}
 /* TODO remove it */
-FormRow ImageView{
+.formRowImageLabel{
     -fx-image: url("/res/image/ic_link_36.png");
 }
 
@@ -176,9 +174,9 @@ FormRow ImageView{
 }
 
 .FAB_confirm ImageView{
-    -fx-image: url("/res/image/ic_add_24.png");
+    -fx-image: url("/res/image/ic_confirm_24.png");
 }
 
 .FAB_edit ImageView{
-    -fx-image: url("/res/image/ic_add_24.png");
+    -fx-image: url("/res/image/ic_edit_24.png");
 }

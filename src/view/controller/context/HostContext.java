@@ -40,7 +40,11 @@ public class HostContext extends ListedContentContext<Host> {
                     Platform.runLater(() -> {
                         listView.setItems(FXCollections.observableArrayList(dataList));
                         listView.setCellFactory(param -> new HostLVAdapter());
-                        listView.setOnMouseClicked(event -> onItemSelected());
+                        listView.setOnMouseClicked(event -> {
+                            if(event.getClickCount() == 2) {
+                                onItemSelected();
+                            }
+                        });
                     });
                 }
 

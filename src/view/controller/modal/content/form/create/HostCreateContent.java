@@ -116,8 +116,5 @@ public class HostCreateContent extends CreateModalContent<Host> {
                 e.printStackTrace();
             }
         });
-
-
-
     }
 }
