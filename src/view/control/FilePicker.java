@@ -47,7 +47,7 @@ public class FilePicker extends VBox implements Validatable{
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     public FilePicker(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/res/control/control_file_picker.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/control/control_file_picker.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

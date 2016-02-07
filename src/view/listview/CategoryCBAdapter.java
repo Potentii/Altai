@@ -16,7 +16,7 @@ public class CategoryCBAdapter extends CellAdapter<Category> {
     @NotNull
     @Override
     protected String getFXMLPath() {
-        return "/layout/row_cb_category.fxml"; // TODO
+        return "/layout/row_cb_category.fxml";
     }
 
     @Override

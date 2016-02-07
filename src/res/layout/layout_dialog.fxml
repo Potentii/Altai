@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../style/style_dialog.css" />
+    </stylesheets>
+
+    <children>
+      <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="dialogTopBar">
+         <padding>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </padding>
+         <children>
+            <ImageView fx:id="dialogTitleImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="-0.56" />
+               </effect></ImageView>
+            <Label fx:id="dialogTitleOut" />
+         </children>
+      </HBox>
+      <BorderPane fx:id="contentContainer" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane styleClass="dialogBottomBar" HBox.hgrow="ALWAYS">
+         <children>
+            <Button fx:id="neutralBtn" cancelButton="true" mnemonicParsing="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <HBox spacing="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="negativeBtn" mnemonicParsing="false" />
+                  <Button fx:id="positiveBtn" defaultButton="true" mnemonicParsing="false" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </padding>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </AnchorPane>
+   </children>
+</VBox>
