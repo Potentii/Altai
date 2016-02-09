@@ -1,15 +1,40 @@
-.dialogTopBar{
+
+
+
+
+#dialogTopBar, #dialogBottomBar, #contentContainer{
+    -fx-background-color: #f7f7f7;
+
 }
 
-.dialogBottomBar{
+
+
+
+#dialogTopBar Label{
+    -fx-text-fill: #444;
+    -fx-font: 16 "System";
+}
+#dialogTopBar ImageView{
+    fx-min-width: 0;
+    fx-pref-width: 24;
+}
+#dialogTopBar ImageView:disabled{
+    fx-pref-width: 0;
 }
 
 
-.dialogTopBar Label{
+#dialogBottomBar Button{
+    -fx-focus-color: transparent;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: #666;
+    -fx-font: 14 "System";
 }
 
-
-.dialogBottomBar Button{
+#dialogBottomBar Button:default{
+    -fx-text-fill: #009688;
+    -fx-font: bolder 16 "System";
 }
 
 

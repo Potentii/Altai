@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Guilherme Reginaldo
  * @since 06/02/2016
  */
+@Deprecated
 public class CategoryCBAdapter extends CellAdapter<Category> {
     @FXML
     private Label titleOut;

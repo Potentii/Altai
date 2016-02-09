@@ -33,7 +33,7 @@
     <top>
         <ToolBar id="appBar" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" BorderPane.alignment="CENTER">
          <items>
-             <FormRow HBox.hgrow="ALWAYS">
+             <FormRow HBox.hgrow="ALWAYS" icon="">
                  <VBox FormRow.hgrow="ALWAYS">
                      <TextField fx:id="titleIn"/>
                      <Label styleClass="errorOut" fx:id="titleErrorOut"/>

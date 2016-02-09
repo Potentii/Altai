@@ -10,6 +10,7 @@ import model.dao.callback.*;
 import org.json.JSONObject;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -70,7 +71,6 @@ public class AssociativeEntityDAO<T extends AssociativeEntity> implements DAO<As
      *  * DAO methods:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-
     @Override
     public void create(AssociativeEntity entity, CreateDAOCallback createDAOCallback) {
         entityTransaction.create(
@@ -78,6 +78,15 @@ public class AssociativeEntityDAO<T extends AssociativeEntity> implements DAO<As
                 FIELD_SET[0],
                 createDAOCallback
         );
+    }
+
+    @Override
+    public void createMultiple(List<AssociativeEntity> entityList, CreateMultipleDAOCallback createMultipleDAOCallback) {
+        entityTransaction.createMultiple(
+                entityList,
+                getJSONFromEntity,
+                FIELD_SET[0],
+                createMultipleDAOCallback);
     }
 
     @Override

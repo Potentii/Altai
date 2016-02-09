@@ -46,7 +46,7 @@ public abstract class DialogFragment {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public DialogFragment(@NotNull String contentFXML, @Nullable URL titleImgURL, @NotNull String title) throws ContextLoadException {
+    public DialogFragment(@NotNull String contentFXML, @Nullable String titleImgPath, @NotNull String title) throws ContextLoadException {
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
@@ -58,12 +58,20 @@ public abstract class DialogFragment {
             window.setScene(new Scene(loader.load()));
             window.show();
 
-            if(titleImgURL != null) {
-                dialogTitleImg.setImage(new Image(titleImgURL.getFile()));
+            if(titleImgPath != null && !titleImgPath.trim().isEmpty()) {
+                try {
+                    dialogTitleImg.setImage(new Image(getClass().getResourceAsStream(titleImgPath)));
+                } catch (NullPointerException e){
+                    System.err.println("DialogFragment's header icon not found!");
+                }
+            } else{
+                dialogTitleImg.setDisable(true);
             }
-            dialogTitleOut.setText(title);
-            contentContainer.setCenter(new FXMLLoader(getClass().getResource(contentFXML)).load());
 
+            dialogTitleOut.setText(title);
+            loader = new FXMLLoader(getClass().getResource(contentFXML));
+            loader.setController(this);
+            contentContainer.setCenter(loader.load());
 
             Builder builder = onCreate(new Builder());
             builder.configureDialogButtons(neutralBtn, negativeBtn, positiveBtn);
@@ -79,7 +87,19 @@ public abstract class DialogFragment {
      *  * Abstract methods:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
+    @NotNull
     protected abstract Builder onCreate(Builder builder);
+
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Class methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    protected void close(){
+        window.close();
+    }
 
 
 

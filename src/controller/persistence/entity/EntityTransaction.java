@@ -3,9 +3,11 @@ package controller.persistence.entity;
 import controller.io.TextIOHandler;
 import controller.io.callback.ReadFileCallback;
 import controller.io.callback.WriteFileCallback;
+import model.AssociativeEntity;
 import model.dao.callback.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import util.callback.SimpleResponseCallback;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -54,6 +56,45 @@ public final class EntityTransaction<T> {
             @Override
             public void onFailure(Exception e) {
                 createDAOCallback.onFailure(e);
+            }
+        });
+    }
+
+
+    public void createMultiple(final List<T> entityList, final Function<T, JSONObject> getJSONFromEntity, final String idKey, final CreateMultipleDAOCallback createMultipleDAOCallback){
+        textIOHandler.read(new ReadFileCallback<String>() {
+            @Override
+            public void onSuccess(String response) {
+                final List<Long> idList = new ArrayList<>();
+                EntityFile entityFile = new EntityFile(response);
+                Metadata metadata = entityFile.getMetadata();
+
+                entityList.forEach(t -> {
+                    long newId = metadata.getNewId();
+                    JSONObject jsonObject = getJSONFromEntity.apply(t);
+                    jsonObject.put(idKey, newId);
+                    entityFile.appendContent(jsonObject);
+                    metadata.setLastId(newId);
+                    idList.add(newId);
+                });
+
+                entityFile.setMetadata(metadata);
+                textIOHandler.write(entityFile.toString(), new WriteFileCallback() {
+                    @Override
+                    public void onSuccess() {
+                        createMultipleDAOCallback.onSuccess(idList);
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        createMultipleDAOCallback.onFailure(e);
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                createMultipleDAOCallback.onFailure(e);
             }
         });
     }

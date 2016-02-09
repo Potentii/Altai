@@ -7,6 +7,7 @@ import model.dao.callback.*;
 import org.json.JSONObject;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -63,6 +64,15 @@ public abstract class GenericDAO<T> implements DAO<T> {
                 getIdKey(),
                 createDAOCallback
         );
+    }
+
+    @Override
+    public void createMultiple(List<T> entityList, CreateMultipleDAOCallback createMultipleDAOCallback) {
+        entityTransaction.createMultiple(
+                entityList,
+                getJSONFromEntity(),
+                getIdKey(),
+                createMultipleDAOCallback);
     }
 
     @Override

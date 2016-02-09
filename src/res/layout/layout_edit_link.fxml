@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import view.control.FormRow?>
-<?import view.control.FilePicker?>
 <?import java.net.URL?>
 
 <ScrollPane focusTraversable="false" hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
@@ -15,29 +14,29 @@
         <VBox>
             <children>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_link_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
                         <TextField fx:id="urlIn" promptText="Url"/>
                         <Label styleClass="errorOut" fx:id="urlErrorOut"/>
                     </VBox>
                 </FormRow>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_description_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
                         <TextField fx:id="descIn" promptText="Description"/>
                     </VBox>
                 </FormRow>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_rating_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
                         <TextField fx:id="ratingIn" promptText="Rating"/>
                         <Label styleClass="errorOut" fx:id="ratingErrorOut"/>
                     </VBox>
                 </FormRow>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_category_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
-                        <ComboBox fx:id="categoryComboBox" promptText="Select category"/>
+                        <Button fx:id="categoryPickerBtn" text="Select categories"/>
                     </VBox>
                 </FormRow>
 

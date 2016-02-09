@@ -71,7 +71,7 @@ public class StandaloneSceneController implements Initializable{
             public void onSuccess() {
                 // TODO get default screen
                 menuBtn.setOnAction(event -> menuClosedBtn_onClick());
-                loadCategoriesContext();
+                loadLinkContext();
             }
 
             @Override

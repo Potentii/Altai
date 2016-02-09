@@ -5,6 +5,5 @@ FormRow Label{
 FormRow Button{
     -fx-text-fill: #444;
     -fx-font: 14 "System";
+    -fx-max-width: Infinity;
 }
-
-

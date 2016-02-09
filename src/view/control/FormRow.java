@@ -1,6 +1,9 @@
 package view.control;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -10,7 +13,18 @@ import java.io.IOException;
  * @since 31/01/2016
  */
 public class FormRow extends HBox {
+    @FXML
+    private ImageView iconImg;
 
+    private String iconPath;
+
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * Constructor:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
     public FormRow(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/control/control_form_row.fxml"));
         fxmlLoader.setRoot(this);
@@ -23,4 +37,23 @@ public class FormRow extends HBox {
         }
     }
 
+
+
+    /*
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     *  * FXML properties methods:
+     *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
+     */
+    public final void setIcon(String iconPath) {
+        if(iconPath.trim().isEmpty()){
+            getChildren().remove(iconImg);
+        } else{
+            iconImg.setImage(new Image(iconPath));
+        }
+        this.iconPath = iconPath;
+    }
+
+    public final String getIcon() {
+        return iconPath;
+    }
 }

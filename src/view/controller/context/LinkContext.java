@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import model.Link;
+import view.controller.modal.content.form.create.LinkCreateContent;
+import view.controller.modal.window.EditModalWindow;
 import view.listview.LinkLVAdapter;
 import view.controller.modal.window.DetailModalWindow;
 import view.exception.ContextLoadException;
@@ -71,6 +73,11 @@ public class LinkContext extends ListedContentContext<Link> {
 
     @Override
     protected void addBtn_onClick() {
-
+        try {
+            EditModalWindow<Link> createWindow = new EditModalWindow<>(new LinkCreateContent(), null, "Create link");
+            createWindow.setOnActionFinishedCallback(entity -> onUpdateRequested());
+        } catch (ContextLoadException e) {
+            e.printStackTrace();
+        }
     }
 }

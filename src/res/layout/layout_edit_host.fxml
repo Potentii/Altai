@@ -15,21 +15,21 @@
         <VBox>
             <children>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_link_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
                         <TextField fx:id="urlIn" promptText="Url"/>
                         <Label styleClass="errorOut" fx:id="urlErrorOut"/>
                     </VBox>
                 </FormRow>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_url_pattern_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
                         <TextField fx:id="urlPatternIn" promptText="Url pattern"/>
                         <Label styleClass="errorOut" fx:id="urlPatternErrorOut"/>
                     </VBox>
                 </FormRow>
 
-                <FormRow>
+                <FormRow icon="@../image/ic_image_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
                         <FilePicker fx:id="filePicker" buttonText="Select icon"/>
                         <Label styleClass="errorOut" fx:id="filePickerErrorOut"/>

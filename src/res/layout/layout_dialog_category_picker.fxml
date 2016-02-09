@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import view.control.SelectionListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../style/style_context.css" />
+    </stylesheets>
+    <children>
+        <SelectionListView fx:id="selectionListView" focusTraversable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        </SelectionListView>
+    </children>
+</AnchorPane>
+

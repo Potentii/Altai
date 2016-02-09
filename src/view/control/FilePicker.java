@@ -31,8 +31,6 @@ public class FilePicker extends VBox implements Validatable{
     @FXML
     private Label fileOut;
 
-    private StringProperty buttonText = new SimpleStringProperty(this, "buttonText");
-
     private File file;
     private List<ExtensionFilter> fileFilterList;
     private boolean fileChanged;

@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.effect.*?>
-<?import java.net.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+
+
 <?import java.net.URL?>
+<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@../style/style_dialog.css" />
+   </stylesheets>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <stylesheets>
-        <URL value="@../style/style_dialog.css" />
-    </stylesheets>
-
-    <children>
-      <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="dialogTopBar">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="16.0" id="dialogTopBar" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
          </padding>
@@ -24,12 +22,17 @@
             <ImageView fx:id="dialogTitleImg" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <ColorAdjust brightness="-0.56" />
-               </effect></ImageView>
+               </effect>
+            </ImageView>
             <Label fx:id="dialogTitleOut" />
          </children>
       </HBox>
-      <BorderPane fx:id="contentContainer" prefHeight="200.0" prefWidth="200.0" />
-      <AnchorPane styleClass="dialogBottomBar" HBox.hgrow="ALWAYS">
+   </top>
+   <center>
+      <BorderPane id="contentContainer" fx:id="contentContainer" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <AnchorPane id="dialogBottomBar" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="neutralBtn" cancelButton="true" mnemonicParsing="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <HBox spacing="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -42,9 +45,6 @@
          <padding>
             <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
          </padding>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
       </AnchorPane>
-   </children>
-</VBox>
+   </bottom>
+</BorderPane>

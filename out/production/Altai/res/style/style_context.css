@@ -1,5 +1,5 @@
-ListView{
-    -fx-background-color: #fff;
+ListView, SelectionListView{
+    -fx-background-color: transparent;
     -fx-focus-color: transparent;
     -fx-fixed-cell-size: 56;
 }
