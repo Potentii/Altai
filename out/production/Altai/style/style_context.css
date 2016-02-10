@@ -55,7 +55,7 @@ ListView, SelectionListView{
 }
 
 .listViewItem_circle{
-    -fx-image: url("/res/image/ic_circle_36.png");
+    -fx-image: url("/image/ic_circle_36.png");
 
 }
 .listViewItem_circle_text{

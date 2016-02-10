@@ -11,7 +11,7 @@
     </stylesheets>
 
     <content>
-        <VBox>
+        <VBox styleClass="form">
             <children>
 
                 <FormRow icon="@../image/ic_link_24.png">
@@ -31,6 +31,22 @@
                     <VBox FormRow.hgrow="ALWAYS">
                         <TextField fx:id="ratingIn" promptText="Rating"/>
                         <Label styleClass="errorOut" fx:id="ratingErrorOut"/>
+                    </VBox>
+                </FormRow>
+
+                <FormRow icon="@../image/ic_favorite_24.png">
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <AnchorPane>
+                            <CheckBox fx:id="favoriteIn" AnchorPane.rightAnchor="0"/>
+                        </AnchorPane>
+                    </VBox>
+                </FormRow>
+
+                <FormRow icon="@../image/ic_flag_24.png">
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <AnchorPane>
+                            <CheckBox fx:id="flaggedIn" AnchorPane.rightAnchor="0"/>
+                        </AnchorPane>
                     </VBox>
                 </FormRow>
 

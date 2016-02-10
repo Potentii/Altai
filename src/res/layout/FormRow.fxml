@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<?import javafx.scene.image.ImageView?>
-<!-- @Deprecated -->
-<fx:root type="javafx.scene.layout.HBox" xmlns:fx="http://javafx.com/fxml">
-    <ImageView fitHeight="24" fitWidth="24"/>
-
-</fx:root>

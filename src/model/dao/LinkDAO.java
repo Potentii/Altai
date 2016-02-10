@@ -1,15 +1,9 @@
 package model.dao;
 
-import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
-import controller.persistence.entity.EntityTransaction;
 import model.Link;
-import model.dao.callback.*;
 import org.json.JSONObject;
-
-import java.util.Comparator;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * @author Guilherme Reginaldo
@@ -24,6 +18,7 @@ public class LinkDAO extends GenericDAO<Link> {
             "ti",
             "ur",
             "de",
+            "fa",
             "fl",
             "ra",
             "da",
@@ -60,10 +55,11 @@ public class LinkDAO extends GenericDAO<Link> {
                 .put(FIELD_SET[1], entity.getTitle())
                 .put(FIELD_SET[2], entity.getUrl())
                 .put(FIELD_SET[3], entity.getDescription())
-                .put(FIELD_SET[4], entity.isFlagged())
-                .put(FIELD_SET[5], entity.getRating())
-                .put(FIELD_SET[6], entity.getDate())
-                .put(FIELD_SET[7], entity.getHostId_FK());
+                .put(FIELD_SET[4], entity.isFavorite())
+                .put(FIELD_SET[5], entity.isFlagged())
+                .put(FIELD_SET[6], entity.getRating())
+                .put(FIELD_SET[7], entity.getDate())
+                .put(FIELD_SET[8], entity.getHostId_FK());
     }
 
     @Override
@@ -74,9 +70,10 @@ public class LinkDAO extends GenericDAO<Link> {
                 jsonObject.getString(FIELD_SET[2]),
                 jsonObject.getString(FIELD_SET[3]),
                 jsonObject.getBoolean(FIELD_SET[4]),
-                jsonObject.getDouble(FIELD_SET[5]),
-                jsonObject.getLong(FIELD_SET[6]),
-                jsonObject.getLong(FIELD_SET[7])
+                jsonObject.getBoolean(FIELD_SET[5]),
+                jsonObject.getDouble(FIELD_SET[6]),
+                jsonObject.getLong(FIELD_SET[7]),
+                jsonObject.getLong(FIELD_SET[8])
         );
     }
 }

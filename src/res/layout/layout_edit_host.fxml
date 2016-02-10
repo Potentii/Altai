@@ -5,6 +5,7 @@
 <?import view.control.FormRow?>
 <?import view.control.FilePicker?>
 <?import java.net.URL?>
+<?import view.control.UrlPatternTextField?>
 
 <ScrollPane focusTraversable="false" hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
@@ -12,7 +13,7 @@
     </stylesheets>
 
     <content>
-        <VBox>
+        <VBox styleClass="form">
             <children>
 
                 <FormRow icon="@../image/ic_link_24.png">
@@ -24,7 +25,7 @@
 
                 <FormRow icon="@../image/ic_url_pattern_24.png">
                     <VBox FormRow.hgrow="ALWAYS">
-                        <TextField fx:id="urlPatternIn" promptText="Url pattern"/>
+                        <UrlPatternTextField fx:id="urlPatternIn" promptText="Url pattern"/>
                         <Label styleClass="errorOut" fx:id="urlPatternErrorOut"/>
                     </VBox>
                 </FormRow>

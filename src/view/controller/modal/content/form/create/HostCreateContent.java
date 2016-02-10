@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import util.FormValidator;
 import util.callback.SimpleResponseCallback;
 import view.control.FilePicker;
+import view.control.UrlPatternTextField;
 import view.exception.ContextLoadException;
 import java.io.File;
 import java.util.Calendar;
@@ -29,7 +30,7 @@ public class HostCreateContent extends CreateModalContent<Host> {
     @FXML
     private TextField urlIn;
     @FXML
-    private TextField urlPatternIn;
+    private UrlPatternTextField urlPatternIn;
     @FXML
     private FilePicker filePicker;
 
@@ -62,13 +63,13 @@ public class HostCreateContent extends CreateModalContent<Host> {
      */
     @Override
     protected void onInitializationRequested(){
-        getTitleIn().setPromptText("Host name");
+        getTitleIn().setPromptText("Host's name");
         filePicker.setFileFilters(FilePicker.FILE_FILTER_IMAGE);
 
         validator = new FormValidator()
                 .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED))
                 .addField(urlIn, urlErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
-                .addField(urlPatternIn, urlPatternErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
+                .addComplexField(urlPatternIn, null, urlPatternErrorOut)
                 .addComplexField(filePicker, null, filePickerErrorOut);
     }
 
@@ -95,9 +96,9 @@ public class HostCreateContent extends CreateModalContent<Host> {
                 // *Creating new entity instance:
                 Host host = new Host(
                         0L,
-                        getTitleIn().getText(),
-                        urlIn.getText(),
-                        urlPatternIn.getText(),
+                        getTitleIn().getText().trim(),
+                        urlIn.getText().trim(),
+                        urlPatternIn.getText().trim(),
                         newIconFileName,
                         Calendar.getInstance().getTimeInMillis());
 

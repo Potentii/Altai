@@ -29,17 +29,17 @@ public class LinkContext extends ListedContentContext<Link> {
     @Override
     protected void onUpdateRequested() {
         dataList = new ArrayList<>();
-        dataList.add(new Link(0L, "title placeholder 2", "http://google.com/", "", true, 0.0f, new Date().getTime(), 0L));
-        dataList.add(new Link(1L, "title placeholder 1", "http://google.com/", "", true, 0.1f, new Date().getTime(), 0L));
-        dataList.add(new Link(2L, "title placeholder 2", "http://google.com/", "", true, 0.2f, new Date().getTime(), 0L));
-        dataList.add(new Link(3L, "title placeholder 2", "http://google.com/", "", true, 0.3f, new Date().getTime(), 0L));
-        dataList.add(new Link(4L, "title placeholder 2", "http://google.com/", "", true, 0.4f, new Date().getTime(), 0L));
-        dataList.add(new Link(5L, "title placeholder 2", "http://google.com/", "", true, 0.5f, new Date().getTime(), 0L));
-        dataList.add(new Link(6L, "title placeholder 2", "http://google.com/", "", true, 0.6f, new Date().getTime(), 0L));
-        dataList.add(new Link(7L, "title placeholder 2", "http://google.com/", "", true, 0.7f, new Date().getTime(), 0L));
-        dataList.add(new Link(8L, "title placeholder 2", "http://google.com/", "", true, 0.8f, new Date().getTime(), 0L));
-        dataList.add(new Link(9L, "title placeholder 2", "http://google.com/", "", true, 0.9f, new Date().getTime(), 0L));
-        dataList.add(new Link(10L, "title placeholder 2", "http://google.com/", "", true, 1.0f, new Date().getTime(), 0L));
+        dataList.add(new Link(0L, "title placeholder 2", "http://google.com/", "", false, false, 0.0f, new Date().getTime(), 0L));
+        dataList.add(new Link(1L, "title placeholder 1", "http://google.com/", "", false, true, 0.1f, new Date().getTime(), 0L));
+        dataList.add(new Link(2L, "title placeholder 2", "http://google.com/", "", false, true, 0.2f, new Date().getTime(), 0L));
+        dataList.add(new Link(3L, "title placeholder 2", "http://google.com/", "", true, false, 0.3f, new Date().getTime(), 0L));
+        dataList.add(new Link(4L, "title placeholder 2", "http://google.com/", "", false, true, 0.4f, new Date().getTime(), 0L));
+        dataList.add(new Link(5L, "title placeholder 2", "http://google.com/", "", false, true, 0.5f, new Date().getTime(), 0L));
+        dataList.add(new Link(6L, "title placeholder 2", "http://google.com/", "", true, true, 0.6f, new Date().getTime(), 0L));
+        dataList.add(new Link(7L, "title placeholder 2", "http://google.com/", "", false, true, 0.7f, new Date().getTime(), 0L));
+        dataList.add(new Link(8L, "title placeholder 2", "http://google.com/", "", false, false, 0.8f, new Date().getTime(), 0L));
+        dataList.add(new Link(9L, "title placeholder 2", "http://google.com/", "", false, false, 0.9f, new Date().getTime(), 0L));
+        dataList.add(new Link(10L, "title placeholder 2", "http://google.com/", "", true, false, 1.0f, new Date().getTime(), 0L));
 
         ObservableList<Link> userList = FXCollections.observableArrayList(dataList);
 

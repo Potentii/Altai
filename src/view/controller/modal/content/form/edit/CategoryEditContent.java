@@ -40,7 +40,7 @@ public class CategoryEditContent extends EditModalContent<Category> {
     @Override
     protected void onDataBindRequested(@Nullable Category data) throws UndeclaredEntityException, NullPointerException {
         getTitleIn().setText(data.getTitle());
-        getTitleIn().setPromptText("Category name");
+        getTitleIn().setPromptText("Category's name");
 
         validator = new FormValidator()
                 .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED));
@@ -58,7 +58,7 @@ public class CategoryEditContent extends EditModalContent<Category> {
         // *Creating new entity instance:
         Category category = new Category(
                 data.getId(),
-                getTitleIn().getText(),
+                getTitleIn().getText().trim(),
                 Calendar.getInstance().getTimeInMillis());
 
 

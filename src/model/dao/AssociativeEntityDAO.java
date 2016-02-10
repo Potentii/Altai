@@ -5,7 +5,6 @@ import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import controller.persistence.entity.EntityTransaction;
 import model.AssociativeEntity;
-import model.LinkCategoryAssociation;
 import model.dao.callback.*;
 import org.json.JSONObject;
 

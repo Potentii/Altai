@@ -206,16 +206,6 @@ public class FormValidator {
         String errorText = validation_eachField_toString(field, validation);
         boolean valid = errorText.length() == 0;
 
-        if (field != null) {
-            /*
-            if(valid) {
-                field.getBackground().clearColorFilter();
-            } else{
-                field.getBackground().setColorFilter(invalidFieldColor, PorterDuff.Mode.SRC_IN);
-            }
-            */
-        }
-
         if(errorOut != null){
             if(valid){
                 errorOut.setDisable(true);
@@ -229,16 +219,6 @@ public class FormValidator {
 
     private void visualValidation_eachComplexField(@NotNull Validatable validatable, @Nullable TextField field, @Nullable  Label errorOut){
         boolean valid = validatable.isValid();
-
-        if(field != null) {
-            /*
-            if(valid) {
-                field.getBackground().clearColorFilter();
-            } else {
-                field.getBackground().setColorFilter(invalidFieldColor, PorterDuff.Mode.SRC_IN);
-            }
-            */
-        }
 
         if(errorOut != null){
             if(valid){

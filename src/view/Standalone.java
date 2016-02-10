@@ -1,7 +1,5 @@
 package view;
 
-
-
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
@@ -19,22 +17,21 @@ public class Standalone extends Application {
     private static HostServices hostServices;
 
     public static void main(String[] args) {
-        Application.launch(args);
+        Application.launch(Standalone.class, args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/res/layout/layout_standalone.fxml"));
+        hostServices = getHostServices();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/layout/layout_standalone.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Altai");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-        hostServices = getHostServices();
     }
 
     public static HostServices requestHostServices(){
         return hostServices;
     }
-
 }

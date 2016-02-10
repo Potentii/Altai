@@ -7,3 +7,6 @@ FormRow Button{
     -fx-font: 14 "System";
     -fx-max-width: Infinity;
 }
+.form{
+    -fx-padding: 0 0 96 0;
+}

@@ -14,6 +14,7 @@ public class Link {
     private String title;
     private String url;
     private String description;
+    private boolean favorite;
     private boolean flagged;
     private double rating;
     private long date;
@@ -27,11 +28,12 @@ public class Link {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Link(long id, String title, String url, String description, boolean flagged, double rating, long date, long hostId_FK) {
+    public Link(long id, String title, String url, String description, boolean favorite, boolean flagged, double rating, long date, long hostId_FK) {
         this.id = id;
         this.title = title;
         this.url = url;
         this.description = description;
+        this.favorite = favorite;
         this.flagged = flagged;
         this.rating = rating;
         this.date = date;
@@ -71,6 +73,13 @@ public class Link {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public boolean isFlagged() {

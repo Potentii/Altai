@@ -2,7 +2,6 @@ package model.dao;
 
 import controller.persistence.UndeclaredEntityException;
 import model.Category;
-import model.Link;
 import org.json.JSONObject;
 
 import java.util.function.Function;

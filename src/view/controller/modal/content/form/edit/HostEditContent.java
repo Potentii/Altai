@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import util.FormValidator;
 import util.callback.SimpleResponseCallback;
 import view.control.FilePicker;
+import view.control.UrlPatternTextField;
 import view.exception.ContextLoadException;
 
 import java.io.File;
@@ -31,7 +32,7 @@ public class HostEditContent extends EditModalContent<Host> {
     @FXML
     private TextField urlIn;
     @FXML
-    private TextField urlPatternIn;
+    private UrlPatternTextField urlPatternIn;
     @FXML
     private FilePicker filePicker;
 
@@ -65,7 +66,7 @@ public class HostEditContent extends EditModalContent<Host> {
     @Override
     protected void onDataBindRequested(@Nullable Host data) throws UndeclaredEntityException, NullPointerException {
         getTitleIn().setText(data.getTitle());
-        getTitleIn().setPromptText("Host name");
+        getTitleIn().setPromptText("Host's name");
         filePicker.setFileFilters(FilePicker.FILE_FILTER_IMAGE);
         urlIn.setText(data.getUrl());
         urlPatternIn.setText(data.getUrlPattern());
@@ -76,7 +77,7 @@ public class HostEditContent extends EditModalContent<Host> {
         validator = new FormValidator()
                 .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED))
                 .addField(urlIn, urlErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
-                .addField(urlPatternIn, urlPatternErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
+                .addComplexField(urlPatternIn, null, urlPatternErrorOut)
                 .addComplexField(filePicker, null, filePickerErrorOut);
     }
 
@@ -125,9 +126,9 @@ public class HostEditContent extends EditModalContent<Host> {
         // *Creating new entity instance:
         Host host = new Host(
                 data.getId(),
-                getTitleIn().getText(),
-                urlIn.getText(),
-                urlPatternIn.getText(),
+                getTitleIn().getText().trim(),
+                urlIn.getText().trim(),
+                urlPatternIn.getText().trim(),
                 newIconFileName,
                 Calendar.getInstance().getTimeInMillis());
 

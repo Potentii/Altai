@@ -4,6 +4,7 @@ import controller.persistence.UndeclaredEntityException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.AssociativeEntity;
@@ -34,6 +35,10 @@ public class LinkCreateContent extends CreateModalContent<Link> {
     private TextField descIn;
     @FXML
     private TextField ratingIn;
+    @FXML
+    private CheckBox favoriteIn;
+    @FXML
+    private CheckBox flaggedIn;
     @FXML
     private Button categoryPickerBtn;
 
@@ -113,6 +118,7 @@ public class LinkCreateContent extends CreateModalContent<Link> {
         } catch (UndeclaredEntityException e) {
             e.printStackTrace();
         }
+
     }
 
 
@@ -126,11 +132,12 @@ public class LinkCreateContent extends CreateModalContent<Link> {
 
         Link entity = new Link(
                 0L,
-                getTitleIn().getText(),
-                urlIn.getText(),
-                descIn.getText(),
-                true,
-                Double.parseDouble(ratingIn.getText()),
+                getTitleIn().getText().trim(),
+                urlIn.getText().trim(),
+                descIn.getText().trim(),
+                favoriteIn.isSelected(),
+                flaggedIn.isSelected(),
+                Double.parseDouble(ratingIn.getText().trim()),
                 Calendar.getInstance().getTimeInMillis(),
                 0L
         );

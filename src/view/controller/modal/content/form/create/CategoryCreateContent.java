@@ -38,7 +38,7 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
      */
     @Override
     protected void onInitializationRequested(){
-        getTitleIn().setPromptText("Category name");
+        getTitleIn().setPromptText("Category's name");
 
         validator = new FormValidator()
                 .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED));
@@ -55,7 +55,7 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
         // *Creating new entity instance:
         Category category = new Category(
                 0L,
-                getTitleIn().getText(),
+                getTitleIn().getText().trim(),
                 Calendar.getInstance().getTimeInMillis());
 
 
