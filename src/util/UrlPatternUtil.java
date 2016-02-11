@@ -39,7 +39,11 @@ public class UrlPatternUtil {
         return null;
     }
 
-    public String getTitle(Host host, String url){
+    public String getTitle(@Nullable Host host, String url){
+        if(host == null){
+            return "";
+        }
+
         String title = "";
         String urlPattern = host.getUrlPattern();
         int scanLastId = 0;

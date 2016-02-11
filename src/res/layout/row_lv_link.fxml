@@ -1,31 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="listViewItem" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane>
          <children>
-            <ImageView fx:id="ratingImg" cache="true" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="listViewItem_circle">
+
+            <ImageView fx:id="ratingImg" cache="true" fitHeight="36.0" fitWidth="36.0" preserveRatio="true" smooth="false" styleClass="listViewItem_circle">
                <image>
                   <Image url="@../image/ic_circle_36.png" />
                </image>
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
             </ImageView>
+
             <Label fx:id="ratingOut" focusTraversable="false" styleClass="listViewItem_circle_text" />
+
          </children>
       </StackPane>
       <VBox>
          <children>
-            <Hyperlink fx:id="titleOut" focusTraversable="false" graphicTextGap="0.0" styleClass="listViewItem_primaryText_hyperlink" />
-            <Label fx:id="descOut" focusTraversable="false" graphicTextGap="0.0" styleClass="listViewItem_secondaryText" />
+            <HBox alignment="CENTER_LEFT">
+               <children>
+      
+                                                <ImageView fx:id="favoriteImg" cache="true" preserveRatio="true" smooth="false" x="20.0" y="20.0">
+                     <image>
+                        <Image url="@../image/ic_favorite_24.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="-0.21" contrast="1.0" hue="-0.01" saturation="0.77" />
+                     </effect>
+                  </ImageView>
+                  <Hyperlink fx:id="titleOut" focusTraversable="false" graphicTextGap="0.0" styleClass="listViewItem_primaryText_hyperlink" />
+                  <ImageView fx:id="flagImg" cache="true" fitHeight="16.0" fitWidth="16.0" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@../image/ic_flag_24.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="-0.16" contrast="0.77" hue="-0.93" saturation="0.74" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Label fx:id="descOut" focusTraversable="false" graphicTextGap="0.0" styleClass="listViewItem_secondaryText">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="2.0" />
+               </VBox.margin></Label>
          </children>
          <HBox.margin>
             <Insets />

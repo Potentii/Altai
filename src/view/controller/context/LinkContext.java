@@ -1,21 +1,21 @@
 package view.controller.context;
 
+import controller.persistence.UndeclaredEntityException;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import model.Link;
+import model.dao.DAO;
+import model.dao.LinkDAO;
+import model.dao.callback.RetrieveMultipleDAOCallback;
 import view.controller.modal.content.form.create.LinkCreateContent;
 import view.controller.modal.window.EditModalWindow;
 import view.listview.LinkLVAdapter;
-import view.controller.modal.window.DetailModalWindow;
 import view.exception.ContextLoadException;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * @author Guilherme Reginaldo
@@ -28,6 +28,40 @@ public class LinkContext extends ListedContentContext<Link> {
 
     @Override
     protected void onUpdateRequested() {
+        try {
+            DAO<Link> dao = new LinkDAO();
+
+            dao.retrieveMultiple(
+                    entity -> true,
+                    Comparator.comparing(Link::getId),
+                    new RetrieveMultipleDAOCallback<Link>() {
+                        @Override
+                        public void onSuccess(List<Link> responseList) {
+                            dataList = responseList;
+
+                            Platform.runLater(() -> {
+                                listView.setItems(FXCollections.observableArrayList(dataList));
+                                listView.setCellFactory(param -> new LinkLVAdapter());
+                                listView.setOnMouseClicked(event -> {
+                                    if(event.getClickCount() == 2) {
+                                        onItemSelected();
+                                    }
+                                });
+                            });
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+                            // ERROR
+                            // TODO
+                        }
+                    });
+
+        } catch (UndeclaredEntityException e) {
+            e.printStackTrace();
+        }
+
+        /*
         dataList = new ArrayList<>();
         dataList.add(new Link(0L, "title placeholder 2", "http://google.com/", "", false, false, 0.0f, new Date().getTime(), 0L));
         dataList.add(new Link(1L, "title placeholder 1", "http://google.com/", "", false, true, 0.1f, new Date().getTime(), 0L));
@@ -46,18 +80,21 @@ public class LinkContext extends ListedContentContext<Link> {
         listView.setItems(userList);
         listView.setCellFactory(param -> new LinkLVAdapter());
         listView.setOnMouseClicked(event -> onItemSelected());
+        */
     }
 
     @Override
     protected void onItemSelected(){
-        Link selectedData = listView.getSelectionModel().getSelectedItem();
-        /*
+        Link selectedItem = listView.getSelectionModel().getSelectedItem();
+        if(selectedItem == null){
+            return;
+        }/*
         try {
-            new DetailModalWindow<>("/res/layout/layout_detail_link.fxml", selectedData);
+            DetailModalWindow<Link> detailWindow = new DetailModalWindow<>(new LinkDetailContent(), selectedItem, "Link");
+            detailWindow.setOnActionFinishedCallback(entity -> onUpdateRequested());
         } catch (ContextLoadException e) {
             e.printStackTrace();
-        }
-        */
+        }*/
     }
 
 

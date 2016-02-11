@@ -61,4 +61,5 @@ ListView, SelectionListView{
 .listViewItem_circle_text{
     -fx-text-fill: #444;
     -fx-font: 12 "System";
+
 }
