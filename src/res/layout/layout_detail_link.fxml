@@ -1,67 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.net.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import view.control.FormRow?>
 <?import java.net.URL?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LinkDetailContextController">
+<?import javafx.scene.image.ImageView?>
+<ScrollPane focusTraversable="false" hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../style/style_form.css" />
     </stylesheets>
 
-    <children>
-      <HBox styleClass="row">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <ColorAdjust brightness="-0.56" />
-               </effect>
-            </ImageView>
-            <Label styleClass="row_output" />
-         </children></HBox>
-      <HBox styleClass="row">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <ColorAdjust brightness="-0.56" />
-               </effect>
-            </ImageView>
-            <Label styleClass="row_output" />
-         </children>
-      </HBox>
-      <HBox styleClass="row">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <ColorAdjust brightness="-0.56" />
-               </effect>
-            </ImageView>
-            <Label styleClass="row_output" />
-         </children>
-      </HBox>
-      <HBox styleClass="row">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <ColorAdjust brightness="-0.56" />
-               </effect>
-            </ImageView>
-            <Label styleClass="row_output" />
-         </children>
-      </HBox>
-      <HBox styleClass="row">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <ColorAdjust brightness="-0.56" />
-               </effect>
-            </ImageView>
-            <Label styleClass="row_output" />
-         </children>
-      </HBox>
-   </children>
-</VBox>
+    <content>
+        <VBox>
+            <children>
+
+                <FormRow icon="@../image/ic_link_24.png">
+                    <Hyperlink FormRow.hgrow="ALWAYS" fx:id="urlOut"/>
+                </FormRow>
+
+                <FormRow icon="@../image/ic_rating_24.png">
+                    <Label FormRow.hgrow="ALWAYS" fx:id="ratingOut"/>
+                </FormRow>
+
+                <FormRow icon="@../image/ic_host_24.png">
+                    <HBox FormRow.hgrow="ALWAYS" alignment="CENTER_LEFT" spacing="16">
+                        <ImageView fx:id="hostIconImg" fitHeight="24" fitWidth="24"/>
+                        <Hyperlink fx:id="hostOut"/>
+                    </HBox>
+                </FormRow>
+
+                <FormRow icon="@../image/ic_category_24.png">
+                    <ListView FormRow.hgrow="ALWAYS" fx:id="categoryListView"/>
+                </FormRow>
+
+                <FormRow icon="@../image/ic_date_24.png">
+                    <Label FormRow.hgrow="ALWAYS" fx:id="dateOut"/>
+                </FormRow>
+
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

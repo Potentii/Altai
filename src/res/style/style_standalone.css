@@ -37,7 +37,7 @@ CheckBox{
     -fx-font: 16 "System";
     -fx-focus-color: transparent;
     -fx-background: transparent;
-    -fx-padding: 8;
+    -fx-padding: /*8*/0;
     -fx-min-width: 0;
     -fx-max-width: Infinity;
     -fx-cursor: hand;
@@ -72,7 +72,7 @@ TextField, UrlPatternTextField{
     -fx-text-fill: #777;
     -fx-prompt-text-fill: rgba(100, 100, 100, 0.4);
     -fx-font: 16 "System";
-    -fx-padding: 8;
+    -fx-padding: 0 8 8 8;
     -fx-min-width: 0;
     -fx-max-width: Infinity;
 }

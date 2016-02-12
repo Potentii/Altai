@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import view.control.FormRow?>
-<?import view.control.FilePicker?>
 <?import java.net.URL?>
 
 <?import javafx.scene.image.ImageView?>
