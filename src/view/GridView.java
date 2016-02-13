@@ -9,6 +9,7 @@ import javafx.scene.control.Cell;
 import javafx.scene.control.ListCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.TilePane;
 import view.listview.GridViewAdapter;
 
 import java.io.IOException;
@@ -22,16 +23,15 @@ import java.util.function.Supplier;
  * @author Guilherme Reginaldo
  * @since 28/01/2016
  */
-public class GridView<E> extends GridPane{
-    @FXML
-    private int maxColumns;
-
+public class GridView<E> extends TilePane {
     private int lastColumn = -1;
     private int lastRow = 0;
 
     private Supplier<GridViewAdapter<E>> cellSupplier;
 
     private Map<E, GridViewAdapter<E>> itemCellMap;
+
+
 
 
     public GridView(){
@@ -45,7 +45,11 @@ public class GridView<E> extends GridPane{
             throw new RuntimeException(exception);
         }
         itemCellMap = new HashMap<>();
+
+
     }
+
+
 
 
     public void setItems(List<E> itemList){
@@ -61,6 +65,11 @@ public class GridView<E> extends GridPane{
 
 
     private void buildCell(E item){
+
+
+        GridViewAdapter<E> cellAdapter = cellSupplier.get();
+        getChildren().add(cellAdapter.updateItem(item));
+        /*
         GridViewAdapter<E> cell = cellSupplier.get();
 
 
@@ -68,7 +77,6 @@ public class GridView<E> extends GridPane{
         int newColumn = lastColumn+1;
         int newRow = lastRow;
         if(newColumn > maxColumns){
-            System.out.println("df");
             newColumn = 0;
             newRow++;
             addRow(newRow);
@@ -86,6 +94,7 @@ public class GridView<E> extends GridPane{
             //e.printStackTrace();
         }
         itemCellMap.put(item, cell);
+        */
     }
 
     private EventHandler<? super MouseEvent> onClickListener;
@@ -94,11 +103,4 @@ public class GridView<E> extends GridPane{
         onClickListener = event;
     }
 
-
-    public void setMaxColumns(int maxColumns) {
-        this.maxColumns = maxColumns;
-        for (int i = 0; i < maxColumns; i++) {
-            addColumn(i);
-        }
-    }
 }

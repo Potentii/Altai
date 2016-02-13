@@ -1,19 +1,10 @@
 package view.controller.context;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.GridPane;
 import model.Star;
 import view.GridView;
 import view.listview.StarGVAdapter;
-
-import java.io.IOException;
-import java.net.URL;
 import java.util.*;
-import java.util.function.Supplier;
 
 /**
  * @author Guilherme Reginaldo
@@ -33,7 +24,6 @@ public class StarContext extends ListedContentContext<Star> {
         starList.add(new Star(4L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
         starList.add(new Star(5L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
 
-        gridView.setMaxColumns(3);
         gridView.setCellFactory(StarGVAdapter::new);
         gridView.setOnClickListener(event -> System.out.println("clicked"));
         gridView.setItems(starList);

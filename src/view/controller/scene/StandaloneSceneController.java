@@ -2,6 +2,7 @@ package view.controller.scene;
 
 import controller.persistence.PersistenceManager;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -70,8 +71,12 @@ public class StandaloneSceneController implements Initializable{
             @Override
             public void onSuccess() {
                 // TODO get default screen
-                menuBtn.setOnAction(event -> menuClosedBtn_onClick());
-                loadLinkContext();
+
+                Platform.runLater(() -> {
+                    menuBtn.setOnAction(event -> menuClosedBtn_onClick());
+                    loadStarsContext();
+                });
+
             }
 
             @Override
