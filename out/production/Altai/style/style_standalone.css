@@ -180,7 +180,7 @@ ImageView, Button, TextField{
     -fx-background-color: transparent;
     -fx-graphic-text-gap: 16;
     -fx-ellipsis-string: "";
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: center-left;
     -fx-font: 16 "System";
 }
 

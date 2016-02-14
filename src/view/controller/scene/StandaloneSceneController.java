@@ -74,7 +74,7 @@ public class StandaloneSceneController implements Initializable{
 
                 Platform.runLater(() -> {
                     menuBtn.setOnAction(event -> menuClosedBtn_onClick());
-                    loadStarsContext();
+                    loadPicturesContext();
                 });
 
             }
@@ -207,7 +207,7 @@ public class StandaloneSceneController implements Initializable{
     }
     public void loadPicturesContext(){
         try {
-            changeContent("/layout/layout_context_list.fxml", new LinkContext()); // TODO
+            changeContent("/layout/layout_context_grid.fxml", new PictureContext());
             appBarTitle.setText("Pictures");
         } catch (ContextLoadException e) {
             e.printStackTrace();

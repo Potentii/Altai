@@ -7,6 +7,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Host;
+import org.jetbrains.annotations.NotNull;
 import view.Standalone;
 
 /**
@@ -21,6 +22,7 @@ public class HostLVAdapter extends CellAdapter<Host> {
 
 
     @Override
+    @NotNull
     protected String getFXMLPath() {
         return "/layout/row_lv_host.fxml";
     }

@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public abstract class GridViewAdapter<T> {
     @FXML
-    private Node root;
+    protected Node root;
 
 
     public Node updateItem(T t) {

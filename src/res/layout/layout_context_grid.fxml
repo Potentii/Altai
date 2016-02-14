@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.layout.*?>
-
-
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import view.GridView?>
-<!--
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
--->
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.ScrollPane?>
 
-<?import java.net.URL?>
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../style/style_standalone.css" />
+        <URL value="@../style/style_context.css" />
     </stylesheets>
-    <content>
-        <GridView fx:id="gridView" hgap="16.0" vgap="16.0">
-            <!--
-            <columnConstraints>
-                <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
+    <children>
 
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            -->
-        </GridView>
-    </content>
-</ScrollPane>
+        <ScrollPane focusTraversable="false" hbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <content>
+                <GridView fx:id="gridView" hgap="16.0" vgap="16.0" focusTraversable="false"  />
+            </content>
+        </ScrollPane>
 
-<!--
-   </children>
+        <Button contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#addBtn_onClick" styleClass="FAB" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="32.0">
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="FAB_img" />
+            </graphic>
+        </Button>
+
+    </children>
 </AnchorPane>
--->

@@ -6,37 +6,27 @@ import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import model.Host;
+import model.Picture;
 import model.dao.DAO;
-import model.dao.HostDAO;
+import model.dao.PictureDAO;
 import model.dao.callback.CreateDAOCallback;
 import util.FormValidator;
 import util.callback.SimpleResponseCallback;
 import view.control.FilePicker;
-import view.control.UrlPatternTextField;
 import view.exception.ContextLoadException;
+
 import java.io.File;
 import java.util.Calendar;
-import java.util.EnumSet;
 import java.util.UUID;
 
 /**
  * @author Guilherme Reginaldo
- * @since 01/02/2016
+ * @since 13/02/2016
  */
-public class HostCreateContent extends CreateModalContent<Host> {
-    @FXML
-    private TextField urlIn;
-    @FXML
-    private UrlPatternTextField urlPatternIn;
+public class PictureCreateContent  extends CreateModalContent<Picture> {
     @FXML
     private FilePicker filePicker;
 
-    @FXML
-    private Label urlErrorOut;
-    @FXML
-    private Label urlPatternErrorOut;
     @FXML
     private Label filePickerErrorOut;
 
@@ -49,8 +39,8 @@ public class HostCreateContent extends CreateModalContent<Host> {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public HostCreateContent() throws ContextLoadException {
-        super("/layout/layout_edit_host.fxml");
+    public PictureCreateContent() throws ContextLoadException {
+        super("/layout/layout_edit_picture.fxml");
     }
 
 
@@ -61,75 +51,64 @@ public class HostCreateContent extends CreateModalContent<Host> {
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     @Override
-    protected void onInitializationRequested(){
-        getTitleIn().setPromptText("Host's name");
+    protected void onInitializationRequested() {
+        getTitleIn().setVisible(false);
         filePicker.setFileFilters(FilePicker.FILE_FILTER_IMAGE);
 
         validator = new FormValidator()
-                .addField(getTitleIn(), getTitleErrorOut(), EnumSet.of(FormValidator.EValidation.REQUIRED))
-                .addField(urlIn, urlErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED))
-                .addComplexField(urlPatternIn, null, urlPatternErrorOut)
                 .addComplexField(filePicker, null, filePickerErrorOut);
     }
 
     @Override
-    public void onAction(){
+    public void onAction() {
         validator.doVisualValidation();
         if(!validator.isValid()){
             return;
         }
 
 
-        // *Generating the selected icon's new name:
-        FileBridge selectedIcon_fileBridge = new FileBridge(filePicker.getFile());
-        String newIconFileName = UUID.randomUUID().toString() + "." + selectedIcon_fileBridge.getExtension();
-        File copiedIconFile = new File(PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.HOST_ICON_RELATIVE_PATH.getValue() + newIconFileName);
+        // *Generating the selected image's new name:
+        FileBridge selectedImage_fileBridge = new FileBridge(filePicker.getFile());
+        String newImageFileName = UUID.randomUUID().toString() + "." + selectedImage_fileBridge.getExtension();
+        File copiedImageFile = new File(PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.PICTURE_RELATIVE_PATH.getValue() + newImageFileName);
 
 
-        // *Copying selected icon to its appropriate folder:
-        selectedIcon_fileBridge.copyTo(copiedIconFile, new SimpleResponseCallback() {
+        // *Copying selected image to its appropriate folder:
+        selectedImage_fileBridge.copyTo(copiedImageFile, new SimpleResponseCallback() {
             @Override
             public void onSuccess() {
 
-
-                // *Creating new entity instance:
-                Host host = new Host(
+                Picture picture = new Picture(
                         0L,
-                        getTitleIn().getText().trim(),
-                        urlIn.getText().trim(),
-                        urlPatternIn.getText().trim(),
-                        newIconFileName,
+                        newImageFileName,
                         Calendar.getInstance().getTimeInMillis());
 
-
-                // *Creating the entity on the persistence layer:
                 try {
-                    DAO<Host> dao = new HostDAO();
-                    dao.create(host, new CreateDAOCallback() {
+                    DAO<Picture> pictureDAO = new PictureDAO();
+                    pictureDAO.create(picture, new CreateDAOCallback() {
                         @Override
                         public void onSuccess(Long id) {
-                            host.setId(id);
-                            data = host;
+                            picture.setId(id);
+                            data = picture;
+
                             onActionFinished();
                         }
 
                         @Override
                         public void onFailure(Exception e) {
-                            //TODO
-                            //ERROR
-                            System.out.println("FAILURE");
+                            // ERROR
+                            // TODO
                         }
                     });
                 } catch (UndeclaredEntityException e) {
-                    e.printStackTrace();
+                    onFailure(e);
                 }
-
-
             }
 
             @Override
             public void onFailure(Exception e) {
-                e.printStackTrace();
+                // ERROR
+                // TODO
             }
         });
     }

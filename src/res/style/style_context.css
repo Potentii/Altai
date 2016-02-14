@@ -1,7 +1,12 @@
-ListView, SelectionListView{
+ListView, SelectionListView, GridView{
     -fx-background-color: transparent;
     -fx-focus-color: transparent;
     -fx-fixed-cell-size: 56;
+}
+
+GridView{
+    -fx-padding: 32;
+    -fx-alignment: center-left;
 }
 
 
@@ -62,4 +67,9 @@ ListView, SelectionListView{
     -fx-text-fill: #444;
     -fx-font: 12 "System";
 
+}
+
+
+.pictureGVCell{
+    -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.5), 8, 0, 0, 2);
 }
