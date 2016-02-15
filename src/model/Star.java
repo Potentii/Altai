@@ -12,6 +12,7 @@ public class Star {
     private long id;
     private String title;
     private String description;
+    private String mainImage;
     private double rating;
     private long date;
 
@@ -22,10 +23,11 @@ public class Star {
      *  * Constructor:
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
-    public Star(long id, String title, String description, double rating, long date) {
+    public Star(long id, String title, String description, String mainImage, double rating, long date) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.mainImage = mainImage;
         this.rating = rating;
         this.date = date;
     }
@@ -56,6 +58,13 @@ public class Star {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getMainImage() {
+        return mainImage;
+    }
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
     }
 
     public double getRating() {

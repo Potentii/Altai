@@ -27,7 +27,7 @@ public class CategoryEditContent extends EditModalContent<Category> {
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     public CategoryEditContent() throws ContextLoadException {
-        super("/layout/layout_edit_category.fxml");
+        super("/layout/content/edit/layout_edit_category.fxml");
     }
 
 

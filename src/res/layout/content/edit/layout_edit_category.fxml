@@ -6,7 +6,7 @@
 
 <ScrollPane focusTraversable="false" hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8">
     <stylesheets>
-        <URL value="@../style/style_form.css" />
+        <URL value="@../../../style/style_form.css" />
     </stylesheets>
 
     <content>

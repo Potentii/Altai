@@ -5,7 +5,6 @@ import model.Category;
 import model.dao.CategoryDAO;
 import model.dao.DAO;
 import model.dao.callback.CreateDAOCallback;
-import org.jetbrains.annotations.NotNull;
 import util.FormValidator;
 import view.exception.ContextLoadException;
 
@@ -26,7 +25,7 @@ public class CategoryCreateContent extends CreateModalContent<Category> {
      *  * ========== * ========== * ========== * ========== * ========== * ========== * ========== * ========== *
      */
     public CategoryCreateContent() throws ContextLoadException {
-        super("/layout/layout_edit_category.fxml");
+        super("/layout/content/edit/layout_edit_category.fxml");
     }
 
 

@@ -18,6 +18,7 @@ public class StarDAO extends GenericDAO<Star> {
             "id",
             "ti",
             "de",
+            "ma",
             "ra",
             "da"
     };
@@ -51,8 +52,9 @@ public class StarDAO extends GenericDAO<Star> {
                 .put(FIELD_SET[0], entity.getId())
                 .put(FIELD_SET[1], entity.getTitle())
                 .put(FIELD_SET[2], entity.getDescription())
-                .put(FIELD_SET[3], entity.getRating())
-                .put(FIELD_SET[4], entity.getDate());
+                .put(FIELD_SET[3], entity.getMainImage())
+                .put(FIELD_SET[4], entity.getRating())
+                .put(FIELD_SET[5], entity.getDate());
     }
 
     @Override
@@ -61,8 +63,9 @@ public class StarDAO extends GenericDAO<Star> {
                 jsonObject.getLong(FIELD_SET[0]),
                 jsonObject.getString(FIELD_SET[1]),
                 jsonObject.getString(FIELD_SET[2]),
-                jsonObject.getDouble(FIELD_SET[3]),
-                jsonObject.getLong(FIELD_SET[4])
+                jsonObject.getString(FIELD_SET[3]),
+                jsonObject.getDouble(FIELD_SET[4]),
+                jsonObject.getLong(FIELD_SET[5])
         );
     }
 }

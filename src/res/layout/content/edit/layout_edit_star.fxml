@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import view.control.FormRow?>
+<?import java.net.URL?>
+
+<?import view.control.FilePicker?>
+<ScrollPane focusTraversable="false" hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../../style/style_form.css" />
+    </stylesheets>
+
+    <content>
+        <VBox styleClass="form">
+            <children>
+
+                <FormRow icon="@../../../image/ic_description_24.png">
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <TextField fx:id="descriptionIn" promptText="Description"/>
+                        <Label styleClass="errorOut" fx:id="descriptionErrorOut"/>
+                    </VBox>
+                </FormRow>
+
+                <FormRow icon="@../../../image/ic_rating_24.png">
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <TextField fx:id="ratingIn" promptText="Rating"/>
+                        <Label styleClass="errorOut" fx:id="ratingErrorOut"/>
+                    </VBox>
+                </FormRow>
+
+                <FormRow icon="@../../../image/ic_image_24.png">
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <FilePicker fx:id="imgFilePicker" buttonText="Select images"/>
+                        <Label styleClass="errorOut" fx:id="imgErrorOut"/>
+                    </VBox>
+                </FormRow>
+
+                <FormRow icon="@../../../image/ic_category_24.png">
+                    <VBox FormRow.hgrow="ALWAYS">
+                        <Button fx:id="categoryPickerBtn" text="Select categories"/>
+                    </VBox>
+                </FormRow>
+
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

@@ -137,7 +137,7 @@ public class LinkCreateContent extends CreateModalContent<Link> {
                     });
 
 
-
+            // TODO move this logic inside CategoryPickerDialog:
             // *Retrieving all registered categories:
             DAO<Category> categoryDAO = new CategoryDAO();
             categoryDAO.retrieveMultiple(
@@ -151,7 +151,7 @@ public class LinkCreateContent extends CreateModalContent<Link> {
                             responseList.forEach(category -> categorySelectionMap.put(category, false));
 
                             Platform.runLater(() -> {
-                                taggedEvent.registerStep("categories", true);
+
 
                                 // *Adding listener to categoryPicker's button:
                                 categoryPickerBtn.setOnAction(event -> {
@@ -166,6 +166,7 @@ public class LinkCreateContent extends CreateModalContent<Link> {
                                         onFailure(e);
                                     }
                                 });
+                                taggedEvent.registerStep("categories", true);
                             });
                         }
 

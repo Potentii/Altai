@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox fx:id="root" styleClass="starGVCell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+
+        <ImageView fx:id="mainImg" cache="true" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true"/>
+
+        <VBox alignment="CENTER">
+            <Label fx:id="titleOut"/>
+            <Label fx:id="ratingOut"/>
+        </VBox>
+
+    </children>
+</VBox>

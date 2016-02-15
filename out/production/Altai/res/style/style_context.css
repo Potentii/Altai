@@ -70,6 +70,6 @@ GridView{
 }
 
 
-.pictureGVCell{
+.pictureGVCell, .starGVCell{
     -fx-effect: dropshadow(one-pass-box, rgba(100, 100, 100, 0.5), 8, 0, 0, 2);
 }
