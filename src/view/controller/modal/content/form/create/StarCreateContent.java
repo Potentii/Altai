@@ -79,6 +79,7 @@ public class StarCreateContent  extends CreateModalContent<Star> {
                 .addField(ratingIn, ratingErrorOut, EnumSet.of(FormValidator.EValidation.REQUIRED, FormValidator.EValidation.FLOAT))
                 .addComplexField(imgFilePicker, null, imgErrorOut);
 
+
         try{
             // TODO move this logic inside CategoryPickerDialog:
             // *Retrieving all registered categories:
@@ -122,9 +123,6 @@ public class StarCreateContent  extends CreateModalContent<Star> {
             e.printStackTrace();
             dataLoaded = false;
         }
-
-
-
     }
 
     @Override

@@ -27,8 +27,10 @@ public class PictureContext extends ListedContentContext<Picture> {
 
     @Override
     protected void onUpdateRequested() {
+        gridView.setCellHeight(150);
+        gridView.setCellWidth(150);
         gridView.setCellFactory(PictureGVAdapter::new);
-        gridView.setOnClickListener(event -> {
+        gridView.setOnCellClickListener(event -> {
             if(event.getClickCount() == 2) {
                 onItemSelected();
             }
@@ -46,9 +48,7 @@ public class PictureContext extends ListedContentContext<Picture> {
                         public void onSuccess(List<Picture> responseList) {
                             dataList = responseList;
 
-                            Platform.runLater(() -> {
-                                gridView.setItems(dataList);
-                            });
+                            Platform.runLater(() -> gridView.setItems(dataList));
                         }
 
                         @Override

@@ -1,12 +1,16 @@
-ListView, SelectionListView, GridView{
+ListView, SelectionListView{
     -fx-background-color: transparent;
     -fx-focus-color: transparent;
     -fx-fixed-cell-size: 56;
 }
 
-GridView{
+GridView TilePane{
+    /*TODO remove*/
+    /*
+    -fx-background-color: #d23;
+    -fx-background: #d23;
+    */
     -fx-padding: 32;
-    -fx-alignment: center-left;
 }
 
 

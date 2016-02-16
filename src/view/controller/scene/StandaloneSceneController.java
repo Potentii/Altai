@@ -74,7 +74,7 @@ public class StandaloneSceneController implements Initializable{
 
                 Platform.runLater(() -> {
                     menuBtn.setOnAction(event -> menuClosedBtn_onClick());
-                    loadStarsContext();
+                    loadPicturesContext();
                 });
 
             }

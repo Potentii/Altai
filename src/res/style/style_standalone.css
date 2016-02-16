@@ -11,7 +11,7 @@ Label{
     -fx-font-smoothing-type: gray;
 }
 
-ScrollPane{
+ScrollPane, GridView{
     -fx-background: transparent;
     -fx-background-color: transparent;
     -fx-focus-color: transparent;

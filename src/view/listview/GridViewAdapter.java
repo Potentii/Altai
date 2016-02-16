@@ -48,4 +48,7 @@ public abstract class GridViewAdapter<T> {
      */
     protected abstract String getFXMLPath();
     public abstract void bindData(T data) throws NullPointerException;
+    public Node getRoot() {
+        return root;
+    }
 }
