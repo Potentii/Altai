@@ -15,8 +15,12 @@ public abstract class GridViewAdapter<T> {
     @FXML
     protected Node root;
 
+    protected T data;
+
+
 
     public Node updateItem(T t) {
+        data = t;
         if(t == null){
             // TODO
         } else {
@@ -48,7 +52,13 @@ public abstract class GridViewAdapter<T> {
      */
     protected abstract String getFXMLPath();
     public abstract void bindData(T data) throws NullPointerException;
+
+
     public Node getRoot() {
         return root;
+    }
+
+    public T getData() {
+        return data;
     }
 }

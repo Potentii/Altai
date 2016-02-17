@@ -5,11 +5,6 @@ ListView, SelectionListView{
 }
 
 GridView TilePane{
-    /*TODO remove*/
-    /*
-    -fx-background-color: #d23;
-    -fx-background: #d23;
-    */
     -fx-padding: 32;
 }
 
