@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 
-<VBox fx:id="root" styleClass="starGVCell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" prefHeight="323" prefWidth="200" styleClass="starGVCell" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
 
-        <ImageView fx:id="mainImg" cache="true" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="mainImg" fitHeight="260.0" fitWidth="${root.prefWidth}" preserveRatio="true"/>
 
-        <VBox alignment="CENTER">
-            <Label fx:id="titleOut"/>
-            <Label fx:id="ratingOut"/>
+        <VBox alignment="CENTER" minHeight="63" spacing="8.0">
+            <children>
+                <Label fx:id="titleOut"/>
+                <Label fx:id="ratingOut"/>
+            </children>
         </VBox>
 
     </children>

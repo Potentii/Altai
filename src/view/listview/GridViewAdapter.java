@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
@@ -13,13 +14,13 @@ import java.io.IOException;
  */
 public abstract class GridViewAdapter<T> {
     @FXML
-    protected Node root;
+    protected Region root;
 
     protected T data;
 
 
 
-    public Node updateItem(T t) {
+    public Region updateItem(T t) {
         data = t;
         if(t == null){
             // TODO
@@ -54,7 +55,7 @@ public abstract class GridViewAdapter<T> {
     public abstract void bindData(T data) throws NullPointerException;
 
 
-    public Node getRoot() {
+    public Region getRoot() {
         return root;
     }
 

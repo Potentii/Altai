@@ -59,6 +59,7 @@ public class PersistenceManager {
             taggedEvent_set.add(i + "");
         }
         taggedEvent_set.add("hostIconFolder");
+        taggedEvent_set.add("starMainImgFolder");
         taggedEvent_set.add("pictureFolder");
         taggedEvent_set.add("movieFolder");
         TaggedEvent taggedEvent = new TaggedEvent(taggedEvent_set)
@@ -119,6 +120,20 @@ public class PersistenceManager {
                     @Override
                     public void onFailure(Exception e) {
                         taggedEvent.registerStep("hostIconFolder", false);
+                    }
+                });
+
+        // *Creating the stars' main image folder:
+        new FileBridge(rootPath + EAltaiPersistence.STAR_MAIN_IMG_RELATIVE_PATH_RAW.getValue())
+                .create(new SimpleResponseCallback() {
+                    @Override
+                    public void onSuccess() {
+                        taggedEvent.registerStep("starMainImgFolder", true);
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        taggedEvent.registerStep("starMainImgFolder", false);
                     }
                 });
 

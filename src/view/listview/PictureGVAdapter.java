@@ -3,6 +3,7 @@ package view.listview;
 import controller.persistence.EAltaiPersistence;
 import controller.persistence.PersistenceManager;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +15,9 @@ import org.jetbrains.annotations.NotNull;
  * @since 13/02/2016
  */
 public class PictureGVAdapter extends GridViewAdapter<Picture> {
+    @FXML
+    private ImageView pictureImg;
+
 
     @Override
     @NotNull
@@ -39,7 +43,6 @@ public class PictureGVAdapter extends GridViewAdapter<Picture> {
             }
 
             Platform.runLater(() -> {
-                ImageView pictureImg = (ImageView) root;
                 pictureImg.setViewport(viewPort);
                 pictureImg.setImage(image);
             });

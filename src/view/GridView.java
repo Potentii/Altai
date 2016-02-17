@@ -4,9 +4,12 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.TilePane;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -25,8 +28,8 @@ public class GridView<E> extends ScrollPane {
     @FXML
     private TilePane tilePane;
 
-    private double cellWidth = 124;
-    private double cellHeight = 124;
+    private double cellWidth = 96;
+    private double cellHeight = 96;
 
     private double spaceBetween;
 
@@ -127,8 +130,22 @@ public class GridView<E> extends ScrollPane {
         if(cellSupplier == null){
             return;
         }
+
+
+        // *Remove if there is items already:
+        if(!tilePane.getChildren().isEmpty()){
+            tilePane.getChildren().removeAll(tilePane.getChildren());
+        }
+
+
         this.itemList = itemList;
         cellList.clear();
+
+
+        // *Getting a cell's bound sample to set tile's size:
+        Region cellSample = (Region) cellSupplier.get().getRoot();
+        setCellWidth(cellSample.getPrefWidth());
+        setCellHeight(cellSample.getPrefHeight());
 
 
         // *Adding the items:

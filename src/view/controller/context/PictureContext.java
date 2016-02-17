@@ -47,7 +47,6 @@ public class PictureContext extends ListedContentContext<Picture> {
                         @Override
                         public void onSuccess(List<Picture> responseList) {
                             dataList = responseList;
-
                             Platform.runLater(() -> gridView.setItems(dataList));
                         }
 

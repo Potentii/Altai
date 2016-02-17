@@ -1,5 +1,8 @@
 package view.controller.modal.content.form.create;
 
+import controller.io.FileBridge;
+import controller.persistence.EAltaiPersistence;
+import controller.persistence.PersistenceManager;
 import controller.persistence.UndeclaredEntityException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -14,10 +17,12 @@ import model.dao.StarDAO;
 import model.dao.callback.CreateDAOCallback;
 import model.dao.callback.RetrieveMultipleDAOCallback;
 import util.FormValidator;
+import util.callback.SimpleResponseCallback;
 import view.CategoryPickerDialog;
 import view.control.FilePicker;
 import view.exception.ContextLoadException;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -125,6 +130,7 @@ public class StarCreateContent  extends CreateModalContent<Star> {
         }
     }
 
+
     @Override
     public void onAction() {
         if(!dataLoaded){
@@ -135,11 +141,35 @@ public class StarCreateContent  extends CreateModalContent<Star> {
             return;
         }
 
+        // TODO make this control accept more than just 1 file, and show it on the preview
+        // *Generating the selected icon's new name:
+        FileBridge selectedImg_fileBridge = new FileBridge(imgFilePicker.getFile());
+        String newImgFileName = UUID.randomUUID().toString() + "." + selectedImg_fileBridge.getExtension();
+        File copiedImgFile = new File(PersistenceManager.getInstance().getRootPath() + EAltaiPersistence.STAR_MAIN_IMG_RELATIVE_PATH.getValue() + newImgFileName);
+
+
+        // *Copying selected img to its appropriate folder:
+        selectedImg_fileBridge.copyTo(copiedImgFile, new SimpleResponseCallback() {
+            @Override
+            public void onSuccess() {
+                createEntity(newImgFileName);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                // ERROR
+                // TODO
+            }
+        });
+    }
+
+
+    private void createEntity(String imgName){
         Star star = new Star(
                 0L,
                 getTitleIn().getText().trim(),
                 descriptionIn.getText().trim(),
-                "",
+                imgName,
                 Double.parseDouble(ratingIn.getText().trim()),
                 Calendar.getInstance().getTimeInMillis()
         );

@@ -1,7 +1,12 @@
 package view.controller.context;
 
+import controller.persistence.UndeclaredEntityException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import model.Star;
+import model.dao.DAO;
+import model.dao.StarDAO;
+import model.dao.callback.RetrieveMultipleDAOCallback;
 import view.GridView;
 import view.controller.modal.content.form.create.StarCreateContent;
 import view.controller.modal.window.EditModalWindow;
@@ -19,20 +24,37 @@ public class StarContext extends ListedContentContext<Star> {
 
     @Override
     protected void onUpdateRequested() {
-        List<Star> starList = new ArrayList<>();
-        /*
-        starList.add(new Star(0L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(1L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(2L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(3L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(4L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        starList.add(new Star(5L, "title 01", "desc", 0.0, Calendar.getInstance().getTimeInMillis()));
-        */
-        /*
         gridView.setCellFactory(StarGVAdapter::new);
-        gridView.setOnClickListener(event -> System.out.println("clicked"));
-        gridView.setItems(starList);
-        */
+        gridView.setOnCellClickListener(event -> {
+            if(event.getClickCount() == 2) {
+                onItemSelected();
+            }
+        });
+
+
+        try {
+            DAO<Star> dao = new StarDAO();
+
+            dao.retrieveMultiple(
+                    entity -> true,
+                    Comparator.comparing(Star::getId),
+                    new RetrieveMultipleDAOCallback<Star>() {
+                        @Override
+                        public void onSuccess(List<Star> responseList) {
+                            dataList = responseList;
+                            Platform.runLater(() -> gridView.setItems(dataList));
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+                            // ERROR
+                            // TODO
+                        }
+                    });
+
+        } catch (UndeclaredEntityException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
